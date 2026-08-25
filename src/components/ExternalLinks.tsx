@@ -8,10 +8,10 @@ export function VisitWebsite({
   client,
   tone = "light",
 }: {
-  href?: string;
-  label?: string;
+  href?: string | undefined;
+  label?: string | undefined;
   client: string;
-  tone?: "light" | "dark";
+  tone?: "light" | "dark" | undefined;
 }) {
   if (!href) return null;
   return (

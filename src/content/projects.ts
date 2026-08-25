@@ -225,7 +225,7 @@ export const projects: Project[] = [
     image: "/media/clients/grace26-website.jpg",
     imageAlt: "Grace26 medical products website shown on laptop and phone",
     provisionalMedia: true,
-    links: clientLinks.grace26!,
+    links: clientLinks["grace26"]!,
     feature: {
       src: "/media/clients/grace26-packaging.jpg",
       alt: "Surgical mask and glove packaging with catalogue sheets",
@@ -383,7 +383,7 @@ export const projects: Project[] = [
     image: "/media/clients/two-website.jpg",
     imageAlt: "TripWithOwners community travel website homepage on a desktop screen",
     provisionalMedia: true,
-    links: clientLinks.tripwithowners!,
+    links: clientLinks["tripwithowners"]!,
     feature: {
       src: "/media/clients/two-travel.jpg",
       alt: "Goa coastline, beach bonfire, coastal road and campsite at night",
@@ -807,7 +807,7 @@ export const projects: Project[] = [
     image: "/media/clients/prober-design.jpg",
     imageAlt: "Freelance design workspace with brand sheets, swatches and a video edit",
     provisionalMedia: true,
-    links: clientLinks.prober!,
+    links: clientLinks["prober"]!,
     gallery: [
       {
         src: "/media/clients/prober-design.jpg",
