@@ -475,6 +475,50 @@ export const industries: Industry[] = [
       },
     ],
   },
+  {
+    slug: "mobility-automotive-ev-technology",
+    name: "Mobility, Automotive & EV Technology",
+    metaTitle: "EV, Mobility & Automotive Design Agency | Diglizer Solution",
+    metaDescription:
+      "Graphic design, print design, standee artwork and display communication for electric mobility, automotive and EV technology brands from Thane and Mumbai.",
+    headline: "Communication designed for a world in motion.",
+    summary:
+      "Electric mobility brands operate at the intersection of technology, infrastructure, sustainability and everyday consumer behaviour. We create clear graphic and physical communication that helps complex mobility offerings feel more accessible and professional.",
+    cardCopy:
+      "Graphic design, print design, standee artwork and display communication for electric mobility and automotive brands.",
+    challenges: [
+      "A new category has to be explained quickly and credibly",
+      "Physical communication competes for attention in busy environments",
+      "Technical specification has to stay readable at large format",
+      "Sustainability messaging must remain accurate and specific",
+    ],
+    experience: [
+      "Standee artwork for electric-mobility communication",
+      "Print-ready artwork prepared for large-format production",
+      "Display and event communication for mobility environments",
+    ],
+    capabilities: ["brand-creative", "strategy-consulting"],
+    clients: ["ather-energy", "trusterra"],
+    projects: ["ather-energy", "trusterra"],
+    services: [
+      "Graphic design",
+      "Print design",
+      "Standee design",
+      "Display communication",
+      "Large-format artwork",
+      "Print-ready artwork",
+      "Event communication",
+      "Mobility communication",
+      "EV-sector creative",
+    ],
+    faqs: [
+      {
+        question: "What mobility work has Diglizer delivered?",
+        answer:
+          "Selected graphic and print-design experience, including standee artwork, for Ather Energy and TrusTerra. Vehicle design, product design and campaign ownership are not claimed.",
+      },
+    ],
+  },
 ];
 
 export const getIndustry = (slug: string) => industries.find((i) => i.slug === slug);
@@ -495,4 +539,7 @@ export const legacyIndustryRedirects: Record<string, string> = {
   education: "education-learning",
   government: "government-public-service",
   "real-estate": "technology-professional-services",
+  mobility: "mobility-automotive-ev-technology",
+  automotive: "mobility-automotive-ev-technology",
+  ev: "mobility-automotive-ev-technology",
 };
