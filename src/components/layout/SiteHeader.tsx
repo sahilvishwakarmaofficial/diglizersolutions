@@ -169,7 +169,7 @@ export function SiteHeader() {
 
 
       {open && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-ink text-ink-foreground lg:hidden">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#12061f] text-ink-foreground xl:hidden">
           <div className="container-wide flex h-16 items-center justify-between">
             <img
               src={siteConfig.logos.icon}
