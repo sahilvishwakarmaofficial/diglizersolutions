@@ -1,12 +1,22 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
 
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { whatsappHref, telHref, mailtoHref } from "@/config/site";
 
+const BAR_HIDDEN_PATHS = [
+  "/privacy-policy",
+  "/terms",
+  "/cookie-policy",
+  "/accessibility",
+  "/thank-you",
+];
+
 function MobileContactBar() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  if (BAR_HIDDEN_PATHS.includes(pathname)) return null;
   const tel = telHref();
   const mail = mailtoHref();
   if (!tel && !mail) return null;
