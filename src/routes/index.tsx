@@ -99,27 +99,22 @@ const featuredSlugs = [
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_18%_0%,color-mix(in_oklab,var(--brand-purple)_28%,transparent),transparent)]" />
-      <LiquidBrandObject
-        state="hero"
-        showD
-        className="absolute -right-[18%] top-1/2 hidden h-[46rem] w-[46rem] -translate-y-1/2 opacity-80 lg:block"
-      />
-      <div className="container-wide relative grid min-h-[760px] items-center gap-14 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr]">
-        <div>
+    <section className="relative isolate overflow-hidden bg-background text-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_18%_0%,rgba(105,70,153,0.35),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_78%_45%,rgba(118,81,255,0.28),transparent)]" />
+
+      <div className="container-wide relative grid items-center gap-10 py-14 md:py-20 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+        <div className="relative z-10">
           <p className="eyebrow text-gradient">
             Independent creative, technology and growth company
           </p>
-          <h1 className="display-1 mt-6 max-w-4xl">
-            We shape ideas into brands, experiences and growth.
-          </h1>
+          <h1 className="display-1 mt-6 max-w-3xl">We make brands impossible to ignore.</h1>
 
           <p
-            className="mt-6 flex items-baseline gap-3 font-display text-lg font-bold"
-            aria-label={`Strategy, Creative, Technology and Growth`}
+            className="mt-5 flex items-baseline gap-3 font-display text-base font-bold uppercase tracking-[0.18em]"
+            aria-label="Strategy, Creative, Technology and Growth"
           >
-            <span className="relative inline-block h-[1.4em] w-[8.5em] overflow-hidden">
+            <span className="relative inline-block h-[1.4em] w-[9em] overflow-hidden">
               {rotatingWords.map((word, index) => (
                 <span
                   key={word}
@@ -132,27 +127,24 @@ function Hero() {
             </span>
           </p>
 
-          <p className="lede mt-5 max-w-2xl text-ink-muted">
+          <p className="lede mt-5 max-w-xl text-secondary-foreground">
             Diglizer Solution combines strategy, creativity, technology and performance marketing to
             help ambitious businesses become more visible, valuable and competitive.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              to="/work"
-              className="rounded-full bg-gradient-brand px-7 py-4 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
-            >
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/work" className="capsule-primary px-7 py-4 uppercase tracking-[0.08em]">
               Explore Our Work
             </Link>
             <Link
               to="/start-a-project"
-              className="rounded-full border border-ink-border px-7 py-4 text-sm font-semibold transition-colors hover:bg-ink-elevated"
+              className="capsule px-7 py-4 uppercase tracking-[0.08em]"
             >
               Start a Project
             </Link>
           </div>
 
-          <dl className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-ink-muted">
+          <dl className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
             <div>
               <dt className="sr-only">Locations</dt>
               <dd>Thane • Mumbai • Working across India</dd>
@@ -174,13 +166,14 @@ function Hero() {
           </dl>
         </div>
 
-        <div className="relative lg:hidden">
-          <LiquidBrandObject state="hero" showD className="mx-auto h-64 w-64 opacity-90" />
+        <div className="relative order-first h-64 opacity-70 sm:h-80 lg:order-none lg:h-[34rem] lg:opacity-100">
+          <LuminousCrowd className="absolute inset-0" />
         </div>
       </div>
     </section>
   );
 }
+
 
 function FeaturedWork() {
   const panels = featuredSlugs
