@@ -451,3 +451,79 @@
     transition: none;
   }
 }
+
+/* ============================================================
+   NOTICEABLE IMPACT — surface, frame + capsule system
+   ============================================================ */
+
+:root {
+  --gradient-brand-bright: linear-gradient(100deg, #b49cff 0%, #d46cff 45%, #ff5a92 100%);
+  --surface-plum: #1b0b2a;
+  --surface-elevated: #241032;
+  --surface-secondary: #2b123b;
+}
+
+@utility surface-plum {
+  background-color: var(--surface-plum);
+}
+
+@utility surface-elevated {
+  background-color: var(--surface-elevated);
+}
+
+/* Large rounded outlined editorial frame. */
+@utility frame-editorial {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 1.5rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+
+  @media (min-width: 768px) {
+    border-radius: 2.5rem;
+  }
+}
+
+@utility capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 0.7rem 1.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s var(--ease-liquid);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+  }
+}
+
+@utility capsule-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background-image: var(--gradient-brand);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 12px 40px -18px rgba(251, 34, 97, 0.9);
+  transition: transform 0.3s var(--ease-liquid);
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@utility glow-soft {
+  box-shadow: 0 0 90px -30px rgba(138, 87, 216, 0.85);
+}
