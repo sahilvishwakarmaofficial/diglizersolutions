@@ -934,101 +934,45 @@ export const projects: Project[] = [
     impact: ["A consistent seasonal feed across organic and paid placements"],
     relatedCapabilities: ["social-media", "performance-marketing", "video-content"],
   },
-  {
-    slug: "trek-power-adventures",
-    client: "Trek Power Adventures",
-    title: "Brochure and travel communication for adventure programmes",
-    summary: "Brochure design and travel and adventure communication with video-related work.",
-    industry: "Travel and Adventure",
-    industrySlug: "travel-hospitality",
-    location: "Maharashtra",
-    tags: ["Packaging", "Video", "Campaigns"],
-    filters: ["Packaging", "Video", "Campaigns"],
-    services: ["Brochure design", "Travel and adventure communication", "Video-related creative"],
-    featured: false,
-    span: "standard",
-    metaTitle: "Trek Power Adventures Brochure & Travel Creative | Diglizer Solution",
-    metaDescription:
-      "Brochure design and adventure travel communication, with video-related creative work supporting trek and outdoor programmes.",
-    headline: "Brochure and travel communication for adventure programmes.",
-    image: "/media/clients/trekpower-brochure.jpg",
-    imageAlt: "Adventure travel brochure spread resting on rock",
-    provisionalMedia: true,
-    links: clientLinks["trek-power-adventures"]!,
-    gallery: [
-      {
-        src: "/media/clients/trekpower-brochure.jpg",
-        alt: "Adventure travel brochure spread",
-        caption: "Brochure and itinerary print",
-        ratio: "16:9",
-        kind: "print",
-        provisional: true,
-      },
-      {
-        src: "/media/clients/two-travel.jpg",
-        alt: "Outdoor and campsite photography grid",
-        caption: "Adventure photography direction",
-        ratio: "16:9",
-        kind: "photography",
-        provisional: true,
-      },
-      {
-        src: "/media/clients/pasbaan-video.jpg",
-        alt: "Video timeline with outdoor footage",
-        caption: "Video-related creative work",
-        ratio: "16:9",
-        kind: "video",
-        provisional: true,
-      },
-    ],
-    overview: [
-      "Adventure programmes are sold on anticipation and reassurance at the same time. Print and digital communication had to carry both.",
-    ],
-    challenge: {
-      heading: "The challenge",
-      paragraphs: [
-        "Trek information is dense — grades, inclusions, gear, timings — and it still has to feel like an invitation rather than a form.",
-      ],
-    },
-    strategy: {
-      heading: "Strategic response",
-      paragraphs: [
-        "Photography-led spreads carried the excitement while a fixed information block handled the practical detail consistently.",
-      ],
-    },
-    solution: {
-      heading: "The solution",
-      bullets: ["Brochure design", "Travel and adventure communication", "Video-related creative"],
-    },
-    impact: ["Print and digital communication aligned across adventure programmes"],
-    relatedCapabilities: ["packaging-print", "brand-creative", "video-content"],
-  },
 ];
 
 export const clientStrip = [
   "Genetics Cryobank",
+  "Yashoda IVF & Fertility Centre",
   "Grace26",
   "TripWithOwners",
-  "Yashoda IVF & Fertility Centre",
   "Pasbaan-e-Adab",
   "Siddhartha Logic",
   "Prober",
   "Aikaa Fashion",
-  "Trek Power Adventures",
+  "Satish Pradhan Dnyanasadhana College, Thane",
+  "Maharashtra Police",
+  "Suviksha Hospital",
+  "MIMAS World Hospitals",
+  "Advaith Hospital",
+  "Xpert Super Speciality Trulife",
+  "Mark Jewells",
+  "Medibrain",
+  "Mahadevi Hospital",
 ];
 
 export const workFilters = [
   "All",
-  "Integrated",
-  "Branding",
-  "Campaigns",
-  "Social Media",
+  "Healthcare",
+  "Fertility",
   "Websites",
+  "Branding",
+  "Social Media",
   "Video",
+  "Campaigns",
   "Packaging",
-  "Performance Marketing",
-  "Photography",
+  "Education",
+  "Government",
+  "Fashion",
+  "Travel",
+  "Technology",
 ];
+
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 
