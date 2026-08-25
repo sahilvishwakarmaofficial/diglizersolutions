@@ -11,10 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as StartAProjectRouteImport } from './routes/start-a-project'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
@@ -33,9 +38,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FounderRoute = FounderRouteImport.update({
@@ -48,9 +68,19 @@ const InsightsRoute = InsightsRouteImport.update({
   path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StartAProjectRoute = StartAProjectRouteImport.update({
   id: '/start-a-project',
   path: '/start-a-project',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ThankYouRoute = ThankYouRouteImport.update({
@@ -92,10 +122,15 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/insights': typeof InsightsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -107,10 +142,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/insights': typeof InsightsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -123,10 +163,15 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/insights': typeof InsightsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -140,10 +185,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
+    | '/careers'
     | '/contact'
+    | '/cookie-policy'
     | '/founder'
     | '/insights'
+    | '/privacy-policy'
     | '/start-a-project'
+    | '/terms'
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
@@ -155,10 +205,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/accessibility'
+    | '/careers'
     | '/contact'
+    | '/cookie-policy'
     | '/founder'
     | '/insights'
+    | '/privacy-policy'
     | '/start-a-project'
+    | '/terms'
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
@@ -170,10 +225,15 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
+    | '/careers'
     | '/contact'
+    | '/cookie-policy'
     | '/founder'
     | '/insights'
+    | '/privacy-policy'
     | '/start-a-project'
+    | '/terms'
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
@@ -186,10 +246,15 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
   FounderRoute: typeof FounderRoute
   InsightsRoute: typeof InsightsRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   StartAProjectRoute: typeof StartAProjectRoute
+  TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
@@ -215,11 +280,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/founder': {
@@ -236,11 +322,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/start-a-project': {
       id: '/start-a-project'
       path: '/start-a-project'
       fullPath: '/start-a-project'
       preLoaderRoute: typeof StartAProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/thank-you': {
@@ -298,10 +398,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
   FounderRoute: FounderRoute,
   InsightsRoute: InsightsRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   StartAProjectRoute: StartAProjectRoute,
+  TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,

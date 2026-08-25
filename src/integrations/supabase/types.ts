@@ -18,35 +18,47 @@ export type Database = {
         Row: {
           created_at: string
           email: string
+          experience: string | null
           id: string
+          linkedin_url: string | null
+          location: string | null
           message: string | null
           name: string
           phone: string | null
           portfolio_url: string | null
           role: string
           updated_at: string
+          work_type: string | null
         }
         Insert: {
           created_at?: string
           email: string
+          experience?: string | null
           id?: string
+          linkedin_url?: string | null
+          location?: string | null
           message?: string | null
           name: string
           phone?: string | null
           portfolio_url?: string | null
           role: string
           updated_at?: string
+          work_type?: string | null
         }
         Update: {
           created_at?: string
           email?: string
+          experience?: string | null
           id?: string
+          linkedin_url?: string | null
+          location?: string | null
           message?: string | null
           name?: string
           phone?: string | null
           portfolio_url?: string | null
           role?: string
           updated_at?: string
+          work_type?: string | null
         }
         Relationships: []
       }
