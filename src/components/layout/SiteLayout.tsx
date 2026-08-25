@@ -65,7 +65,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       </a>
       <SiteHeader />
       {/* key forces the short liquid re-form on route change; content stays interactive. */}
-      <main key={pathname} id="main" className="route-liquid-enter flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
+      <main key={pathname} id="main" className="route-liquid-enter flex-1 pb-16 pt-24 md:pb-0 md:pt-28">
         {children}
       </main>
 

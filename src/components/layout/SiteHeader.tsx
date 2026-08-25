@@ -9,20 +9,21 @@ import { cn } from "@/lib/utils";
 function LogoLink({ onClick }: { onClick?: () => void }) {
   return (
     <Link to="/" aria-label={`${siteConfig.name} home`} onClick={onClick} className="shrink-0">
-      <img
-        src={siteConfig.logos.full}
-        alt={`${siteConfig.name} logo`}
-        width={1920}
-        height={410}
-        className="hidden h-7 w-auto sm:block md:h-8"
-      />
-      <img
-        src={siteConfig.logos.icon}
-        alt={`${siteConfig.shortName} symbol`}
-        width={512}
-        height={480}
-        className="h-8 w-auto sm:hidden"
-      />
+      <span className="flex items-center gap-2.5">
+        <img
+          src={siteConfig.logos.icon}
+          alt={`${siteConfig.name} logo`}
+          width={512}
+          height={480}
+          className="h-8 w-auto md:h-9"
+        />
+        <span className="hidden font-display text-[1.05rem] font-extrabold uppercase leading-none tracking-[0.14em] text-foreground sm:block">
+          Diglizer
+          <span className="mt-0.5 block text-[0.52rem] font-bold tracking-[0.42em] text-muted-foreground">
+            Solutions
+          </span>
+        </span>
+      </span>
     </Link>
   );
 }
@@ -101,72 +102,75 @@ export function SiteHeader() {
   const isActive = (to: string) => pathname === to || pathname.startsWith(`${to}/`);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70"
-          : "border-b border-transparent",
-      )}
-    >
-      <div className="container-wide flex h-16 items-center justify-between gap-6 md:h-20">
-        <LogoLink />
+    <header className="fixed inset-x-0 top-0 z-50 pt-3 transition-all duration-300 md:pt-5">
+      <div className="container-wide">
+        <div
+          className={cn(
+            "flex items-center justify-between gap-6 rounded-full border px-4 transition-all duration-300 md:px-6",
+            scrolled
+              ? "h-14 border-white/25 bg-[#12061f]/85 backdrop-blur-xl md:h-16"
+              : "h-16 border-white/40 bg-[#12061f]/50 backdrop-blur-md md:h-[4.5rem]",
+          )}
+        >
+          <LogoLink />
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          {mainNav.map((item) => {
-            const hasMenu = item.label === "Services" || item.label === "Industries";
-            return (
-              <div key={item.to} className={cn("group relative", hasMenu && "static")}>
-                <Link
-                  to={item.to}
-                  className={cn(
-                    "inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
-                    isActive(item.to) ? "text-primary" : "text-foreground/80",
+          <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
+            {mainNav.map((item) => {
+              const hasMenu = item.label === "Services" || item.label === "Industries";
+              return (
+                <div key={item.to} className={cn("group relative", hasMenu && "static")}>
+                  <Link
+                    to={item.to}
+                    className={cn(
+                      "inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] transition-colors hover:text-primary",
+                      isActive(item.to) ? "text-primary" : "text-foreground/85",
+                    )}
+                  >
+                    {item.label}
+                    {hasMenu && <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
+                  </Link>
+                  {item.label === "Services" && (
+                    <MegaMenu
+                      items={capabilityNav}
+                      indexTo="/capabilities"
+                      indexLabel="Explore all services"
+                    />
                   )}
-                >
-                  {item.label}
-                  {hasMenu && <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
-                </Link>
-                {item.label === "Services" && (
-                  <MegaMenu
-                    items={capabilityNav}
-                    indexTo="/capabilities"
-                    indexLabel="Explore all services"
-                  />
-                )}
-                {item.label === "Industries" && (
-                  <MegaMenu
-                    items={industryNav}
-                    indexTo="/industries"
-                    indexLabel="Explore all industries"
-                  />
-                )}
-              </div>
-            );
-          })}
-        </nav>
+                  {item.label === "Industries" && (
+                    <MegaMenu
+                      items={industryNav}
+                      indexTo="/industries"
+                      indexLabel="Explore all industries"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </nav>
 
-        <div className="flex items-center gap-2">
-          <Link
-            to="/start-a-project"
-            className="hidden rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
-          >
-            Start a Project
-          </Link>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border lg:hidden"
-          >
-            <Menu className="h-5 w-5" aria-hidden="true" />
-          </button>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/start-a-project"
+              className="capsule-primary hidden uppercase tracking-[0.08em] sm:inline-flex"
+            >
+              Start a Project
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/35 xl:hidden"
+            >
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
 
+
       {open && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-ink text-ink-foreground lg:hidden">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#12061f] text-ink-foreground xl:hidden">
           <div className="container-wide flex h-16 items-center justify-between">
             <img
               src={siteConfig.logos.icon}
