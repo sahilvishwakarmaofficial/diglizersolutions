@@ -107,7 +107,7 @@ export const industries: Industry[] = [
       "Community trip campaign and social communication",
     ],
     capabilities: ["brand-creative", "websites-technology", "social-media", "video-content"],
-    projects: ["tripwithowners"],
+    projects: ["tripwithowners", "trek-power-adventures"],
     faqs: [
       {
         question: "Can you build a booking or enquiry flow?",
@@ -142,7 +142,7 @@ export const industries: Industry[] = [
       "Paid social creative for fashion audiences",
     ],
     capabilities: ["brand-creative", "photography-production", "social-media", "performance-marketing"],
-    projects: ["selected-projects"],
+    projects: ["aikaa-fashion"],
     faqs: [
       {
         question: "Can you run monthly content production?",
@@ -155,11 +155,11 @@ export const industries: Industry[] = [
     ],
   },
   {
-    slug: "finance-professional-services",
-    name: "Finance and Professional Services",
-    metaTitle: "Finance & Professional Services Marketing | Diglizer Solution",
+    slug: "professional-services",
+    name: "Technology and Professional Services",
+    metaTitle: "Technology & Professional Services Marketing | Diglizer Solution",
     metaDescription:
-      "Trust-led communication, educational content and compliance-aware creative for finance and professional services firms.",
+      "Trust-led communication, clear service explanation and brand design for technology and professional services firms in Mumbai and Thane.",
     headline: "Authority communicated without hype.",
     summary:
       "Financial and professional audiences respond to clarity and restraint. Educational content does more than promotional noise.",
@@ -170,12 +170,12 @@ export const industries: Industry[] = [
       "Differentiating from look-alike competitors",
     ],
     experience: [
-      "Educational social content for finance audiences",
+      "Educational and explanatory social content",
       "Brand and communication design for professional firms",
       "Website structure for service explanation and enquiries",
     ],
     capabilities: ["strategy-consulting", "brand-creative", "social-media", "websites-technology"],
-    projects: ["selected-projects"],
+    projects: ["siddhartha-logic", "prober"],
     faqs: [
       {
         question: "Do you provide investment advice or profit projections?",
@@ -243,7 +243,7 @@ export const industries: Industry[] = [
       "Lead-generation campaigns with structured follow-up",
     ],
     capabilities: ["brand-creative", "websites-technology", "performance-marketing", "social-media"],
-    projects: ["selected-projects"],
+    projects: ["trek-power-adventures"],
     faqs: [
       {
         question: "What should a local business do first?",
