@@ -55,7 +55,8 @@ function NotFoundComponent() {
           </div>
         </div>
       </section>
-    </SiteLayout>
+    </>
+
   );
 }
 
