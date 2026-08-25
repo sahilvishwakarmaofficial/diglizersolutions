@@ -91,7 +91,7 @@ export function MarketingProblem() {
             marketing systems that turn attention into action.
           </Reveal>
 
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {problems.map((problem, index) => (
               <Reveal
                 as="li"
