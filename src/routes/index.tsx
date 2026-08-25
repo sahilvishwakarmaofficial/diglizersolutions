@@ -191,8 +191,8 @@ function FeaturedWork() {
       <div className="container-wide relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="eyebrow text-gradient">Featured work</p>
-            <h2 className="display-2 mt-4 max-w-2xl">Work that carries a business objective.</h2>
+            <p className="eyebrow text-gradient">Selected work</p>
+            <h2 className="display-2 mt-4 max-w-2xl">Work designed to be noticed—and remembered.</h2>
           </div>
           <Link
             to="/work"
@@ -264,7 +264,7 @@ function Capabilities() {
       <div className="container-wide">
         <p className="eyebrow text-gradient">Capabilities</p>
         <h2 className="display-2 mt-4 max-w-3xl">
-          Four states of the same material: strategy, creative, technology and growth.
+          Four disciplines. One connected system.
         </h2>
 
         <div className="mt-14 space-y-4">
@@ -305,12 +305,12 @@ function Capabilities() {
 
 function IndustryRows() {
   return (
-    <section className="relative section-y overflow-hidden bg-muted/40">
+    <section className="relative section-y overflow-hidden surface-plum">
       <div className="container-wide relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow text-gradient">Industries</p>
-            <h2 className="display-2 mt-4 max-w-2xl">Context changes the creative.</h2>
+            <h2 className="display-2 mt-4 max-w-2xl">Different industries need different forms of intelligence.</h2>
           </div>
           <Link
             to="/industries"
@@ -366,9 +366,9 @@ function Process() {
         className="absolute inset-x-0 bottom-0 h-72 w-full opacity-25"
       />
       <div className="container-wide relative">
-        <p className="eyebrow text-gradient">Process</p>
+        <p className="eyebrow text-gradient">How we work</p>
         <h2 className="display-2 mt-4 max-w-3xl">
-          One continuous path from the first conversation to compounding growth.
+          From ambition to market impact.
         </h2>
         <ol className="mt-14 grid gap-10 md:grid-cols-3 lg:grid-cols-5">
           {processStages.map((stage) => (
@@ -433,7 +433,7 @@ function HomeCta() {
       <div className="container-wide relative">
         <div className="rule-gradient" />
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
-          <h2 className="display-2 max-w-3xl">Ready to shape what comes next?</h2>
+          <h2 className="display-2 max-w-3xl">Ready to become impossible to ignore?</h2>
           <div>
             <p className="text-ink-muted">
               Bring us the ambition. We&apos;ll help shape the strategy, creative, technology and

@@ -18,7 +18,7 @@ export function ClientLogoCloud() {
   const ordered = clientsByVerification;
 
   return (
-    <section className="relative overflow-hidden border-b border-border bg-background">
+    <section className="relative overflow-hidden border-y border-border surface-plum">
       <LiquidBrandObject
         state="nodes"
         className="absolute -left-32 top-0 h-[30rem] w-[30rem] opacity-10"
@@ -27,7 +27,7 @@ export function ClientLogoCloud() {
         <p className="eyebrow text-gradient">Selected Experience</p>
         <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <h2 className="display-2 max-w-3xl">Selected Clients &amp; Professional Experience</h2>
+            <h2 className="display-2 max-w-3xl">Experience behind the impact.</h2>
             <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
               Experience across brands, institutions, healthcare organisations, public
               communication, education, mobility, technology and lifestyle.
