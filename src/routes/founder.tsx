@@ -78,7 +78,7 @@ function Founder() {
           state="monogram"
           className="absolute -right-[20%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-60 md:block"
         />
-        <div className="container-wide grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+        <div className="container-wide relative grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           <FounderPortrait className="max-w-sm" />
           <div>
             <div className="mb-6 text-ink-muted">
