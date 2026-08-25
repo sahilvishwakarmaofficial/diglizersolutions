@@ -8,6 +8,8 @@ import { MediaGallery } from "@/components/MediaGallery";
 import { VideoWork } from "@/components/VideoWork";
 import { PricingSection } from "@/components/PricingSection";
 import { FounderPortrait } from "@/components/FounderPortrait";
+import { ClientDirectory } from "@/components/ClientDirectory";
+
 import { capabilities } from "@/content/capabilities";
 import { industries } from "@/content/industries";
 import { industryMedia } from "@/content/industryMedia";
