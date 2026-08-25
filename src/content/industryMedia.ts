@@ -16,7 +16,7 @@ export const industryMedia: Record<
   "travel-hospitality": {
     image: "/media/clients/two-travel.jpg",
     imageAlt: "Coastal travel and campsite photography",
-    clients: ["TripWithOwners", "Trek Power Adventures"],
+    clients: ["TripWithOwners"],
   },
   "fashion-lifestyle": {
     image: "/media/clients/aikaa-social.jpg",
@@ -34,8 +34,8 @@ export const industryMedia: Record<
     clients: ["Pasbaan-e-Adab"],
   },
   "startups-local-businesses": {
-    image: "/media/clients/trekpower-brochure.jpg",
-    imageAlt: "Adventure travel brochure design",
-    clients: ["Trek Power Adventures"],
+    image: "/media/clients/prober-design.jpg",
+    imageAlt: "Design and content work for growing organisations",
+    clients: ["Prober", "Mark Jewells"],
   },
 };
