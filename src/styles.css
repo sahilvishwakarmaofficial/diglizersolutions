@@ -305,3 +305,83 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   LIQUID INTELLIGENCE — motion + glass tokens
+   ============================================================ */
+
+:root {
+  --glass-surface: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --liquid-highlight: #d46cff;
+  --ease-liquid: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-liquid: 0.7s;
+}
+
+@keyframes liquid-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -3%, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-3%, 2.5%, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.liquid-blob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: liquid-drift 16s var(--ease-liquid) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-blob {
+    animation: none !important;
+  }
+}
+
+@utility glass-panel {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+@keyframes word-cycle {
+  0%,
+  22% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  28%,
+  94% {
+    opacity: 0;
+    transform: translateY(-0.35em);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.rotating-word {
+  position: absolute;
+  inset-inline-start: 0;
+  opacity: 0;
+  animation: word-cycle 8s var(--ease-liquid) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotating-word {
+    animation: none;
+    position: static;
+    opacity: 1;
+  }
+  .rotating-word:not(:first-child) {
+    display: none;
+  }
+}
