@@ -1,0 +1,13 @@
+{
+  "name": "Diglizer Solution",
+  "short_name": "Diglizer",
+  "description": "Independent creative, technology and digital growth company.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#10051F",
+  "theme_color": "#10051F",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
