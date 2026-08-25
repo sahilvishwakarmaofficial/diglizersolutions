@@ -1,12 +1,12 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { toast } from "sonner";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { seo, breadcrumbSchema, organizationSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/SiteLayout";
-import { supabase } from "@/integrations/supabase/client";
-import { siteConfig, activeSocialLinks, whatsappHref } from "@/config/site";
+import { ProjectEnquiryWizard } from "@/components/enquiry/ProjectEnquiryWizard";
+import { InlineWhatsAppButton } from "@/components/WhatsAppButton";
+import { siteConfig } from "@/config/site";
+import { track } from "@/lib/analytics";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -24,39 +24,25 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const inputClass =
-  "mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary";
+const faqs = [
+  {
+    question: "How quickly do you reply?",
+    answer: "We read every genuine enquiry personally and reply within one working day.",
+  },
+  {
+    question: "Do I need a finished brief before reaching out?",
+    answer:
+      "No. The guided form below helps structure your requirement even if it isn't fully defined yet.",
+  },
+  {
+    question: "Can we speak before sending a formal enquiry?",
+    answer:
+      "Yes — call or message us on WhatsApp any time, or use the enquiry form and mention you'd prefer a call first.",
+  },
+];
 
 function Contact() {
-  const navigate = useNavigate();
-  const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const set = (key: keyof typeof form, value: string) =>
-    setForm((prev) => ({ ...prev, [key]: value }));
-
-  async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    if (submitting) return;
-    setSubmitting(true);
-    const { error } = await supabase.from("contact_messages").insert(form);
-    setSubmitting(false);
-    if (error) {
-      toast.error("Message not sent. Please try again in a moment.");
-      return;
-    }
-    navigate({ to: "/thank-you" });
-  }
-
-  const socials = activeSocialLinks();
-  const wa = whatsappHref();
-  const hasDirectContact = Boolean(siteConfig.contact.email || siteConfig.contact.phone || wa);
+  const tel = siteConfig.contact.phone ? `tel:${siteConfig.contact.phone.replace(/\s/g, "")}` : "";
 
   return (
     <>
@@ -70,140 +56,92 @@ function Contact() {
       />
 
       <section className="section-y">
-        <div className="container-wide grid gap-14 lg:grid-cols-[1.1fr_1fr]">
-          <form onSubmit={handleSubmit}>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <label className="block text-sm font-medium">
-                Name*
-                <input
-                  required
-                  value={form.name}
-                  onChange={(e) => set("name", e.target.value)}
-                  className={inputClass}
-                />
-              </label>
-              <label className="block text-sm font-medium">
-                Email*
-                <input
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => set("email", e.target.value)}
-                  className={inputClass}
-                />
-              </label>
-              <label className="block text-sm font-medium">
-                Phone
-                <input
-                  value={form.phone}
-                  onChange={(e) => set("phone", e.target.value)}
-                  className={inputClass}
-                />
-              </label>
-              <label className="block text-sm font-medium">
-                Subject
-                <input
-                  value={form.subject}
-                  onChange={(e) => set("subject", e.target.value)}
-                  className={inputClass}
-                />
-              </label>
-            </div>
-            <label className="mt-6 block text-sm font-medium">
-              Message*
-              <textarea
-                required
-                rows={6}
-                value={form.message}
-                onChange={(e) => set("message", e.target.value)}
-                className={inputClass}
-              />
-            </label>
-            <button
-              type="submit"
-              disabled={submitting}
-              className="mt-8 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-white disabled:opacity-40"
+        <div className="container-wide grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {tel && (
+            <a
+              href={tel}
+              onClick={() => track("phone_click")}
+              className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
             >
-              {submitting ? "Sending…" : "Send message"}
-            </button>
-          </form>
+              <p className="eyebrow text-muted-foreground">Call</p>
+              <p className="mt-2 font-display text-lg font-semibold">{siteConfig.contact.phone}</p>
+            </a>
+          )}
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <p className="eyebrow text-muted-foreground">WhatsApp</p>
+            <div className="mt-3">
+              <InlineWhatsAppButton label="Message us" />
+            </div>
+          </div>
+          {siteConfig.contact.email && (
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              onClick={() => track("email_click")}
+              className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+            >
+              <p className="eyebrow text-muted-foreground">Email</p>
+              <p className="mt-2 break-all font-display text-lg font-semibold">
+                {siteConfig.contact.email}
+              </p>
+            </a>
+          )}
+          {siteConfig.founder.linkedin && (
+            <a
+              href={siteConfig.founder.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+            >
+              <p className="eyebrow text-muted-foreground">LinkedIn</p>
+              <p className="mt-2 font-display text-lg font-semibold">{siteConfig.founder.linkedinLabel}</p>
+            </a>
+          )}
+        </div>
+      </section>
 
-          <aside className="rounded-2xl border border-border bg-muted/40 p-8">
+      <section className="section-y pt-0">
+        <div className="container-wide max-w-3xl">
+          <p className="eyebrow text-gradient">Guided enquiry</p>
+          <h2 className="display-2 mt-3">Share a brief and we'll come prepared.</h2>
+          <div className="mt-10">
+            <ProjectEnquiryWizard />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y">
+        <div className="container-wide grid gap-14 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-muted/40 p-8">
             <h2 className="font-display text-xl font-bold">Studio</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Based in {siteConfig.contact.addressLocality},{" "}
-              {siteConfig.contact.addressRegion}. Working with clients across Mumbai, Navi Mumbai
-              and the rest of India.
+              {siteConfig.contact.addressLocality}, {siteConfig.contact.addressRegion}.
             </p>
-
-            {hasDirectContact ? (
-              <ul className="mt-6 space-y-2 text-sm">
-                {siteConfig.contact.email && (
-                  <li>
-                    <a className="hover:text-primary" href={`mailto:${siteConfig.contact.email}`}>
-                      {siteConfig.contact.email}
-                    </a>
-                  </li>
-                )}
-                {siteConfig.contact.phone && (
-                  <li>
-                    <a
-                      className="hover:text-primary"
-                      href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                    >
-                      {siteConfig.contact.phone}
-                    </a>
-                  </li>
-                )}
-                {wa && (
-                  <li>
-                    <a
-                      className="hover:text-primary"
-                      href={wa}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      WhatsApp
-                    </a>
-                  </li>
-                )}
-              </ul>
-            ) : (
-              <p className="mt-6 text-sm text-muted-foreground">
-                Direct phone and email details are being finalised — the form above reaches us
-                straight away.
-              </p>
-            )}
-
-            {socials.length > 0 && (
-              <div className="mt-8">
-                <p className="eyebrow text-muted-foreground">Follow</p>
-                <div className="mt-3 flex flex-wrap gap-4 text-sm">
-                  {socials.map((s) => (
-                    <a
-                      key={s.key}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary"
-                    >
-                      {s.label}
-                    </a>
-                  ))}
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Working across Mumbai, Navi Mumbai and India.
+            </p>
+          </div>
+          <div>
+            <h2 className="font-display text-xl font-bold">Frequently asked</h2>
+            <dl className="mt-6 space-y-6">
+              {faqs.map((faq) => (
+                <div key={faq.question}>
+                  <dt className="font-semibold">{faq.question}</dt>
+                  <dd className="mt-1 text-sm text-muted-foreground">{faq.answer}</dd>
                 </div>
-              </div>
-            )}
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-8 border-t border-border pt-6">
-              <p className="text-sm text-muted-foreground">
-                Have a defined brief already?{" "}
-                <Link to="/start-a-project" className="font-semibold text-primary hover:underline">
-                  Start a project
-                </Link>
-                .
-              </p>
-            </div>
-          </aside>
+      <section className="section-y pt-0">
+        <div className="container-wide max-w-3xl rounded-2xl border border-border bg-card p-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            Every enquiry is read personally by our team — no bots, no generic replies.{" "}
+            <Link to="/start-a-project" className="font-semibold text-primary hover:underline">
+              Prefer a structured brief?
+            </Link>
+          </p>
         </div>
       </section>
     </>

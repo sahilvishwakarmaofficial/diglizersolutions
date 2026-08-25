@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { siteConfig, telHref, mailtoHref } from "@/config/site";
+import { siteConfig, telHref, mailtoHref, whatsappHref } from "@/config/site";
 import { mainNav, capabilityNav, industryNav } from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
@@ -218,6 +218,16 @@ export function SiteHeader() {
               {siteConfig.contact.email && (
                 <a href={mailtoHref()} className="min-h-11 py-2 break-all">
                   {siteConfig.contact.email}
+                </a>
+              )}
+              {whatsappHref() && (
+                <a
+                  href={whatsappHref()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-11 py-2"
+                >
+                  WhatsApp
                 </a>
               )}
               {siteConfig.founder.linkedin && (

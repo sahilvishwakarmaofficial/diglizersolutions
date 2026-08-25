@@ -7,7 +7,6 @@ import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { MediaGallery } from "@/components/MediaGallery";
 import { VideoWork } from "@/components/VideoWork";
 import { VisitWebsite, ClientSocialLinks } from "@/components/ExternalLinks";
-import { PricingLine } from "@/components/PricingSection";
 import { getProject, getNextProject, type CaseStudySection } from "@/content/projects";
 import { getCapability } from "@/content/capabilities";
 
@@ -266,9 +265,6 @@ function CaseStudy() {
                   </Link>
                 );
               })}
-            </div>
-            <div className="mt-8 max-w-3xl">
-              <PricingLine />
             </div>
           </div>
 

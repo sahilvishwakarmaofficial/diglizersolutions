@@ -34,7 +34,8 @@ export function ClientLogoCloud() {
             </p>
           </div>
           <Link
-            to="/clients"
+            to="/work"
+            hash="client-experience"
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             Explore All Clients &amp; Experience →
@@ -46,14 +47,18 @@ export function ClientLogoCloud() {
             const label = client.caseStudyUrl
               ? `View ${client.displayName} case study`
               : `View ${client.displayName} experience`;
-            const content = client.logo ? (
-              <img
-                src={client.logo}
-                alt={client.logoAlt ?? `${client.displayName} logo`}
-                loading="lazy"
-                decoding="async"
-                className="max-h-10 w-auto object-contain"
-              />
+            const content = client.logo && client.logoVerified ? (
+              <span className="inline-flex items-center justify-center rounded-lg bg-[#f8f7fa] px-3 py-2">
+                <img
+                  src={client.logo}
+                  alt={client.logoAlt ?? `${client.displayName} logo`}
+                  loading="lazy"
+                  decoding="async"
+                  width={320}
+                  height={160}
+                  className="max-h-9 w-auto object-contain"
+                />
+              </span>
             ) : (
               <span className="font-display text-[0.8rem] font-bold uppercase leading-tight tracking-[0.08em] text-muted-foreground">
                 {client.displayName}
@@ -73,7 +78,8 @@ export function ClientLogoCloud() {
                   </Link>
                 ) : (
                   <Link
-                    to="/clients"
+                    to="/work"
+                    hash="client-experience"
                     aria-label={label}
                     className="flex h-20 items-center justify-center rounded-xl px-4 text-center transition-colors hover:bg-muted/60"
                   >

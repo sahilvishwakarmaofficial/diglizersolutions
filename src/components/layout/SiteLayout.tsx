@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
+import { Phone, Mail, Sparkles, MessageSquare } from "lucide-react";
 
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { LiquidBrandObject, type LiquidState } from "@/components/liquid/LiquidBrandObject";
 import { Reveal } from "@/components/liquid/Reveal";
 import { whatsappHref, telHref, mailtoHref } from "@/config/site";
+import { FloatingWhatsAppButton } from "@/components/WhatsAppButton";
+import { track } from "@/lib/analytics";
 
 
 const BAR_HIDDEN_PATHS = [
@@ -22,6 +24,7 @@ function MobileContactBar() {
   if (BAR_HIDDEN_PATHS.includes(pathname)) return null;
   const tel = telHref();
   const mail = mailtoHref();
+  const wa = whatsappHref();
   if (!tel && !mail) return null;
 
   const itemClass =
@@ -34,6 +37,19 @@ function MobileContactBar() {
           <a href={tel} className={itemClass} aria-label="Call Diglizer Solution">
             <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
             Call
+          </a>
+        )}
+        {wa && (
+          <a
+            href={wa}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("whatsapp_click", { placement: "mobile_bar" })}
+            className={itemClass}
+            aria-label="Chat with Diglizer Solution on WhatsApp"
+          >
+            <MessageSquare className="h-4 w-4 text-primary" aria-hidden="true" />
+            WhatsApp
           </a>
         )}
         {mail && (
@@ -52,7 +68,6 @@ function MobileContactBar() {
 }
 
 export function SiteLayout({ children }: { children: ReactNode }) {
-  const wa = whatsappHref();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
@@ -71,17 +86,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <SiteFooter />
       <MobileContactBar />
-      {wa && (
-        <a
-          href={wa}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp"
-          className="fixed bottom-20 right-5 z-40 md:bottom-5 inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-transform hover:-translate-y-0.5"
-        >
-          <MessageCircle className="h-5 w-5 text-primary" aria-hidden="true" />
-        </a>
-      )}
+      <FloatingWhatsAppButton />
     </div>
   );
 }

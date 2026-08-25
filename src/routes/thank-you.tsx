@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
+import { InlineWhatsAppButton } from "@/components/WhatsAppButton";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/thank-you")({
@@ -26,9 +27,9 @@ function ThankYou() {
         <h1 className="display-1 mt-5">Thank you — your message is with us.</h1>
         <p className="lede mt-6 text-ink-muted">
           We read every enquiry personally. Expect a considered reply, usually within one working
-          day.
+          day. Need a faster answer in the meantime?
         </p>
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <Link
             to="/work"
             className="rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-semibold text-white"
@@ -41,6 +42,7 @@ function ThankYou() {
           >
             Back home
           </Link>
+          <InlineWhatsAppButton />
         </div>
       </div>
     </section>

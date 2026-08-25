@@ -5,8 +5,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
 import { siteConfig } from "@/config/site";
 import { FounderPortrait } from "@/components/FounderPortrait";
-import { PricingSection } from "@/components/PricingSection";
-import { ClientDirectory } from "@/components/ClientDirectory";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -124,10 +122,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      <ClientDirectory />
-
-      <PricingSection />
 
       <FinalCta />
     </>
