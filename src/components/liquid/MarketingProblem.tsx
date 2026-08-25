@@ -78,7 +78,7 @@ export function MarketingProblem() {
 
   return (
     <section className="section-y">
-      <div ref={ref} className="container-wide grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+      <div ref={ref} className="container-wide grid grid-cols-1 gap-14 lg:grid-cols-[1fr_0.85fr] lg:items-center">
         <div>
           <Reveal as="p" className="eyebrow text-primary">
             The problem
