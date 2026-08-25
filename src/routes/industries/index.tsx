@@ -5,6 +5,7 @@ import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
 import { industries } from "@/content/industries";
+import { industryMedia } from "@/content/industryMedia";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -34,26 +35,48 @@ function IndustriesIndex() {
       />
 
       <section className="section-y">
-        <div className="container-wide grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry) => (
-            <Link
-              key={industry.slug}
-              to="/industries/$slug" params={{ slug: industry.slug }}
-              className="group bg-card p-8 transition-colors hover:bg-accent"
-            >
-              <h2 className="font-display text-xl font-bold">{industry.name}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {industry.summary}
-              </p>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                Explore industry
-                <ArrowUpRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden="true"
-                />
-              </span>
-            </Link>
-          ))}
+        <div className="container-wide grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {industries.map((industry) => {
+            const media = industryMedia[industry.slug];
+            return (
+              <Link
+                key={industry.slug}
+                to="/industries/$slug"
+                params={{ slug: industry.slug }}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary"
+              >
+                {media && (
+                  <img
+                    src={media.image}
+                    alt={media.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    width={1200}
+                    height={800}
+                    className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                )}
+                <div className="flex flex-1 flex-col p-7">
+                  <h2 className="font-display text-xl font-bold">{industry.name}</h2>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {industry.summary}
+                  </p>
+                  {media && (
+                    <p className="mt-4 text-xs text-muted-foreground">
+                      {media.clients.join(" · ")}
+                    </p>
+                  )}
+                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    Explore industry
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

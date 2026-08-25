@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 
+import { budgetOptions, pricing } from "@/content/pricing";
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/SiteLayout";
@@ -24,13 +25,7 @@ export const Route = createFileRoute("/start-a-project")({
   component: StartAProject,
 });
 
-const budgets = [
-  "Under ₹50,000",
-  "₹50,000 – ₹1,50,000",
-  "₹1,50,000 – ₹5,00,000",
-  "Above ₹5,00,000",
-  "Not sure yet",
-];
+const budgets = budgetOptions;
 
 const timelines = ["As soon as possible", "1–2 months", "3–6 months", "Exploring options"];
 
@@ -91,7 +86,7 @@ function StartAProject() {
       <PageHero
         eyebrow="Start a project"
         title="Tell us what you are trying to build."
-        lede="Three short steps. The more context you give, the more useful our first reply will be."
+        lede={`Three short steps. The more context you give, the more useful our first reply will be. ${pricing.statement}`}
         breadcrumbs={crumbs}
       />
 
