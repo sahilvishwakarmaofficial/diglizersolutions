@@ -24,7 +24,15 @@ export type LiquidState =
   | "industry"
   | "process"
   | "monogram"
-  | "contact";
+  | "contact"
+  | "funnel"
+  | "growth"
+  | "timeline"
+  | "grid"
+  | "frame"
+  | "network"
+  | "surface";
+
 
 const presets: Record<LiquidState, { blobs: [number, number, number][]; opacity: number }> = {
   hero: {
