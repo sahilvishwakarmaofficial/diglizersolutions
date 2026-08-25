@@ -106,6 +106,7 @@ export const clientCategories = [
   "Fashion",
   "Travel",
   "Technology",
+  "Mobility",
   "Professional Services",
 ];
 
@@ -420,15 +421,16 @@ export const clients: ClientEntry[] = [
     services: ["Graphic Design", "Social Media", "Meta Ads Creative", "Healthcare Communication"],
     gallery: [],
     videos: [],
+    website: "https://suvikshahospital.com/",
     caseStudyUrl: "suviksha-hospital",
     publicWorkUrls: [],
     featured: false,
-    websiteVerified: false,
+    websiteVerified: true,
     socialLinksVerified: false,
     mediaVerified: false,
     displayOrder: 11,
     sourceManifest:
-      "No link published \u2014 exact organisation identity (logo, location, contact) not yet confirmed. Similarly named hospitals are explicitly excluded.",
+      "Official website confirmed by the project owner. Similarly named hospitals are explicitly excluded.",
   },
   {
     name: "MIMAS World Hospitals",
@@ -551,15 +553,16 @@ export const clients: ClientEntry[] = [
     services: ["Logo Design", "Graphic Design", "Internal Branding", "Healthcare Communication"],
     gallery: [],
     videos: [],
+    website: "https://medibrainsuperspeciality.com/",
     caseStudyUrl: "medibrain",
     publicWorkUrls: [],
     featured: false,
-    websiteVerified: false,
+    websiteVerified: true,
     socialLinksVerified: false,
     mediaVerified: false,
     displayOrder: 16,
     sourceManifest:
-      "No link published \u2014 exact organisation identity not yet confirmed. Unrelated organisations of the same name are explicitly excluded.",
+      "Official website confirmed by the project owner. Unrelated organisations of the same name are explicitly excluded.",
   },
   {
     name: "Mahadevi Hospital",
@@ -586,7 +589,81 @@ export const clients: ClientEntry[] = [
     sourceManifest:
       "No link published \u2014 directory listings and unrelated hospitals excluded. Awaiting location, logo, website and project assets.",
   },
+  {
+    name: "Ather Energy",
+    displayName: "Ather Energy",
+    slug: "ather-energy",
+    industry: "Mobility, Automotive & EV Technology",
+    category: ["Mobility", "Technology"],
+    industrySlug: "mobility-automotive-ev-technology",
+    relationshipType: "Project-Based Work",
+    status: "Project-Based",
+    shortContribution:
+      "Graphic and print-design support, including standee communication for an electric-mobility brand.",
+    fullDescription:
+      "Selected graphic and print-design experience for Ather Energy, including standee artwork created for clear and professional physical communication.",
+    services: ["Graphic Design", "Print Design", "Standee Design"],
+    gallery: [],
+    videos: [],
+    website: "https://www.atherenergy.com/",
+    instagram: "https://www.instagram.com/atherenergy/",
+    linkedin: "https://in.linkedin.com/company/ather-energy",
+    caseStudyUrl: "ather-energy",
+    publicWorkUrls: [],
+    featured: false,
+    websiteVerified: true,
+    socialLinksVerified: true,
+    mediaVerified: false,
+    displayOrder: 18,
+    sourceManifest:
+      "Official website and official social profiles. Selected graphic and print-design experience only \u2014 no agency status, retainer or campaign ownership is claimed.",
+  },
+  {
+    name: "TrusTerra",
+    displayName: "TrusTerra",
+    slug: "trusterra",
+    industry: "Mobility, Automotive & EV Technology",
+    category: ["Mobility", "Technology"],
+    industrySlug: "mobility-automotive-ev-technology",
+    relationshipType: "Project-Based Work",
+    status: "Project-Based",
+    shortContribution:
+      "Graphic and print-design support, including standee communication for the pre-owned EV ecosystem.",
+    fullDescription:
+      "Graphic and print-design services for TrusTerra, including standee artwork supporting its communication within the electric-mobility sector.",
+    services: ["Graphic Design", "Print Design", "Standee Design"],
+    gallery: [],
+    videos: [],
+    website: "https://www.trusterra.in/",
+    instagram: "https://www.instagram.com/trusterra.ev/",
+    linkedin: "https://in.linkedin.com/company/trusterra",
+    caseStudyUrl: "trusterra",
+    publicWorkUrls: [],
+    featured: false,
+    websiteVerified: true,
+    socialLinksVerified: true,
+    mediaVerified: false,
+    displayOrder: 19,
+    sourceManifest:
+      "Official website and official social profiles. Print and standee design experience only \u2014 no platform, website or product development is claimed.",
+  },
 ];
+
+/**
+ * Directory order: organisations with a verified official website first,
+ * then verified social presence, then organisations with no verified public
+ * link. This is an information-verification and usability order only — it
+ * does not rank engagements by importance.
+ */
+export const verificationGroup = (c: ClientEntry): 0 | 1 | 2 => {
+  if (c.website && c.websiteVerified) return 0;
+  if ((c.instagram || c.linkedin || c.facebook || c.youtube) && c.socialLinksVerified) return 1;
+  return 2;
+};
+
+export const clientsByVerification = [...clients].sort(
+  (a, b) => verificationGroup(a) - verificationGroup(b) || a.displayOrder - b.displayOrder,
+);
 
 export const featuredClients = clients.filter((c) => c.featured);
 export const otherClients = clients.filter((c) => !c.featured);
