@@ -136,7 +136,10 @@ export function SiteHeader() {
 
           <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
             {mainNav.map((item) => {
-              const hasMenu = item.label === "Services" || item.label === "Industries";
+              const hasMenu =
+                item.label === "Services" ||
+                item.label === "Industries" ||
+                item.label === "Insights";
               return (
                 <div key={item.to} className={cn("group relative", hasMenu && "static")}>
                   <Link
