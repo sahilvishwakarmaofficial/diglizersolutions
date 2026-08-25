@@ -112,15 +112,14 @@ function About() {
             >
               Read the founder's note
             </Link>
-          </div>
             <div className="mt-8 rounded-2xl border border-border bg-muted/40 p-7">
-            <h3 className="font-display text-lg font-bold">Where we work</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Based in {siteConfig.contact.addressLocality} and working across Mumbai, Navi Mumbai
-              and India. Remote collaboration is standard; on-site is available where the work needs
-              it — shoots, exhibitions and workshops.
-            </p>
-          </div>
+              <h3 className="font-display text-lg font-bold">Where we work</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Based in {siteConfig.contact.addressLocality} and working across Mumbai, Navi
+                Mumbai and India. Remote collaboration is standard; on-site is available where the
+                work needs it — shoots, exhibitions and workshops.
+              </p>
+            </div>
           </div>
         </div>
       </section>
