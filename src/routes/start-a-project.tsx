@@ -84,6 +84,7 @@ function StartAProject() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="funnel"
         eyebrow="Start a project"
         title="Tell us what you are trying to build."
         lede={`Three short steps. The more context you give, the more useful our first reply will be. ${pricing.statement}`}

@@ -82,6 +82,7 @@ function Careers() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="growth"
         eyebrow="Careers"
         title="Build what's next with us."
         lede="We work with a growing network of specialists and creative collaborators, engaged based on project requirements. Share your work and we will reach out when a fit appears."

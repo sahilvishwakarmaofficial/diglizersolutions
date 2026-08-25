@@ -36,6 +36,7 @@ function WorkIndex() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="frame"
         eyebrow="Work"
         title="Work that carries a business objective."
         lede="Every project here started with a problem worth solving — a category that is hard to advertise in, a product range that was hard to navigate, or a community that needed a brand."

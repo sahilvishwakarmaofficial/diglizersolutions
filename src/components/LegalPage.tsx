@@ -30,7 +30,7 @@ export function LegalPage({
   return (
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
-      <PageHero eyebrow="Legal" title={title} lede={lede} breadcrumbs={crumbs} />
+      <PageHero liquid="none" eyebrow="Legal" title={title} lede={lede} breadcrumbs={crumbs} />
 
       <section className="section-y">
         <div className="container-wide max-w-3xl">

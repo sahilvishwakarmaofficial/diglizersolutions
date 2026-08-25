@@ -27,6 +27,7 @@ function CapabilitiesIndex() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="capability"
         eyebrow="Capabilities"
         title="One team across strategy, creative, technology and growth."
         lede="Each capability stands on its own — and works better when combined. Most engagements start with one and expand into a connected programme."

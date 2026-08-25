@@ -27,6 +27,7 @@ function ClientsPage() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="network"
         eyebrow="Clients & Experience"
         title="Different industries. One standard of creative commitment."
         lede="Explore selected clients, collaborations and professional experience across brand design, graphic design, social media, video, websites, campaigns, packaging, photography and digital growth."
