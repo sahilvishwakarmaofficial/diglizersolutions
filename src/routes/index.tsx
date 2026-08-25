@@ -173,7 +173,7 @@ function Home() {
             {capabilities.map((capability) => (
               <Link
                 key={capability.slug}
-                to={`/capabilities/${capability.slug}`}
+                to="/capabilities/$slug" params={{ slug: capability.slug }}
                 className="group bg-card p-7 transition-colors hover:bg-accent"
               >
                 <span className="eyebrow text-muted-foreground">{capability.group}</span>
@@ -213,7 +213,7 @@ function Home() {
           </div>
           <div className="mt-12 grid gap-10 lg:grid-cols-3">
             {featured.map((project) => (
-              <Link key={project.slug} to={`/work/${project.slug}`} className="group block">
+              <Link key={project.slug} to="/work/$slug" params={{ slug: project.slug }} className="group block">
                 <div className="overflow-hidden rounded-2xl border border-border bg-muted">
                   <img
                     src={project.image}
@@ -283,7 +283,7 @@ function Home() {
             {industries.map((industry) => (
               <Link
                 key={industry.slug}
-                to={`/industries/${industry.slug}`}
+                to="/industries/$slug" params={{ slug: industry.slug }}
                 className="rounded-full border border-border px-5 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
               >
                 {industry.name}

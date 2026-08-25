@@ -144,7 +144,7 @@ function CaseStudy() {
                 return (
                   <Link
                     key={slug}
-                    to={`/capabilities/${slug}`}
+                    to="/capabilities/$slug" params={{ slug: slug }}
                     className="rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
                   >
                     {capability.name}
@@ -158,7 +158,7 @@ function CaseStudy() {
             <div className="border-t border-border pt-10">
               <p className="eyebrow text-muted-foreground">Next project</p>
               <Link
-                to={`/work/${next.slug}`}
+                to="/work/$slug" params={{ slug: next.slug }}
                 className="mt-3 inline-block font-display text-3xl font-bold hover:text-primary"
               >
                 {next.client}

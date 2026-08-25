@@ -59,7 +59,7 @@ function WorkIndex() {
 
           <div className="mt-12 grid gap-12 md:grid-cols-2">
             {visible.map((project) => (
-              <Link key={project.slug} to={`/work/${project.slug}`} className="group block">
+              <Link key={project.slug} to="/work/$slug" params={{ slug: project.slug }} className="group block">
                 <div className="overflow-hidden rounded-2xl border border-border bg-muted">
                   <img
                     src={project.image}
