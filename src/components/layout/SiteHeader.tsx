@@ -32,20 +32,29 @@ function MegaMenu({
   items,
   indexTo,
   indexLabel,
+  featured,
+  width = "72rem",
+  columns = "sm:grid-cols-2 lg:grid-cols-3",
 }: {
   items: { label: string; to: string; description: string }[];
   indexTo: string;
   indexLabel: string;
+  featured?: { label: string; to: string };
+  width?: string;
+  columns?: string;
 }) {
   return (
-    <div className="absolute left-1/2 top-full w-[min(72rem,calc(100vw-4rem))] -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+    <div
+      className="absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+      style={{ width: `min(${width}, calc(100vw - 4rem))` }}
+    >
       <div className="rounded-2xl border border-border bg-popover p-6 shadow-lg">
-        <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cn("grid gap-1", columns)}>
           {items.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-xl px-4 py-3 transition-colors hover:bg-accent"
+              className="rounded-xl px-4 py-3 transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="block text-sm font-semibold">{item.label}</span>
               <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
@@ -54,13 +63,24 @@ function MegaMenu({
             </Link>
           ))}
         </div>
-        <div className="mt-4 border-t border-border pt-4">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
           <Link
             to={indexTo}
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             {indexLabel}
           </Link>
+          {featured && (
+            <Link
+              to={featured.to}
+              className="rounded-full border border-border bg-gradient-brand/10 px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary"
+            >
+              <span className="mr-2 text-[0.6rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Featured guide
+              </span>
+              {featured.label}
+            </Link>
+          )}
         </div>
       </div>
     </div>
