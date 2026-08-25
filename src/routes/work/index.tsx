@@ -64,7 +64,7 @@ function WorkIndex() {
 
           <div className="mt-10 grid gap-8 md:grid-cols-6">
             {visible.map((project, index) => {
-              const wide = project.span === "wide" || index % 5 === 0;
+              const wide = index % 4 === 0 || index % 4 === 3;
               return (
                 <Link
                   key={project.slug}
