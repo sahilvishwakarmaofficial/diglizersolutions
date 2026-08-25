@@ -26,23 +26,6 @@ export type LiquidState =
   | "monogram"
   | "contact";
 
-const statePresets: Record<LiquidState, { blobs: [number, number, number][]; spin: number }> = {
-  // [cx, cy, r]
-  hero: [
-    [300, 300, 170],
-    [430, 210, 96],
-    [220, 420, 84],
-  ] as never,
-  nodes: [] as never,
-  portal: [] as never,
-  capability: [] as never,
-  industry: [] as never,
-  process: [] as never,
-  monogram: [] as never,
-  contact: [] as never,
-} as never;
-void statePresets;
-
 const presets: Record<LiquidState, { blobs: [number, number, number][]; opacity: number }> = {
   hero: {
     blobs: [
