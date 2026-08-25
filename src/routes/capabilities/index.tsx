@@ -47,7 +47,7 @@ function CapabilitiesIndex() {
                   .map((capability) => (
                     <Link
                       key={capability.slug}
-                      to={`/capabilities/${capability.slug}`}
+                      to="/capabilities/$slug" params={{ slug: capability.slug }}
                       className="group bg-card p-8 transition-colors hover:bg-accent"
                     >
                       <h3 className="font-display text-xl font-bold">{capability.name}</h3>

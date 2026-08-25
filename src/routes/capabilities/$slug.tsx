@@ -127,7 +127,7 @@ function CapabilityPage() {
                 return (
                   <Link
                     key={slug}
-                    to={`/industries/${slug}`}
+                    to="/industries/$slug" params={{ slug: slug }}
                     className="rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
                   >
                     {industry.name}
@@ -145,7 +145,7 @@ function CapabilityPage() {
                 return (
                   <li key={slug}>
                     <Link
-                      to={`/work/${slug}`}
+                      to="/work/$slug" params={{ slug: slug }}
                       className="font-display text-lg font-bold hover:text-primary"
                     >
                       {project.client}
