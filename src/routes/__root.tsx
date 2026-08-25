@@ -17,7 +17,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
-    <SiteLayout>
+    <>
+
       <section className="section-y bg-ink text-ink-foreground">
         <div className="container-wide">
           <img
