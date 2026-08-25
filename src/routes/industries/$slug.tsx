@@ -1,14 +1,19 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
-import { getIndustry } from "@/content/industries";
+import { getIndustry, legacyIndustryRedirects } from "@/content/industries";
+import { getClient } from "@/content/clients";
 import { getCapability } from "@/content/capabilities";
 import { getProject } from "@/content/projects";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }) => {
+    const target = legacyIndustryRedirects[params.slug];
+    if (target) {
+      throw redirect({ to: "/industries/$slug", params: { slug: target }, statusCode: 301 });
+    }
     const industry = getIndustry(params.slug);
     if (!industry) throw notFound();
     return { industry };
@@ -89,6 +94,33 @@ function IndustryPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="section-y-compact">
+        <div className="container-wide">
+          <h2 className="font-display text-2xl font-bold">Organisations in this category</h2>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {industry.clients.map((slug) => {
+              const client = getClient(slug);
+              if (!client) return null;
+              return (
+                <li key={slug} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="font-display text-lg font-bold leading-snug break-words">
+                    {client.displayName}
+                  </h3>
+                  <p className="eyebrow mt-2 text-muted-foreground">{client.relationshipType}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {client.shortContribution}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+            Client names, trademarks and logos remain the property of their respective owners and
+            are shown solely to identify relevant professional experience.
+          </p>
         </div>
       </section>
 

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/industries/")({
     seo({
       title: "Industries We Work With | Diglizer Solution",
       description:
-        "Healthcare and fertility, medical and surgical products, travel, education, retail, real estate and professional services — industry-aware creative and digital work.",
+        "Healthcare and fertility, medical products and B2B healthcare, education, government, travel, fashion and jewellery, culture and events, technology and professional services.",
       path: "/industries",
     }),
   component: IndustriesIndex,
@@ -58,9 +58,19 @@ function IndustriesIndex() {
                 )}
                 <div className="flex flex-1 flex-col p-7">
                   <h2 className="font-display text-xl font-bold">{industry.name}</h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {industry.summary}
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {industry.cardCopy}
                   </p>
+                  <ul className="mt-4 flex flex-1 flex-wrap gap-2">
+                    {industry.services.slice(0, 4).map((service) => (
+                      <li
+                        key={service}
+                        className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground"
+                      >
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
                   {media && (
                     <p className="mt-4 text-xs text-muted-foreground">
                       {media.clients.join(" · ")}

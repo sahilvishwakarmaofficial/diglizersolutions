@@ -73,17 +73,29 @@ function WorkIndex() {
                   className={`group block ${wide ? "md:col-span-4" : "md:col-span-2"}`}
                 >
                   <div className="overflow-hidden rounded-2xl border border-border bg-muted">
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      loading="lazy"
-                      decoding="async"
-                      width={1600}
-                      height={1000}
-                      className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${
-                        wide ? "aspect-[16/9]" : "aspect-[4/3]"
-                      }`}
-                    />
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.imageAlt ?? `${project.client} project visual`}
+                        loading="lazy"
+                        decoding="async"
+                        width={1600}
+                        height={1000}
+                        className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${
+                          wide ? "aspect-[16/9]" : "aspect-[4/3]"
+                        }`}
+                      />
+                    ) : (
+                      <div
+                        className={`flex w-full items-center justify-center bg-ink px-8 text-center text-ink-foreground ${
+                          wide ? "aspect-[16/9]" : "aspect-[4/3]"
+                        }`}
+                      >
+                        <span className="font-display text-xl font-bold leading-snug break-words">
+                          {project.client}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <p className="eyebrow mt-5 text-muted-foreground">
                     {project.industry} · {project.location}
