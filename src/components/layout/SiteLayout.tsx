@@ -106,17 +106,30 @@ export function PageHero({
   title,
   lede,
   breadcrumbs,
+  liquid = "portal",
+  hue = 0,
   children,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   breadcrumbs?: { name: string; path: string }[];
+  /** Liquid Intelligence state that expresses this page's role in the journey. */
+  liquid?: LiquidState | "none";
+  hue?: number;
   children?: ReactNode;
 }) {
   return (
-    <section className="bg-ink text-ink-foreground">
-      <div className="container-wide py-16 md:py-24">
+    <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(65%_70%_at_12%_0%,color-mix(in_oklab,var(--brand-purple)_26%,transparent),transparent)]" />
+      {liquid !== "none" && (
+        <LiquidBrandObject
+          state={liquid}
+          hue={hue}
+          className="absolute -right-[22%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-70 md:block lg:-right-[10%] lg:h-[40rem] lg:w-[40rem]"
+        />
+      )}
+      <div className="container-wide relative py-16 md:py-24">
         {breadcrumbs && (
           <div className="mb-8 text-ink-muted">
             <Breadcrumbs items={breadcrumbs} />
@@ -124,12 +137,13 @@ export function PageHero({
         )}
         {eyebrow && <p className="eyebrow text-gradient">{eyebrow}</p>}
         <h1 className="display-2 mt-4 max-w-4xl">{title}</h1>
-        {lede && <p className="lede mt-6 text-ink-muted">{lede}</p>}
+        {lede && <p className="lede mt-6 max-w-3xl text-ink-muted">{lede}</p>}
         {children}
       </div>
     </section>
   );
 }
+
 
 export function FinalCta({
   title = "Have an ambition? Let's build what comes next.",
