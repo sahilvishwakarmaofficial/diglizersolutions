@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 /**
  * LIQUID INTELLIGENCE — signature brand object.
@@ -90,8 +90,6 @@ const presets: Record<LiquidState, { blobs: [number, number, number][]; opacity:
   },
 };
 
-let uid = 0;
-
 export function LiquidBrandObject({
   state = "hero",
   className = "",
@@ -104,7 +102,8 @@ export function LiquidBrandObject({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
-  const [id] = useState(() => `lq${++uid}`);
+  const rawId = useId();
+  const id = `lq${rawId.replace(/[^a-zA-Z0-9]/g, "")}`;
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
