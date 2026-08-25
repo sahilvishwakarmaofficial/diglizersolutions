@@ -25,7 +25,10 @@ export function SiteFooter() {
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-muted">
               {siteConfig.description}
             </p>
-            <p className="mt-6 text-sm font-medium">Mumbai • Thane • India</p>
+            <p className="mt-6 text-sm font-medium">Thane • Mumbai • India</p>
+            <p className="mt-2 font-display text-lg font-bold">
+              <span className="text-gradient">Let&apos;s discuss your project.</span>
+            </p>
             <div className="mt-6 flex flex-col gap-2 text-sm text-ink-muted">
               {siteConfig.contact.email && (
                 <a

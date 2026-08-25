@@ -26,8 +26,11 @@ import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/ind
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
 import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries/$slug'
+import { Route as InsightsIndexRouteImport } from './routes/insights/index'
+import { Route as InsightsCategoryRouteImport } from './routes/insights/$category'
 import { Route as WorkIndexRouteImport } from './routes/work/index'
 import { Route as WorkSlugRouteImport } from './routes/work/$slug'
+import { Route as InsightsCategorySlugRouteImport } from './routes/insights/$category.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -114,6 +117,16 @@ const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
   path: '/industries/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => InsightsRoute,
+} as any)
+const InsightsCategoryRoute = InsightsCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => InsightsRoute,
+} as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
   id: '/work/',
   path: '/work/',
@@ -123,6 +136,11 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   id: '/work/$slug',
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsCategorySlugRoute = InsightsCategorySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsCategoryRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -134,17 +152,20 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
-  '/insights': typeof InsightsRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -155,17 +176,19 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
-  '/insights': typeof InsightsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/industries': typeof IndustriesIndexRoute
+  '/insights': typeof InsightsIndexRoute
   '/work': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -177,17 +200,20 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
-  '/insights': typeof InsightsRoute
+  '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -207,10 +233,13 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/insights/$category'
     | '/work/$slug'
     | '/capabilities/'
     | '/industries/'
+    | '/insights/'
     | '/work/'
+    | '/insights/$category/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -221,17 +250,19 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/founder'
-    | '/insights'
     | '/privacy-policy'
     | '/start-a-project'
     | '/terms'
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/insights/$category'
     | '/work/$slug'
     | '/capabilities'
     | '/industries'
+    | '/insights'
     | '/work'
+    | '/insights/$category/$slug'
   id:
     | '__root__'
     | '/'
@@ -249,10 +280,13 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/insights/$category'
     | '/work/$slug'
     | '/capabilities/'
     | '/industries/'
+    | '/insights/'
     | '/work/'
+    | '/insights/$category/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -264,7 +298,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   FounderRoute: typeof FounderRoute
-  InsightsRoute: typeof InsightsRoute
+  InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   StartAProjectRoute: typeof StartAProjectRoute
   TermsRoute: typeof TermsRoute
@@ -398,6 +432,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustriesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/': {
+      id: '/insights/'
+      path: '/'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof InsightsRoute
+    }
+    '/insights/$category': {
+      id: '/insights/$category'
+      path: '/$category'
+      fullPath: '/insights/$category'
+      preLoaderRoute: typeof InsightsCategoryRouteImport
+      parentRoute: typeof InsightsRoute
+    }
     '/work/': {
       id: '/work/'
       path: '/work'
@@ -412,8 +460,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/$category/$slug': {
+      id: '/insights/$category/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$category/$slug'
+      preLoaderRoute: typeof InsightsCategorySlugRouteImport
+      parentRoute: typeof InsightsCategoryRoute
+    }
   }
 }
+
+interface InsightsCategoryRouteChildren {
+  InsightsCategorySlugRoute: typeof InsightsCategorySlugRoute
+}
+
+const InsightsCategoryRouteChildren: InsightsCategoryRouteChildren = {
+  InsightsCategorySlugRoute: InsightsCategorySlugRoute,
+}
+
+const InsightsCategoryRouteWithChildren =
+  InsightsCategoryRoute._addFileChildren(InsightsCategoryRouteChildren)
+
+interface InsightsRouteChildren {
+  InsightsCategoryRoute: typeof InsightsCategoryRouteWithChildren
+  InsightsIndexRoute: typeof InsightsIndexRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsCategoryRoute: InsightsCategoryRouteWithChildren,
+  InsightsIndexRoute: InsightsIndexRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -424,7 +504,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   FounderRoute: FounderRoute,
-  InsightsRoute: InsightsRoute,
+  InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   StartAProjectRoute: StartAProjectRoute,
   TermsRoute: TermsRoute,

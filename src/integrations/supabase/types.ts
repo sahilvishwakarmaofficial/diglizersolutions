@@ -95,50 +95,292 @@ export type Database = {
         }
         Relationships: []
       }
+      insight_clusters: {
+        Row: {
+          category: string
+          created_at: string
+          id: number
+          meta_description: string
+          pillar_slug: string
+          pillar_title: string
+          pillar_topic_id: number | null
+          primary_keyword: string
+          slug: string
+          topic_count: number
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id: number
+          meta_description: string
+          pillar_slug: string
+          pillar_title: string
+          pillar_topic_id?: number | null
+          primary_keyword: string
+          slug: string
+          topic_count?: number
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: number
+          meta_description?: string
+          pillar_slug?: string
+          pillar_title?: string
+          pillar_topic_id?: number | null
+          primary_keyword?: string
+          slug?: string
+          topic_count?: number
+        }
+        Relationships: []
+      }
+      insight_guidance: {
+        Row: {
+          category: string
+          cta: string
+          eeat_evidence: string
+          external_links: string
+          h2_structure: string
+          image_seo: string
+          internal_links: string
+          recommended_content: string
+          refresh_cadence: string
+          schema_guidance: string
+          visual_assets: string
+        }
+        Insert: {
+          category: string
+          cta: string
+          eeat_evidence: string
+          external_links: string
+          h2_structure: string
+          image_seo: string
+          internal_links: string
+          recommended_content: string
+          refresh_cadence: string
+          schema_guidance: string
+          visual_assets: string
+        }
+        Update: {
+          category?: string
+          cta?: string
+          eeat_evidence?: string
+          external_links?: string
+          h2_structure?: string
+          image_seo?: string
+          internal_links?: string
+          recommended_content?: string
+          refresh_cadence?: string
+          schema_guidance?: string
+          visual_assets?: string
+        }
+        Relationships: []
+      }
+      insight_topics: {
+        Row: {
+          cannibalisation_status: string
+          category: string
+          cluster_id: number
+          content_status: string
+          created_at: string
+          editorial_decision: string
+          h1: string
+          hero_image_direction: string
+          is_pillar: boolean
+          notes: string
+          pillar_topic_id: number | null
+          primary_keyword: string
+          publication_status: string
+          search_intent: string
+          similarity_status: string
+          suggested_meta_description: string
+          suggested_slug: string
+          suggested_title: string
+          variation: string
+          workbook_id: number
+        }
+        Insert: {
+          cannibalisation_status?: string
+          category: string
+          cluster_id: number
+          content_status?: string
+          created_at?: string
+          editorial_decision?: string
+          h1: string
+          hero_image_direction: string
+          is_pillar?: boolean
+          notes?: string
+          pillar_topic_id?: number | null
+          primary_keyword: string
+          publication_status?: string
+          search_intent: string
+          similarity_status?: string
+          suggested_meta_description: string
+          suggested_slug: string
+          suggested_title: string
+          variation?: string
+          workbook_id: number
+        }
+        Update: {
+          cannibalisation_status?: string
+          category?: string
+          cluster_id?: number
+          content_status?: string
+          created_at?: string
+          editorial_decision?: string
+          h1?: string
+          hero_image_direction?: string
+          is_pillar?: boolean
+          notes?: string
+          pillar_topic_id?: number | null
+          primary_keyword?: string
+          publication_status?: string
+          search_intent?: string
+          similarity_status?: string
+          suggested_meta_description?: string
+          suggested_slug?: string
+          suggested_title?: string
+          variation?: string
+          workbook_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "insight_topics_cluster_id_fkey"
+            columns: ["cluster_id"]
+            isOneToOne: false
+            referencedRelation: "insight_clusters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       project_enquiries: {
         Row: {
+          additional_info: string | null
+          attachment_path: string | null
+          best_time_to_contact: string | null
           budget_range: string | null
+          city: string | null
           company: string | null
+          consent: boolean
+          consent_at: string | null
           created_at: string
+          dedupe_key: string | null
+          deliverables: string | null
           details: string
           email: string
+          engagement_type: string | null
+          existing_assets: string | null
           id: string
+          industry: string | null
+          landing_page: string | null
+          main_challenge: string | null
           name: string
           phone: string | null
+          preferred_contact_method: string | null
+          preferred_start_date: string | null
+          project_goals: string | null
+          project_type: string | null
+          reference_links: string | null
           referral_source: string | null
+          referrer: string | null
           services: string[]
+          social_link: string | null
+          source_page: string | null
+          submission_status: string
+          target_audience: string | null
           timeline: string | null
           updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
           website: string | null
         }
         Insert: {
+          additional_info?: string | null
+          attachment_path?: string | null
+          best_time_to_contact?: string | null
           budget_range?: string | null
+          city?: string | null
           company?: string | null
+          consent?: boolean
+          consent_at?: string | null
           created_at?: string
+          dedupe_key?: string | null
+          deliverables?: string | null
           details: string
           email: string
+          engagement_type?: string | null
+          existing_assets?: string | null
           id?: string
+          industry?: string | null
+          landing_page?: string | null
+          main_challenge?: string | null
           name: string
           phone?: string | null
+          preferred_contact_method?: string | null
+          preferred_start_date?: string | null
+          project_goals?: string | null
+          project_type?: string | null
+          reference_links?: string | null
           referral_source?: string | null
+          referrer?: string | null
           services?: string[]
+          social_link?: string | null
+          source_page?: string | null
+          submission_status?: string
+          target_audience?: string | null
           timeline?: string | null
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
           website?: string | null
         }
         Update: {
+          additional_info?: string | null
+          attachment_path?: string | null
+          best_time_to_contact?: string | null
           budget_range?: string | null
+          city?: string | null
           company?: string | null
+          consent?: boolean
+          consent_at?: string | null
           created_at?: string
+          dedupe_key?: string | null
+          deliverables?: string | null
           details?: string
           email?: string
+          engagement_type?: string | null
+          existing_assets?: string | null
           id?: string
+          industry?: string | null
+          landing_page?: string | null
+          main_challenge?: string | null
           name?: string
           phone?: string | null
+          preferred_contact_method?: string | null
+          preferred_start_date?: string | null
+          project_goals?: string | null
+          project_type?: string | null
+          reference_links?: string | null
           referral_source?: string | null
+          referrer?: string | null
           services?: string[]
+          social_link?: string | null
+          source_page?: string | null
+          submission_status?: string
+          target_audience?: string | null
           timeline?: string | null
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
           website?: string | null
         }
         Relationships: []

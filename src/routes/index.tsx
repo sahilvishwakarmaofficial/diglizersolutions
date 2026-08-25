@@ -14,14 +14,13 @@ import { industries } from "@/content/industries";
 import { projects } from "@/content/projects";
 import { getClient } from "@/content/clients";
 import { siteConfig, telHref, mailtoHref } from "@/config/site";
-import { pricing } from "@/content/pricing";
 
 export const Route = createFileRoute("/")({
   head: () =>
     seo({
       title: "Diglizer Solution | Creative, Technology & Growth Company in Thane",
       description:
-        "Diglizer Solution is an independent creative, technology and growth company in Thane, serving organisations across Mumbai, Navi Mumbai and India. Projects start from ₹25,000.",
+        "Diglizer Solution is an independent creative, technology and growth company in Thane, serving organisations across Mumbai, Navi Mumbai and India.",
       path: "/",
     }),
   component: Home,
@@ -161,10 +160,6 @@ function Hero() {
                 </dd>
               </div>
             )}
-            <div>
-              <dt className="sr-only">Pricing</dt>
-              <dd className="font-semibold text-gradient">{pricing.statement}</dd>
-            </div>
           </dl>
         </div>
 
@@ -477,7 +472,6 @@ function HomeCta() {
               {siteConfig.founder.linkedinLabel} · {siteConfig.contact.phone} ·{" "}
               {siteConfig.contact.email}
             </p>
-            <p className="mt-2 text-sm font-semibold text-gradient">{pricing.statement}</p>
           </div>
         </div>
       </div>
