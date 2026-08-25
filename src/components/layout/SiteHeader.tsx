@@ -234,15 +234,61 @@ export function SiteHeader() {
           </div>
           <div className="container-wide flex-1 overflow-y-auto pb-12 pt-6">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {mainNav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="border-b border-ink-border py-4 text-2xl font-semibold tracking-tight"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {mainNav.map((item) =>
+                item.label === "Insights" ? (
+                  <div key={item.to} className="border-b border-ink-border">
+                    <button
+                      type="button"
+                      onClick={() => setInsightsOpen((v) => !v)}
+                      aria-expanded={insightsOpen}
+                      aria-controls="mobile-insights-panel"
+                      className="flex w-full items-center justify-between py-4 text-2xl font-semibold tracking-tight"
+                    >
+                      Insights
+                      <ChevronDown
+                        className={cn(
+                          "h-5 w-5 transition-transform duration-200",
+                          insightsOpen && "rotate-180",
+                        )}
+                        aria-hidden="true"
+                      />
+                      <span className="sr-only">
+                        {insightsOpen ? "collapse Insights menu" : "expand Insights menu"}
+                      </span>
+                    </button>
+                    {insightsOpen && (
+                      <div id="mobile-insights-panel" className="grid gap-1 pb-4">
+                        {insightsNav.map((sub) => (
+                          <Link
+                            key={sub.to}
+                            to={sub.to}
+                            onClick={() => setOpen(false)}
+                            className="min-h-11 py-2.5 text-base text-ink-muted"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                        <Link
+                          to={insightsFeatured.to}
+                          onClick={() => setOpen(false)}
+                          className="min-h-11 py-2.5 text-base font-semibold text-primary"
+                        >
+                          Featured guide: {insightsFeatured.label}
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-ink-border py-4 text-2xl font-semibold tracking-tight"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
             </nav>
             <p className="eyebrow mt-8 text-ink-muted">Capabilities</p>
             <div className="mt-3 grid gap-2">
