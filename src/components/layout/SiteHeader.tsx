@@ -171,6 +171,16 @@ export function SiteHeader() {
                       indexLabel="Explore all industries"
                     />
                   )}
+                  {item.label === "Insights" && (
+                    <MegaMenu
+                      items={insightsNav}
+                      indexTo="/insights"
+                      indexLabel="Explore all insights"
+                      featured={insightsFeatured}
+                      width="56rem"
+                      columns="sm:grid-cols-2"
+                    />
+                  )}
                 </div>
               );
             })}
