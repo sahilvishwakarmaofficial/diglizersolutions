@@ -2,7 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
 import { siteConfig, activeSocialLinks, whatsappHref } from "@/config/site";
-import { footerCompany, footerLegal, capabilityNav, industryNav } from "@/content/navigation";
+import {
+  footerCompany,
+  footerLegal,
+  capabilityNav,
+  industryNav,
+  footerInsights,
+} from "@/content/navigation";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -12,7 +18,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-ink text-ink-foreground">
       <div className="container-wide py-16 md:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <img
               src={siteConfig.logos.full}
@@ -65,6 +71,7 @@ export function SiteFooter() {
           <FooterColumn title="Company" links={footerCompany} />
           <FooterColumn title="Capabilities" links={capabilityNav} />
           <FooterColumn title="Industries" links={industryNav} />
+          <FooterColumn title="Insights" links={footerInsights} />
         </div>
 
         <div className="rule-gradient mt-14" />
