@@ -24,7 +24,15 @@ export type LiquidState =
   | "industry"
   | "process"
   | "monogram"
-  | "contact";
+  | "contact"
+  | "funnel"
+  | "growth"
+  | "timeline"
+  | "grid"
+  | "frame"
+  | "network"
+  | "surface";
+
 
 const presets: Record<LiquidState, { blobs: [number, number, number][]; opacity: number }> = {
   hero: {
@@ -88,18 +96,94 @@ const presets: Record<LiquidState, { blobs: [number, number, number][]; opacity:
     blobs: [[300, 300, 200]],
     opacity: 0.55,
   },
+  /* Marketing funnel — attention narrowing into conversion. */
+  funnel: {
+    blobs: [
+      [300, 150, 150],
+      [300, 300, 100],
+      [300, 420, 58],
+      [300, 505, 30],
+    ],
+    opacity: 0.6,
+  },
+  /* Growth wave — compounding movement to the upper right. */
+  growth: {
+    blobs: [
+      [130, 440, 54],
+      [250, 380, 68],
+      [370, 300, 84],
+      [480, 200, 104],
+    ],
+    opacity: 0.6,
+  },
+  /* Motion timeline — the material stretched through time. */
+  timeline: {
+    blobs: [
+      [110, 300, 46],
+      [210, 300, 58],
+      [310, 300, 70],
+      [420, 300, 58],
+      [520, 300, 46],
+    ],
+    opacity: 0.55,
+  },
+  /* Structured identity system — grid discipline inside the liquid. */
+  grid: {
+    blobs: [
+      [210, 210, 78],
+      [390, 210, 78],
+      [210, 390, 78],
+      [390, 390, 78],
+      [300, 300, 54],
+    ],
+    opacity: 0.62,
+  },
+  /* Case-study frame — the material surrounds, never covers, the content. */
+  frame: {
+    blobs: [
+      [300, 130, 96],
+      [470, 300, 96],
+      [300, 470, 96],
+      [130, 300, 96],
+    ],
+    opacity: 0.5,
+  },
+  /* Client network — clustered nodes of experience. */
+  network: {
+    blobs: [
+      [170, 210, 56],
+      [300, 160, 40],
+      [430, 230, 62],
+      [380, 400, 48],
+      [200, 400, 44],
+      [300, 300, 34],
+    ],
+    opacity: 0.52,
+  },
+  /* Physical surfaces — print, packaging and display planes. */
+  surface: {
+    blobs: [
+      [250, 250, 130],
+      [360, 360, 130],
+    ],
+    opacity: 0.55,
+  },
 };
 
 export function LiquidBrandObject({
   state = "hero",
   className = "",
   showD = false,
+  hue = 0,
 }: {
   state?: LiquidState;
   className?: string;
   /** Renders the abstract Diglizer-inspired "D" counterform inside the liquid. */
   showD?: boolean;
+  /** Small hue shift (deg) so each industry/service reads as a controlled variation. */
+  hue?: number;
 }) {
+
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
   const rawId = useId();
@@ -131,8 +215,14 @@ export function LiquidBrandObject({
   const preset = presets[state];
 
   return (
-    <div ref={ref} aria-hidden="true" className={`pointer-events-none select-none ${className}`}>
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className={`pointer-events-none select-none ${className}`}
+      style={hue ? { filter: `hue-rotate(${hue}deg)` } : undefined}
+    >
       <svg viewBox="0 0 600 600" className="h-full w-full" role="presentation">
+
         <defs>
           <linearGradient id={`${id}-g`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#694699" />

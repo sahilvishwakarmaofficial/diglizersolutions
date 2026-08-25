@@ -62,6 +62,7 @@ function Contact() {
     <>
       <JsonLd data={[breadcrumbSchema(crumbs), organizationSchema]} />
       <PageHero
+        liquid="contact"
         eyebrow="Contact"
         title="Start a conversation."
         lede="Tell us what you are working on. We reply to every genuine enquiry, usually within one working day."

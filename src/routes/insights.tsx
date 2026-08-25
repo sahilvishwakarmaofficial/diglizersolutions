@@ -48,6 +48,7 @@ function Insights() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="timeline"
         eyebrow="Insights"
         title="Notes from the work."
         lede="Short, practical thinking on brand, web and growth. Full articles are being published progressively — the topics below are what we are writing on now."

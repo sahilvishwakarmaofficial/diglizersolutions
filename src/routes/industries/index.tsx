@@ -28,6 +28,7 @@ function IndustriesIndex() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="industry"
         eyebrow="Industries"
         title="Context changes the creative."
         lede="A fertility clinic, a surgical products manufacturer and a travel community do not need the same tone, the same channels or the same proof. We start from the category."

@@ -385,3 +385,69 @@
     display: none;
   }
 }
+
+/* ============================================================
+   LIQUID INTELLIGENCE — scroll reveal + page transitions
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.75s var(--ease-liquid),
+    transform 0.75s var(--ease-liquid);
+  will-change: opacity, transform;
+}
+[data-reveal="up"] {
+  transform: translate3d(0, 22px, 0);
+}
+[data-reveal="left"] {
+  transform: translate3d(-24px, 0, 0);
+}
+[data-reveal="right"] {
+  transform: translate3d(24px, 0, 0);
+}
+[data-reveal="scale"] {
+  transform: scale(0.965);
+}
+[data-reveal][data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes liquid-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 400-800ms route change: content is interactive immediately. */
+.route-liquid-enter {
+  animation: liquid-enter 0.5s var(--ease-liquid) both;
+}
+
+/* Fragments that reconnect as the reader scrolls (marketing problem section). */
+.liquid-fragment {
+  transition:
+    transform 1.1s var(--ease-liquid),
+    opacity 0.8s var(--ease-liquid);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal][data-shown="false"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .route-liquid-enter {
+    animation: none;
+  }
+  .liquid-fragment {
+    transition: none;
+  }
+}

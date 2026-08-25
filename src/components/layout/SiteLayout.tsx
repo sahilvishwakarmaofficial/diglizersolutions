@@ -4,7 +4,10 @@ import { MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
 
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
+import { LiquidBrandObject, type LiquidState } from "@/components/liquid/LiquidBrandObject";
+import { Reveal } from "@/components/liquid/Reveal";
 import { whatsappHref, telHref, mailtoHref } from "@/config/site";
+
 
 const BAR_HIDDEN_PATHS = [
   "/privacy-policy",
@@ -50,6 +53,7 @@ function MobileContactBar() {
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const wa = whatsappHref();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -60,9 +64,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main" className="flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
+      {/* key forces the short liquid re-form on route change; content stays interactive. */}
+      <main key={pathname} id="main" className="route-liquid-enter flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
         {children}
       </main>
+
       <SiteFooter />
       <MobileContactBar />
       {wa && (
@@ -106,30 +112,55 @@ export function PageHero({
   title,
   lede,
   breadcrumbs,
+  liquid = "portal",
+  hue = 0,
   children,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   breadcrumbs?: { name: string; path: string }[];
+  /** Liquid Intelligence state that expresses this page's role in the journey. */
+  liquid?: LiquidState | "none";
+  hue?: number;
   children?: ReactNode;
 }) {
   return (
-    <section className="bg-ink text-ink-foreground">
-      <div className="container-wide py-16 md:py-24">
+    <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(65%_70%_at_12%_0%,color-mix(in_oklab,var(--brand-purple)_26%,transparent),transparent)]" />
+      {liquid !== "none" && (
+        <LiquidBrandObject
+          state={liquid}
+          hue={hue}
+          className="absolute -right-[22%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-70 md:block lg:-right-[10%] lg:h-[40rem] lg:w-[40rem]"
+        />
+      )}
+      <div className="container-wide relative py-16 md:py-24">
         {breadcrumbs && (
           <div className="mb-8 text-ink-muted">
             <Breadcrumbs items={breadcrumbs} />
           </div>
         )}
-        {eyebrow && <p className="eyebrow text-gradient">{eyebrow}</p>}
-        <h1 className="display-2 mt-4 max-w-4xl">{title}</h1>
-        {lede && <p className="lede mt-6 text-ink-muted">{lede}</p>}
+        {eyebrow && (
+          <Reveal as="p" className="eyebrow text-gradient">
+            {eyebrow}
+          </Reveal>
+        )}
+        <Reveal as="h1" delay={60} className="display-2 mt-4 max-w-4xl">
+          {title}
+        </Reveal>
+        {lede && (
+          <Reveal as="p" delay={120} className="lede mt-6 max-w-3xl text-ink-muted">
+            {lede}
+          </Reveal>
+        )}
+
         {children}
       </div>
     </section>
   );
 }
+
 
 export function FinalCta({
   title = "Have an ambition? Let's build what comes next.",

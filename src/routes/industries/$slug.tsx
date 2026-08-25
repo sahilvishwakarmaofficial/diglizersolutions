@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 
+import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
+import { industryLiquid } from "@/components/liquid/liquidStates";
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
@@ -32,6 +34,7 @@ export const Route = createFileRoute("/industries/$slug")({
 
 function IndustryPage() {
   const { industry } = Route.useLoaderData();
+  const liquid = industryLiquid(industry.slug);
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "Industries", path: "/industries" },
@@ -52,8 +55,14 @@ function IndustryPage() {
     <>
       <JsonLd data={[breadcrumbSchema(crumbs), faqSchema]} />
 
-      <section className="bg-ink text-ink-foreground">
-        <div className="container-wide py-16 md:py-24">
+      <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(65%_70%_at_12%_0%,color-mix(in_oklab,var(--brand-purple)_26%,transparent),transparent)]" />
+        <LiquidBrandObject
+          state={liquid.state}
+          hue={liquid.hue}
+          className="absolute -right-[22%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-70 md:block lg:-right-[10%] lg:h-[40rem] lg:w-[40rem]"
+        />
+        <div className="container-wide relative py-16 md:py-24">
           <div className="mb-8 text-ink-muted">
             <Breadcrumbs items={crumbs} />
           </div>

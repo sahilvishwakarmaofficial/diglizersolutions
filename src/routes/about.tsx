@@ -48,6 +48,7 @@ function About() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <PageHero
+        liquid="nodes"
         eyebrow="About"
         title="An independent studio built around one accountable team."
         lede="Diglizer Solution exists because most brands do not need three vendors. They need one team that can think, design, build and grow — and stay answerable for the result."
