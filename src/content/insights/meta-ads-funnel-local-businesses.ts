@@ -15,7 +15,7 @@ export const metaAdsFunnelLocalBusinesses: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-01-28",
   updatedAt: "2024-01-28",
-  readingMinutes: 8,
+  readingMinutes: 10,
   metaTitle: "Meta Ads Funnel for Local Businesses | Diglizer Solution",
   metaDescription: "How local businesses can structure a Meta Ads funnel across awareness, engagement and conversion within a limited local budget.",
   heroImageDirection: "Flat illustration of a location pin connected to layered ad-card icons, aubergine/violet gradient.",

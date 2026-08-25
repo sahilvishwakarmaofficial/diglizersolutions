@@ -16,7 +16,7 @@ export const digitalMarketingForEducationalInstitutions: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-02-20",
   updatedAt: "2024-02-20",
-  readingMinutes: 10,
+  readingMinutes: 8,
   metaTitle: "Digital Marketing for Educational Institutions | Diglizer Solution",
   metaDescription:
     "A practical guide to digital marketing for schools, colleges and training institutes, built around the real admissions and enquiry journey.",

@@ -16,7 +16,7 @@ export const localSeoGuideForThaneBusinesses: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-02-05",
   updatedAt: "2024-02-05",
-  readingMinutes: 8,
+  readingMinutes: 9,
   metaTitle: "Local SEO Guide for Thane Businesses | Diglizer Solution",
   metaDescription:
     "A practical local SEO guide for businesses in Thane: Google Business Profile setup, reviews, local citations and content that ranks for nearby searches.",

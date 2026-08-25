@@ -16,7 +16,7 @@ export const generativeEngineOptimizationCompleteGuide: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-02-12",
   updatedAt: "2024-02-12",
-  readingMinutes: 10,
+  readingMinutes: 9,
   metaTitle: "Generative Engine Optimization: A Complete Guide | Diglizer Solution",
   metaDescription:
     "What Generative Engine Optimization (GEO) actually means, how it differs from and builds on SEO, and practical steps to make your content citable by AI answers.",

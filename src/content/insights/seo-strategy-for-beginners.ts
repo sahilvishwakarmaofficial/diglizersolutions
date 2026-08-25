@@ -16,7 +16,7 @@ export const seoStrategyForBeginners: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-02-01",
   updatedAt: "2024-02-01",
-  readingMinutes: 8,
+  readingMinutes: 10,
   metaTitle: "SEO Strategy for Beginners: A Practical Starting Sequence | Diglizer Solution",
   metaDescription:
     "New to SEO? This guide lays out the exact order to work in — technical basics, on-page fundamentals, content, and links — without the jargon.",

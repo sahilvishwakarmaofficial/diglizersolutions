@@ -20,7 +20,7 @@ export const digitalMarketingStrategySmallBusiness: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-01-15",
   updatedAt: "2024-01-15",
-  readingMinutes: 9,
+  readingMinutes: 10,
   metaTitle: "Digital Marketing Strategy for Small Businesses | Diglizer Solution",
   metaDescription:
     "A practical, no-fluff framework for building a digital marketing strategy as a small business: goals, channels, budget allocation and measurement.",

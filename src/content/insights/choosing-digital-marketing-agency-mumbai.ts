@@ -20,7 +20,7 @@ export const choosingDigitalMarketingAgencyMumbai: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-01-22",
   updatedAt: "2024-01-22",
-  readingMinutes: 9,
+  readingMinutes: 7,
   metaTitle: "How to Choose a Digital Marketing Agency in Mumbai | Diglizer Solution",
   metaDescription:
     "A practical evaluation framework for choosing a digital marketing agency in Mumbai: questions to ask, red flags to watch for, and how to judge fit.",

@@ -15,7 +15,7 @@ export const performanceMarketingStrategy: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-01-25",
   updatedAt: "2024-01-25",
-  readingMinutes: 9,
+  readingMinutes: 10,
   metaTitle: "Performance Marketing Strategy | Diglizer Solution",
   metaDescription: "A practical framework for building a performance marketing strategy: goal setting, funnel structure, budget allocation, testing and measurement.",
   heroImageDirection: "Flat illustration of a funnel with data nodes flowing through it, aubergine/violet gradient, no dashboards with fabricated numbers.",

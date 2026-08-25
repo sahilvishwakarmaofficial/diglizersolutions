@@ -16,7 +16,7 @@ export const websiteSeoChecklistForGrowingBusinesses: InsightArticle = {
   author: { name: "Sahil Vishwakarma", role: "Founder & Creative Director, Diglizer Solution" },
   publishedAt: "2024-02-08",
   updatedAt: "2024-02-08",
-  readingMinutes: 9,
+  readingMinutes: 8,
   metaTitle: "Website SEO Checklist for Growing Businesses | Diglizer Solution",
   metaDescription:
     "A practical SEO checklist covering technical health, on-page fundamentals and content quality for a growing business website.",
