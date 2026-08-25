@@ -3,6 +3,7 @@ import { industries } from "./industries";
 
 export const mainNav = [
   { label: "Work", to: "/work" },
+  { label: "Clients", to: "/clients" },
   { label: "Capabilities", to: "/capabilities" },
   { label: "Industries", to: "/industries" },
   { label: "About", to: "/about" },
@@ -32,6 +33,7 @@ export const footerLegal = [
 
 export const footerCompany = [
   { label: "Work", to: "/work" },
+  { label: "Clients", to: "/clients" },
   { label: "Capabilities", to: "/capabilities" },
   { label: "Industries", to: "/industries" },
   { label: "About", to: "/about" },
