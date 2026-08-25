@@ -23,6 +23,41 @@ export const industryNav = industries.map((i) => ({
   description: i.summary,
 }));
 
+export const insightsNav = [
+  {
+    label: "All Insights",
+    to: "/insights",
+    description: "Explore all published strategies, guides and practical resources.",
+  },
+  {
+    label: "Digital Marketing",
+    to: "/insights/digital-marketing",
+    description: "Strategy, channels, content and connected digital growth.",
+  },
+  {
+    label: "Performance Marketing",
+    to: "/insights/performance-marketing",
+    description: "Campaigns, funnels, advertising creative and conversion.",
+  },
+  {
+    label: "SEO",
+    to: "/insights/seo",
+    description: "Search strategy, local visibility, technical foundations and content.",
+  },
+  {
+    label: "AI SEO & GEO",
+    to: "/insights/ai-seo-geo",
+    description: "Generative Engine Optimization and AI-search discoverability.",
+  },
+];
+
+export const insightsFeatured = {
+  label: "Digital Marketing Strategy for Small Businesses",
+  to: "/insights/digital-marketing/digital-marketing-strategy-for-small-businesses",
+};
+
+export const footerInsights = insightsNav;
+
 export const footerLegal = [
   { label: "Privacy Policy", to: "/privacy-policy" },
   { label: "Terms", to: "/terms" },

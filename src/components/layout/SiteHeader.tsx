@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 import { siteConfig, telHref, mailtoHref, whatsappHref } from "@/config/site";
-import { mainNav, capabilityNav, industryNav } from "@/content/navigation";
+import {
+  mainNav,
+  capabilityNav,
+  industryNav,
+  insightsNav,
+  insightsFeatured,
+} from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
 function LogoLink({ onClick }: { onClick?: () => void }) {
@@ -32,20 +38,29 @@ function MegaMenu({
   items,
   indexTo,
   indexLabel,
+  featured,
+  width = "72rem",
+  columns = "sm:grid-cols-2 lg:grid-cols-3",
 }: {
   items: { label: string; to: string; description: string }[];
   indexTo: string;
   indexLabel: string;
+  featured?: { label: string; to: string };
+  width?: string;
+  columns?: string;
 }) {
   return (
-    <div className="absolute left-1/2 top-full w-[min(72rem,calc(100vw-4rem))] -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+    <div
+      className="absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+      style={{ width: `min(${width}, calc(100vw - 4rem))` }}
+    >
       <div className="rounded-2xl border border-border bg-popover p-6 shadow-lg">
-        <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cn("grid gap-1", columns)}>
           {items.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-xl px-4 py-3 transition-colors hover:bg-accent"
+              className="rounded-xl px-4 py-3 transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="block text-sm font-semibold">{item.label}</span>
               <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
@@ -54,13 +69,24 @@ function MegaMenu({
             </Link>
           ))}
         </div>
-        <div className="mt-4 border-t border-border pt-4">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
           <Link
             to={indexTo}
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             {indexLabel}
           </Link>
+          {featured && (
+            <Link
+              to={featured.to}
+              className="rounded-full border border-border bg-gradient-brand/10 px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:text-primary"
+            >
+              <span className="mr-2 text-[0.6rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Featured guide
+              </span>
+              {featured.label}
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -70,6 +96,7 @@ function MegaMenu({
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [insightsOpen, setInsightsOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
@@ -116,7 +143,10 @@ export function SiteHeader() {
 
           <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
             {mainNav.map((item) => {
-              const hasMenu = item.label === "Services" || item.label === "Industries";
+              const hasMenu =
+                item.label === "Services" ||
+                item.label === "Industries" ||
+                item.label === "Insights";
               return (
                 <div key={item.to} className={cn("group relative", hasMenu && "static")}>
                   <Link
@@ -127,7 +157,12 @@ export function SiteHeader() {
                     )}
                   >
                     {item.label}
-                    {hasMenu && <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
+                    {hasMenu && (
+                      <ChevronDown
+                        className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                        aria-hidden="true"
+                      />
+                    )}
                   </Link>
                   {item.label === "Services" && (
                     <MegaMenu
@@ -141,6 +176,16 @@ export function SiteHeader() {
                       items={industryNav}
                       indexTo="/industries"
                       indexLabel="Explore all industries"
+                    />
+                  )}
+                  {item.label === "Insights" && (
+                    <MegaMenu
+                      items={insightsNav}
+                      indexTo="/insights"
+                      indexLabel="Explore all insights"
+                      featured={insightsFeatured}
+                      width="56rem"
+                      columns="sm:grid-cols-2"
                     />
                   )}
                 </div>
@@ -190,15 +235,61 @@ export function SiteHeader() {
           </div>
           <div className="container-wide flex-1 overflow-y-auto pb-12 pt-6">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {mainNav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="border-b border-ink-border py-4 text-2xl font-semibold tracking-tight"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {mainNav.map((item) =>
+                item.label === "Insights" ? (
+                  <div key={item.to} className="border-b border-ink-border">
+                    <button
+                      type="button"
+                      onClick={() => setInsightsOpen((v) => !v)}
+                      aria-expanded={insightsOpen}
+                      aria-controls="mobile-insights-panel"
+                      className="flex w-full items-center justify-between py-4 text-2xl font-semibold tracking-tight"
+                    >
+                      Insights
+                      <ChevronDown
+                        className={cn(
+                          "h-5 w-5 transition-transform duration-200",
+                          insightsOpen && "rotate-180",
+                        )}
+                        aria-hidden="true"
+                      />
+                      <span className="sr-only">
+                        {insightsOpen ? "collapse Insights menu" : "expand Insights menu"}
+                      </span>
+                    </button>
+                    {insightsOpen && (
+                      <div id="mobile-insights-panel" className="grid gap-1 pb-4">
+                        {insightsNav.map((sub) => (
+                          <Link
+                            key={sub.to}
+                            to={sub.to}
+                            onClick={() => setOpen(false)}
+                            className="min-h-11 py-2.5 text-base text-ink-muted"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                        <Link
+                          to={insightsFeatured.to}
+                          onClick={() => setOpen(false)}
+                          className="min-h-11 py-2.5 text-base font-semibold text-primary"
+                        >
+                          Featured guide: {insightsFeatured.label}
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-ink-border py-4 text-2xl font-semibold tracking-tight"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
             </nav>
             <p className="eyebrow mt-8 text-ink-muted">Capabilities</p>
             <div className="mt-3 grid gap-2">
