@@ -59,4 +59,9 @@ export const industryMedia: Record<
     imageAlt: "Minimal studio workstation showing dashboards and interface wireframes",
     clients: ["Siddhartha Logic", "Prober"],
   },
+  "mobility-automotive-ev-technology": {
+    image: "/media/industries/mobility-automotive-ev-technology.jpg",
+    imageAlt: "Electric two-wheelers at a modern urban charging point at dusk",
+    clients: ["Ather Energy", "TrusTerra"],
+  },
 };

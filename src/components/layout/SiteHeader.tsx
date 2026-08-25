@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig, telHref, mailtoHref } from "@/config/site";
 import { mainNav, capabilityNav, industryNav } from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
@@ -83,6 +83,15 @@ export function SiteHeader() {
   }, [pathname]);
 
   useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -96,7 +105,7 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-border bg-background/85 backdrop-blur-md"
+          ? "border-b border-border bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70"
           : "border-b border-transparent",
       )}
     >
@@ -105,7 +114,7 @@ export function SiteHeader() {
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
           {mainNav.map((item) => {
-            const hasMenu = item.label === "Capabilities" || item.label === "Industries";
+            const hasMenu = item.label === "Services" || item.label === "Industries";
             return (
               <div key={item.to} className={cn("group relative", hasMenu && "static")}>
                 <Link
@@ -118,11 +127,11 @@ export function SiteHeader() {
                   {item.label}
                   {hasMenu && <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
                 </Link>
-                {item.label === "Capabilities" && (
+                {item.label === "Services" && (
                   <MegaMenu
                     items={capabilityNav}
                     indexTo="/capabilities"
-                    indexLabel="Explore all capabilities"
+                    indexLabel="Explore all services"
                   />
                 )}
                 {item.label === "Industries" && (
@@ -194,6 +203,29 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
+            </div>
+            <p className="eyebrow mt-8 text-ink-muted">Contact</p>
+            <div className="mt-3 grid gap-2 text-sm text-ink-muted">
+              {siteConfig.contact.phone && (
+                <a href={telHref()} className="min-h-11 py-2">
+                  {siteConfig.contact.phone}
+                </a>
+              )}
+              {siteConfig.contact.email && (
+                <a href={mailtoHref()} className="min-h-11 py-2 break-all">
+                  {siteConfig.contact.email}
+                </a>
+              )}
+              {siteConfig.founder.linkedin && (
+                <a
+                  href={siteConfig.founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-11 py-2"
+                >
+                  LinkedIn
+                </a>
+              )}
             </div>
             <Link
               to="/start-a-project"

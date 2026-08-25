@@ -1512,6 +1512,134 @@ export const projects: Project[] = [
     ],
     relatedCapabilities: ["brand-creative", "strategy-consulting"],
   },
+  {
+    slug: "ather-energy",
+    client: "Ather Energy",
+    title: "Print communication designed for electric mobility",
+    summary:
+      "Graphic and print-design support, including standee communication for an electric-mobility brand.",
+    industry: "Mobility, Automotive & EV Technology",
+    industrySlug: "mobility-automotive-ev-technology",
+    location: "India",
+    tags: ["Graphic Design", "Print Design", "Standee Design"],
+    filters: ["Mobility", "Graphic Design", "Print Design", "Standee Design"],
+    services: [
+      "Graphic design",
+      "Print design",
+      "Standee artwork",
+      "Display communication",
+      "Print-ready artwork",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Ather Energy Print & Standee Design Experience | Diglizer",
+    metaDescription:
+      "Selected graphic and print-design experience for Ather Energy, including standee artwork created for clear physical communication.",
+    headline: "Print communication designed for electric mobility.",
+    provisionalMedia: false,
+    links: clientLinks["ather-energy"]!,
+    gallery: [],
+    workCategories: [
+      "Standee Design",
+      "Print Material",
+      "Display Communication",
+      "Large Format",
+      "Final Artwork",
+    ],
+    overview: [
+      "Provided graphic-design and print-design services for Ather Energy, including standee artwork created for clear and professional physical communication.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Physical brand communication must remain clear and visually effective in busy environments where audiences have limited time to understand the message.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "The standee communication was approached through concise messaging, clear visual hierarchy and practical large-format readability.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Graphic design",
+        "Print design",
+        "Standee artwork",
+        "Display communication",
+        "Print-ready artwork",
+      ],
+    },
+    impact: ["Selected graphic and print-design experience for Ather Energy."],
+    outcomeNote:
+      "Selected graphic and print-design experience only. No agency status, retainer, brand identity, campaign ownership or advertising results are claimed.",
+    relatedCapabilities: ["brand-creative"],
+  },
+  {
+    slug: "trusterra",
+    client: "TrusTerra",
+    title: "Building clear physical communication for an emerging EV platform",
+    summary:
+      "Graphic and print-design support, including standee communication for the pre-owned EV ecosystem.",
+    industry: "Mobility, Automotive & EV Technology",
+    industrySlug: "mobility-automotive-ev-technology",
+    location: "India",
+    tags: ["Graphic Design", "Print Design", "Standee Design"],
+    filters: ["Mobility", "Graphic Design", "Print Design", "Standee Design"],
+    services: [
+      "Graphic design",
+      "Print design",
+      "Standee design",
+      "Display communication",
+      "Print-ready artwork",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "TrusTerra Print & Standee Design Experience | Diglizer",
+    metaDescription:
+      "Graphic and print-design services for TrusTerra, including standee artwork supporting communication within the electric-mobility sector.",
+    headline: "Building clear physical communication for an emerging EV platform.",
+    provisionalMedia: false,
+    links: clientLinks["trusterra"]!,
+    gallery: [],
+    workCategories: [
+      "Standee",
+      "Print Design",
+      "Display Communication",
+      "EV Communication",
+      "Final Artwork",
+    ],
+    overview: [
+      "Provided graphic and print-design services for TrusTerra, including standee artwork supporting its communication within the electric-mobility sector.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "An emerging EV platform must communicate a new category clearly while remaining credible, accessible and professional across physical customer touchpoints.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "The print communication focused on direct messaging, clear hierarchy and large-format readability suitable for event, retail or promotional environments.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Graphic design",
+        "Print design",
+        "Standee design",
+        "Display communication",
+        "Print-ready artwork",
+      ],
+    },
+    impact: ["Graphic, print and standee design experience for TrusTerra."],
+    outcomeNote:
+      "Platform development, website design, social-media management, advertising results and product development are not claimed.",
+    relatedCapabilities: ["brand-creative"],
+  },
 ];
 
 export const clientStrip = [
@@ -1532,6 +1660,8 @@ export const clientStrip = [
   "Mark Jewells",
   "Medibrain",
   "Mahadevi Hospital",
+  "Ather Energy",
+  "TrusTerra",
 ];
 
 export const workFilters = [
@@ -1555,6 +1685,8 @@ export const workFilters = [
   "Websites",
   "Video",
   "Packaging",
+  "Standee Design",
+  "Mobility",
 ];
 
 

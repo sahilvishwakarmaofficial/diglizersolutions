@@ -1,60 +1,95 @@
 import { Link } from "@tanstack/react-router";
 
-import { clients } from "@/content/clients";
+import { clientsByVerification } from "@/content/clients";
+import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
 
 /**
- * Client logo cloud shown directly below the homepage hero.
+ * Selected Experience — premium static logo cloud directly below the hero.
  *
  * Official logo files are only rendered when a client has supplied one
  * (`logo` on the client entry). Where no approved logo asset exists, a
- * typographic name treatment is used instead — never a recreated,
- * traced or recoloured mark. Government emblems are never reproduced.
+ * typographic name treatment is used instead — never a recreated, traced or
+ * recoloured mark. Government emblems are never reproduced.
+ *
+ * No animation, gradient or filter is applied to the logos themselves; the
+ * restrained liquid light sits behind the grid only.
  */
 export function ClientLogoCloud() {
-  const ordered = [...clients].sort((a, b) => a.displayOrder - b.displayOrder);
+  const ordered = clientsByVerification;
 
   return (
-    <section className="border-b border-border bg-background">
-      <div className="container-wide py-12 md:py-16">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
-          <p className="eyebrow text-muted-foreground">
-            Selected clients and professional experience
-          </p>
+    <section className="relative overflow-hidden border-b border-border bg-background">
+      <LiquidBrandObject
+        state="nodes"
+        className="absolute -left-32 top-0 h-[30rem] w-[30rem] opacity-10"
+      />
+      <div className="container-wide relative py-[4.5rem] md:py-24">
+        <p className="eyebrow text-gradient">Selected Experience</p>
+        <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <h2 className="display-2 max-w-3xl">Selected Clients &amp; Professional Experience</h2>
+            <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+              Experience across brands, institutions, healthcare organisations, public
+              communication, education, mobility, technology and lifestyle.
+            </p>
+          </div>
           <Link
             to="/clients"
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
-            View the full client directory
+            Explore All Clients &amp; Experience →
           </Link>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {ordered.map((client) => (
-            <li key={client.slug} className="bg-background">
-              <div className="flex h-24 items-center justify-center px-5 text-center transition-colors hover:bg-muted/60">
-                {client.logo ? (
-                  <img
-                    src={client.logo}
-                    alt={client.logoAlt ?? `${client.displayName} logo`}
-                    loading="lazy"
-                    decoding="async"
-                    className="max-h-10 w-auto object-contain"
-                  />
+        <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 md:gap-x-10 md:gap-y-9 lg:grid-cols-5 xl:grid-cols-7">
+          {ordered.map((client) => {
+            const label = client.caseStudyUrl
+              ? `View ${client.displayName} case study`
+              : `View ${client.displayName} experience`;
+            const content = client.logo ? (
+              <img
+                src={client.logo}
+                alt={client.logoAlt ?? `${client.displayName} logo`}
+                loading="lazy"
+                decoding="async"
+                className="max-h-10 w-auto object-contain"
+              />
+            ) : (
+              <span className="font-display text-[0.8rem] font-bold uppercase leading-tight tracking-[0.08em] text-muted-foreground">
+                {client.displayName}
+              </span>
+            );
+
+            return (
+              <li key={client.slug}>
+                {client.caseStudyUrl ? (
+                  <Link
+                    to="/work/$slug"
+                    params={{ slug: client.caseStudyUrl }}
+                    aria-label={label}
+                    className="flex h-20 items-center justify-center rounded-xl px-4 text-center transition-colors hover:bg-muted/60"
+                  >
+                    {content}
+                  </Link>
                 ) : (
-                  <span className="font-display text-[0.8rem] font-bold uppercase leading-tight tracking-[0.08em] text-muted-foreground">
-                    {client.displayName}
-                  </span>
+                  <Link
+                    to="/clients"
+                    aria-label={label}
+                    className="flex h-20 items-center justify-center rounded-xl px-4 text-center transition-colors hover:bg-muted/60"
+                  >
+                    {content}
+                  </Link>
                 )}
-              </div>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
 
-        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           Client names, trademarks, logos and official emblems remain the property of their
-          respective owners and are shown solely to identify relevant professional experience.
-          Where an approved logo file has not been supplied, the organisation name is set
-          typographically rather than recreated.
+          respective owners and are shown solely to identify relevant professional experience. Where
+          an approved logo file has not been supplied, the organisation name is set typographically
+          rather than recreated.
         </p>
       </div>
     </section>

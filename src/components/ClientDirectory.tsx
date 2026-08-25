@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import {
-  clients as allClients,
+  clientsByVerification as allClients,
   clientCategories,
   type ClientEntry,
   type ClientLinks,
