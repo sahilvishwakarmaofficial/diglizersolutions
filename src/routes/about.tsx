@@ -4,6 +4,9 @@ import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
 import { siteConfig } from "@/config/site";
+import { FounderPortrait } from "@/components/FounderPortrait";
+import { PricingSection } from "@/components/PricingSection";
+import { ClientDirectory } from "@/components/ClientDirectory";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -91,7 +94,8 @@ function About() {
       </section>
 
       <section className="section-y">
-        <div className="container-wide grid gap-12 lg:grid-cols-2">
+        <div className="container-wide grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <FounderPortrait />
           <div>
             <p className="eyebrow text-gradient">Leadership</p>
             <h2 className="display-2 mt-4">{siteConfig.founder.name}</h2>
@@ -109,7 +113,7 @@ function About() {
               Read the founder's note
             </Link>
           </div>
-          <div className="rounded-2xl border border-border bg-muted/40 p-8">
+            <div className="mt-8 rounded-2xl border border-border bg-muted/40 p-7">
             <h3 className="font-display text-lg font-bold">Where we work</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Based in {siteConfig.contact.addressLocality} and working across Mumbai, Navi Mumbai
@@ -117,8 +121,13 @@ function About() {
               it — shoots, exhibitions and workshops.
             </p>
           </div>
+          </div>
         </div>
       </section>
+
+      <ClientDirectory />
+
+      <PricingSection />
 
       <FinalCta />
     </>
