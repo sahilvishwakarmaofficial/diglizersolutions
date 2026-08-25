@@ -215,8 +215,14 @@ export function LiquidBrandObject({
   const preset = presets[state];
 
   return (
-    <div ref={ref} aria-hidden="true" className={`pointer-events-none select-none ${className}`}>
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className={`pointer-events-none select-none ${className}`}
+      style={hue ? { filter: `hue-rotate(${hue}deg)` } : undefined}
+    >
       <svg viewBox="0 0 600 600" className="h-full w-full" role="presentation">
+
         <defs>
           <linearGradient id={`${id}-g`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#694699" />
