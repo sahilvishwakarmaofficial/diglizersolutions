@@ -200,10 +200,11 @@
 }
 
 @utility text-gradient {
-  background-image: var(--gradient-brand);
+  background-image: var(--gradient-brand-bright);
   background-clip: text;
   color: transparent;
 }
+
 
 @utility bg-gradient-brand {
   background-image: var(--gradient-brand);
