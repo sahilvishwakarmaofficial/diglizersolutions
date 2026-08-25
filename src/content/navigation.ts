@@ -4,7 +4,7 @@ import { industries } from "./industries";
 export const mainNav = [
   { label: "Work", to: "/work" },
   { label: "Clients", to: "/clients" },
-  { label: "Capabilities", to: "/capabilities" },
+  { label: "Services", to: "/capabilities" },
   { label: "Industries", to: "/industries" },
   { label: "About", to: "/about" },
   { label: "Insights", to: "/insights" },

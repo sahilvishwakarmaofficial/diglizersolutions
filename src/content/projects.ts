@@ -1685,6 +1685,8 @@ export const workFilters = [
   "Websites",
   "Video",
   "Packaging",
+  "Standee Design",
+  "Mobility",
 ];
 
 
