@@ -528,3 +528,17 @@
 @utility glow-soft {
   box-shadow: 0 0 90px -30px rgba(138, 87, 216, 0.85);
 }
+
+/* Insights — knowledge-sphere nodes. Static under reduced motion. */
+@keyframes liquid-node-pulse {
+  0%, 100% { opacity: 0.45; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+.liquid-node {
+  animation: liquid-node-pulse 5.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid-node { animation: none; opacity: 0.8; }
+}
