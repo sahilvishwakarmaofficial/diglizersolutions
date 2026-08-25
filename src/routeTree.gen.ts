@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as StartAProjectRouteImport } from './routes/start-a-project'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
 import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
@@ -20,6 +23,21 @@ import { Route as WorkSlugRouteImport } from './routes/work/$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartAProjectRoute = StartAProjectRouteImport.update({
+  id: '/start-a-project',
+  path: '/start-a-project',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
@@ -55,6 +73,9 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -64,6 +85,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -74,6 +98,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -85,6 +112,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
     | '/work/$slug'
@@ -94,6 +124,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
     | '/work/$slug'
@@ -103,6 +136,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
     | '/capabilities/$slug'
     | '/industries/$slug'
     | '/work/$slug'
@@ -113,6 +149,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  StartAProjectRoute: typeof StartAProjectRoute
+  ThankYouRoute: typeof ThankYouRoute
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
@@ -128,6 +167,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start-a-project': {
+      id: '/start-a-project'
+      path: '/start-a-project'
+      fullPath: '/start-a-project'
+      preLoaderRoute: typeof StartAProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/capabilities/': {
@@ -177,6 +237,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  StartAProjectRoute: StartAProjectRoute,
+  ThankYouRoute: ThankYouRoute,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
