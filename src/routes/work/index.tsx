@@ -1,10 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
-import { projects, selectedProjects, workFilters } from "@/content/projects";
+import { ClientDirectory } from "@/components/ClientDirectory";
+import { VideoWork } from "@/components/VideoWork";
+import { PricingSection } from "@/components/PricingSection";
+import { projects, workFilters } from "@/content/projects";
+import { videoWork } from "@/content/clients";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -16,7 +21,7 @@ export const Route = createFileRoute("/work/")({
     seo({
       title: "Our Work | Case Studies by Diglizer Solution",
       description:
-        "Case studies across healthcare, medical products, travel, education and retail — branding, websites, campaigns and performance marketing by Diglizer Solution.",
+        "Case studies across healthcare, medical products, travel, culture, fashion and professional services — branding, websites, campaigns and performance marketing by Diglizer Solution.",
       path: "/work",
     }),
   component: WorkIndex,
@@ -37,7 +42,7 @@ function WorkIndex() {
         breadcrumbs={crumbs}
       />
 
-      <section className="section-y">
+      <section className="section-y-compact">
         <div className="container-wide">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter work">
             {workFilters.map((item) => (
@@ -57,30 +62,48 @@ function WorkIndex() {
             ))}
           </div>
 
-          <div className="mt-12 grid gap-12 md:grid-cols-2">
-            {visible.map((project) => (
-              <Link key={project.slug} to="/work/$slug" params={{ slug: project.slug }} className="group block">
-                <div className="overflow-hidden rounded-2xl border border-border bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    loading="lazy"
-                    width={1600}
-                    height={1000}
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <p className="eyebrow mt-6 text-muted-foreground">
-                  {project.industry} · {project.location}
-                </p>
-                <h2 className="mt-3 font-display text-2xl font-bold leading-snug">
-                  {project.client}
-                </h2>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                  {project.summary}
-                </p>
-              </Link>
-            ))}
+          <div className="mt-10 grid gap-8 md:grid-cols-6">
+            {visible.map((project, index) => {
+              const wide = project.span === "wide" || index % 5 === 0;
+              return (
+                <Link
+                  key={project.slug}
+                  to="/work/$slug"
+                  params={{ slug: project.slug }}
+                  className={`group block ${wide ? "md:col-span-4" : "md:col-span-2"}`}
+                >
+                  <div className="overflow-hidden rounded-2xl border border-border bg-muted">
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      width={1600}
+                      height={1000}
+                      className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${
+                        wide ? "aspect-[16/9]" : "aspect-[4/3]"
+                      }`}
+                    />
+                  </div>
+                  <p className="eyebrow mt-5 text-muted-foreground">
+                    {project.industry} · {project.location}
+                  </p>
+                  <h2 className="mt-2 font-display text-2xl font-bold leading-snug">
+                    {project.client}
+                  </h2>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                    {project.summary}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    View case study
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
           {visible.length === 0 && (
@@ -91,24 +114,19 @@ function WorkIndex() {
         </div>
       </section>
 
-      <section className="section-y bg-muted/40">
+      <section className="section-y bg-ink text-ink-foreground">
         <div className="container-wide">
-          <p className="eyebrow text-gradient">Also worked with</p>
-          <h2 className="display-2 mt-4 max-w-2xl">Selected engagements.</h2>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {selectedProjects.map((item) => (
-              <div key={item.client} className="bg-card p-7">
-                <h3 className="font-display text-lg font-bold">{item.client}</h3>
-                <p className="eyebrow mt-2 text-muted-foreground">{item.category}</p>
-                <p className="mt-3 text-sm font-medium">{item.involvement}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+          <p className="eyebrow text-gradient">Video and Reels</p>
+          <h2 className="display-2 mt-4 max-w-2xl">Motion work across culture, health and retail.</h2>
+          <div className="mt-10">
+            <VideoWork items={videoWork} />
           </div>
         </div>
       </section>
+
+      <ClientDirectory />
+
+      <PricingSection />
 
       <FinalCta />
     </>
