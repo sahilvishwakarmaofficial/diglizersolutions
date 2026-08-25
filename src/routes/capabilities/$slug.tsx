@@ -23,7 +23,7 @@ export const Route = createFileRoute("/capabilities/$slug")({
       path: `/capabilities/${capability.slug}`,
     });
   },
-  component: CapabilityPage;
+  component: CapabilityPage,
 });
 
 function CapabilityPage() {
