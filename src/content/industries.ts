@@ -5,38 +5,89 @@ export interface Industry {
   metaDescription: string;
   headline: string;
   summary: string;
+  /** Short card description used on the index grid. */
+  cardCopy: string;
   challenges: string[];
   experience: string[];
   capabilities: string[];
+  /** Client slugs from src/content/clients.ts. */
+  clients: string[];
+  /** Published case-study slugs from src/content/projects.ts. */
   projects: string[];
+  /** Service tags shown on the industry card. */
+  services: string[];
   faqs: { question: string; answer: string }[];
 }
 
 export const industries: Industry[] = [
   {
-    slug: "healthcare-fertility",
-    name: "Healthcare and Fertility",
-    metaTitle: "Healthcare & Fertility Marketing Agency | Diglizer Solution",
+    slug: "healthcare-fertility-hospitals",
+    name: "Healthcare, Fertility & Hospitals",
+    metaTitle: "Healthcare, Fertility & Hospital Design Agency | Diglizer Solution",
     metaDescription:
-      "Ethical healthcare and fertility communication: awareness content, campaign creative, patient-trust messaging and advertising support from Thane and Mumbai.",
-    headline: "Communication that earns trust before it asks for an enquiry.",
+      "Healthcare, fertility and hospital communication: campaign creative, social media, Meta advertising design, logo and internal hospital branding from Thane and Mumbai.",
+    headline: "Healthcare communication built around trust, clarity and care.",
     summary:
-      "Healthcare audiences make careful, emotional decisions. The work has to be accurate, sensitive and consistent across every channel.",
+      "Healthcare communication must balance empathy, credibility, accessibility and responsible creative execution. We help healthcare and fertility organisations communicate complex services clearly across digital, social, advertising and brand touchpoints.",
+    cardCopy:
+      "Campaign creative, social media, advertising design, logo work and internal hospital branding for fertility clinics, hospitals and healthcare groups.",
     challenges: [
       "Sensitive subjects require careful language and imagery",
       "Advertising platforms apply strict healthcare restrictions",
       "Patients compare several providers before making contact",
       "Clinical accuracy must survive translation into marketing",
+      "Communication has to work across digital, print and physical spaces",
     ],
     experience: [
       "Fertility awareness and treatment communication",
-      "Donor awareness campaign creative",
-      "Multi-city campaign adaptation with location targeting",
+      "Donor awareness campaign creative and multi-city adaptation",
+      "Hospital social-media post design and Meta Ads campaign creatives",
+      "Logo design and internal hospital branding systems",
       "Exhibition and conference material for healthcare events",
-      "WhatsApp and enquiry communication templates",
+      "Recruitment and awareness communication",
     ],
-    capabilities: ["strategy-consulting", "brand-creative", "social-media", "performance-marketing"],
-    projects: ["genetics-cryobank", "yashoda-ivf"],
+    capabilities: [
+      "brand-creative",
+      "social-media",
+      "performance-marketing",
+      "video-content",
+      "websites-technology",
+      "strategy-consulting",
+    ],
+    clients: [
+      "genetics-cryobank",
+      "yashoda-ivf",
+      "suviksha-hospital",
+      "mimas-world-hospitals",
+      "advaith-hospital",
+      "xpert-super-speciality-trulife",
+      "medibrain",
+      "mahadevi-hospital",
+    ],
+    projects: [
+      "genetics-cryobank",
+      "yashoda-ivf",
+      "mimas-world-hospitals",
+      "suviksha-hospital",
+      "advaith-hospital",
+      "xpert-super-speciality-trulife",
+      "medibrain",
+      "mahadevi-hospital",
+    ],
+    services: [
+      "Healthcare branding",
+      "Fertility communication",
+      "Hospital graphic design",
+      "Social-media campaigns",
+      "Meta advertising creative",
+      "Awareness communication",
+      "Logo design",
+      "Internal hospital branding",
+      "Video content",
+      "Website design",
+      "Recruitment communication",
+      "Exhibition design",
+    ],
     faqs: [
       {
         question: "Do you write medical claims?",
@@ -44,21 +95,23 @@ export const industries: Industry[] = [
           "No. We do not create success-rate or outcome claims. Clinical statements come from the clinical team and are presented responsibly.",
       },
       {
-        question: "Can healthcare brands advertise on Meta and Google?",
+        question: "What is the difference between the campaign work and the branding work?",
         answer:
-          "Within platform policy, yes. Creative and copy need to be written for those restrictions from the start rather than corrected after rejection.",
+          "Campaign and social-media design covers MIMAS World Hospitals, Suviksha Hospital, Advaith Hospital and Xpert Super Speciality Trulife. Logo and internal hospital branding covers Medibrain and Mahadevi Hospital.",
       },
     ],
   },
   {
-    slug: "medical-surgical",
-    name: "Medical and Surgical",
-    metaTitle: "B2B Medical & Surgical Brand Communication | Diglizer Solution",
+    slug: "medical-products-b2b-healthcare",
+    name: "Medical Products & B2B Healthcare",
+    metaTitle: "Medical Product & B2B Healthcare Design Agency | Diglizer Solution",
     metaDescription:
-      "Product presentation, packaging, catalogues and B2B websites for medical and surgical product companies in Mumbai and across India.",
-    headline: "Product credibility, built across packaging, catalogue and web.",
+      "Medical-product websites, B2B catalogues, packaging, exhibition panels and enquiry systems for surgical and medical product companies across India.",
+    headline: "Turning technical products into clear, credible buying experiences.",
     summary:
-      "B2B medical buyers evaluate specification, presentation and reliability. The brand has to look organised in every format.",
+      "B2B medical buyers evaluate specification, presentation and reliability. The brand has to look organised in every format — from the packaging in a hospital store to the catalogue in a distributor's hand and the website behind the enquiry.",
+    cardCopy:
+      "Product websites, catalogues, packaging, exhibition material and enquiry systems for medical and surgical product companies.",
     challenges: [
       "Large product ranges that are difficult to navigate",
       "Mandatory product information competing with design",
@@ -66,13 +119,34 @@ export const industries: Industry[] = [
       "Quotation and enquiry workflows that need structure",
     ],
     experience: [
-      "Product catalogue organisation and category structure",
-      "Surgical consumables packaging and product communication",
+      "Medical-product website design, development and deployment",
+      "Product category structure, filters and enquiry systems",
+      "Packaging and print-ready production artwork",
+      "B2B catalogues and product communication",
       "Exhibition panels, standees and corporate collateral",
-      "Medical product websites with filters, forms and notifications",
+      "Product mockups and presentation visuals",
     ],
-    capabilities: ["brand-creative", "packaging-print", "websites-technology", "photography-production"],
-    projects: ["grace26"],
+    capabilities: [
+      "websites-technology",
+      "packaging-print",
+      "brand-creative",
+      "photography-production",
+    ],
+    clients: ["grace26", "genetics-cryobank"],
+    projects: ["grace26", "genetics-cryobank"],
+    services: [
+      "Medical-product websites",
+      "B2B catalogues",
+      "Packaging",
+      "Product communication",
+      "Product photography",
+      "Product mockups",
+      "Exhibition panels",
+      "Standees",
+      "Enquiry systems",
+      "Product filters",
+      "Corporate communication",
+    ],
     faqs: [
       {
         question: "Can you structure a large product catalogue?",
@@ -86,176 +160,339 @@ export const industries: Industry[] = [
     ],
   },
   {
-    slug: "travel-hospitality",
-    name: "Travel and Hospitality",
-    metaTitle: "Travel & Hospitality Brand and Website Agency | Diglizer Solution",
+    slug: "education-learning",
+    name: "Education & Learning",
+    metaTitle: "Education & College Graphic Design Agency | Diglizer Solution",
     metaDescription:
-      "Destination storytelling, itinerary presentation, travel websites and enquiry systems for travel brands and community trip organisers.",
-    headline: "Experiences sold through atmosphere and clarity.",
+      "Admission campaigns, college branding, booklet design, exhibition creatives and LED panel design for educational institutions and learning platforms.",
+    headline: "Education communication designed to inform, engage and inspire.",
     summary:
-      "Travel decisions are emotional first and practical second. The brand needs to feel like the trip and answer the questions honestly.",
+      "Educational institutions speak to students, parents, faculty and visitors across a wide mix of printed, digital and large-format touchpoints. The communication has to stay clear and consistent in all of them.",
+    cardCopy:
+      "Admission campaigns, institutional branding, booklets, exhibition creatives and LED panel design for colleges and learning platforms.",
     challenges: [
-      "Communicating an experience without over-promising",
-      "Presenting itineraries, inclusions and pricing clearly",
-      "Converting interest into enquiries quickly",
-      "Seasonal content demands",
+      "Several audiences reading the same message differently",
+      "Admission cycles that compress a lot of communication into a short window",
+      "Formats ranging from a booklet page to a large LED display",
+      "Institutional credibility that must never look improvised",
     ],
     experience: [
-      "Travel brand positioning and visual direction",
-      "Multi-page travel websites with itinerary structure",
-      "Enquiry forms with secure storage and notifications",
-      "Community trip campaign and social communication",
+      "Admission campaign posts and 'Admissions Open' creatives",
+      "College branding materials and institutional communication",
+      "Booklet design and print-ready artwork",
+      "Exhibition creatives and event display communication",
+      "LED panel designs for large-format display",
+      "Educational content, social-media design and video editing",
     ],
-    capabilities: ["brand-creative", "websites-technology", "social-media", "video-content"],
+    capabilities: ["brand-creative", "social-media", "video-content", "packaging-print"],
+    clients: ["prober", "dnyanasadhana-college"],
+    projects: ["prober", "dnyanasadhana-college"],
+    services: [
+      "Institutional graphic design",
+      "Admission campaigns",
+      "Social-media communication",
+      "College branding",
+      "Booklet design",
+      "Exhibition creatives",
+      "LED panel design",
+      "Educational content",
+      "Video editing",
+      "Print communication",
+    ],
+    faqs: [
+      {
+        question: "Can you work to an admission calendar?",
+        answer:
+          "Yes. Admission communication is planned as a sequence so each creative arrives when the audience is actually deciding.",
+      },
+      {
+        question: "Do you supply print-ready and large-format files?",
+        answer:
+          "Yes — booklets, exhibition panels and LED panel artwork are prepared to the required output specification.",
+      },
+    ],
+  },
+  {
+    slug: "government-public-service",
+    name: "Government & Public Service",
+    metaTitle: "Public Awareness & Road Safety Campaign Design | Diglizer Solution",
+    metaDescription:
+      "Public-awareness and road-safety communication design: social-media creatives, print material and information design for civic and public-service messaging.",
+    headline: "Public communication created with clarity, responsibility and respect.",
+    summary:
+      "Public messages have to be understood immediately by a very broad audience. The work prioritises the instruction itself — hierarchy, legibility and restraint before decoration.",
+    cardCopy:
+      "Road-safety and public-awareness communication design across social media and print, created responsibly and without implied endorsement.",
+    challenges: [
+      "A single message must reach audiences of every age and language",
+      "Serious subjects that cannot be trivialised by design",
+      "Formats ranging from a phone screen to a printed hoarding",
+      "Official marks and emblems that must be preserved exactly",
+    ],
+    experience: [
+      "Navi Mumbai Police awareness communication",
+      "Thane Police awareness communication",
+      "Collaborative road-safety communication with Cycle Pure Agarbathi",
+      "Do-not-drink-and-drive and seat-belt awareness creatives",
+      "Public-awareness social-media posts and print material",
+    ],
+    capabilities: ["brand-creative", "social-media", "packaging-print"],
+    clients: ["maharashtra-police"],
+    projects: ["maharashtra-police"],
+    services: [
+      "Public-awareness communication",
+      "Road-safety campaign design",
+      "Social-media creative",
+      "Print communication",
+      "Information design",
+      "Government and civic design",
+    ],
+    faqs: [
+      {
+        question: "Is Diglizer an official agency for any government department?",
+        answer:
+          "No. The work shown is selected project-based public-awareness design experience. No government endorsement, state-wide contract or official appointment is claimed.",
+      },
+      {
+        question: "How are official emblems handled?",
+        answer:
+          "Emblems, department names and collaborator logos are preserved exactly as supplied. They are never animated, recoloured or used decoratively.",
+      },
+    ],
+  },
+  {
+    slug: "travel-hospitality-community",
+    name: "Travel, Hospitality & Community",
+    metaTitle: "Travel & Community Brand and Website Agency | Diglizer Solution",
+    metaDescription:
+      "Travel branding, itinerary design, destination campaigns, community communication and enquiry systems for travel brands and trip organisers.",
+    headline: "Travel brands built around experiences people want to join.",
+    summary:
+      "Travel decisions are emotional first and practical second. The brand has to make the experience feel worth joining, then make the logistics effortless to understand.",
+    cardCopy:
+      "Travel branding, websites, itinerary design, destination campaigns and enquiry systems for community-led travel brands.",
+    challenges: [
+      "Selling an experience that does not exist yet",
+      "Itineraries that must feel exciting and still be readable",
+      "Seasonal demand that swings sharply",
+      "Trust signals for first-time travellers joining a group",
+    ],
+    experience: [
+      "Travel brand direction and community positioning",
+      "Website design with trip, itinerary and experience pages",
+      "Destination campaign content and social communication",
+      "Enquiry and booking-intent flows",
+      "Short-form travel video content",
+    ],
+    capabilities: [
+      "brand-creative",
+      "websites-technology",
+      "social-media",
+      "video-content",
+      "photography-production",
+    ],
+    clients: ["tripwithowners"],
     projects: ["tripwithowners"],
+    services: [
+      "Travel branding",
+      "Website design",
+      "Itinerary design",
+      "Social media",
+      "Destination campaigns",
+      "Community communication",
+      "Enquiry systems",
+      "Video content",
+    ],
     faqs: [
       {
-        question: "Can you build a booking or enquiry flow?",
+        question: "How do you present itineraries?",
         answer:
-          "Yes. Most community travel brands start with a structured enquiry flow and add payment steps once volume justifies it.",
+          "As a scannable day-by-day structure with the atmosphere carried by imagery and the logistics carried by clear typography.",
       },
       {
-        question: "Do you handle destination content?",
-        answer: "Yes, through art direction, copy and video editing built around each itinerary.",
-      },
-    ],
-  },
-  {
-    slug: "fashion-lifestyle",
-    name: "Fashion and Lifestyle",
-    metaTitle: "Fashion & Lifestyle Creative Agency Mumbai | Diglizer Solution",
-    metaDescription:
-      "Visual identity, campaign photography, reels and paid social for fashion and lifestyle brands in Mumbai and Thane.",
-    headline: "Taste, consistency and momentum.",
-    summary:
-      "Fashion brands live on visual rhythm. The work is about maintaining a recognisable standard at the pace social demands.",
-    challenges: [
-      "High content volume with limited production time",
-      "Maintaining a consistent look across shoots",
-      "Standing out in crowded social feeds",
-      "Turning attention into purchase intent",
-    ],
-    experience: [
-      "Brand and campaign visual direction",
-      "Product and campaign photography",
-      "Reels and short-form editing",
-      "Paid social creative for fashion audiences",
-    ],
-    capabilities: ["brand-creative", "photography-production", "social-media", "performance-marketing"],
-    projects: ["aikaa-fashion"],
-    faqs: [
-      {
-        question: "Can you run monthly content production?",
-        answer: "Yes, on a planned calendar with shoot days grouped to keep cost and turnaround predictable.",
-      },
-      {
-        question: "Do you work with new labels?",
-        answer: "Yes. Early-stage labels usually start with identity, a lookbook shoot and a social content system.",
-      },
-    ],
-  },
-  {
-    slug: "professional-services",
-    name: "Technology and Professional Services",
-    metaTitle: "Technology & Professional Services Marketing | Diglizer Solution",
-    metaDescription:
-      "Trust-led communication, clear service explanation and brand design for technology and professional services firms in Mumbai and Thane.",
-    headline: "Authority communicated without hype.",
-    summary:
-      "Financial and professional audiences respond to clarity and restraint. Educational content does more than promotional noise.",
-    challenges: [
-      "Regulatory sensitivity around claims and advice",
-      "Complex services that need simple explanation",
-      "Long consideration cycles",
-      "Differentiating from look-alike competitors",
-    ],
-    experience: [
-      "Educational and explanatory social content",
-      "Brand and communication design for professional firms",
-      "Website structure for service explanation and enquiries",
-    ],
-    capabilities: ["strategy-consulting", "brand-creative", "social-media", "websites-technology"],
-    projects: ["siddhartha-logic", "prober"],
-    faqs: [
-      {
-        question: "Do you provide investment advice or profit projections?",
+        question: "Do travel sites need a booking engine?",
         answer:
-          "No. We do not create investment advice, return claims or profit projections. Content stays educational and compliance-aware.",
-      },
-      {
-        question: "Can you work with our compliance team?",
-        answer: "Yes. Review cycles are built into the calendar so approvals do not delay publishing.",
+          "Not always. A well-structured enquiry flow often converts better for curated group travel than a full booking engine.",
       },
     ],
   },
   {
-    slug: "culture-events",
-    name: "Culture and Events",
-    metaTitle: "Cultural & Event Marketing Agency Mumbai | Diglizer Solution",
+    slug: "fashion-jewellery-lifestyle",
+    name: "Fashion, Jewellery & Lifestyle",
+    metaTitle: "Fashion & Jewellery Campaign Design Agency | Diglizer Solution",
     metaDescription:
-      "Event promotion, cultural storytelling, video editing, posters and reels for literary, cultural and community events.",
-    headline: "Culture deserves craft, not templates.",
+      "Fashion content, jewellery campaigns, Reels, Meta Ads creative and lifestyle branding for fashion, jewellery and lifestyle brands in Mumbai and India.",
+    headline: "Visual experiences designed to create desire and recognition.",
     summary:
-      "Events need momentum before the date and a legacy after it. Both are content problems as much as design problems.",
+      "Fashion, jewellery and lifestyle brands are judged on the first frame. Consistency of styling, crop, colour and rhythm is what turns a feed into a brand.",
+    cardCopy:
+      "Campaign creative, product-promotion design, Reels and Meta advertising for fashion, jewellery and lifestyle brands.",
     challenges: [
-      "Short promotional windows",
-      "Multi-format assets for print, stage and social",
-      "Capturing the event well enough to reuse afterwards",
-      "Respecting cultural and literary context",
+      "Category conventions that make every brand look alike",
+      "Product detail that has to survive a small screen",
+      "Constant content demand across formats",
+      "Advertising creative that must sell without shouting",
     ],
     experience: [
-      "Event creatives, posters and promotional design",
-      "YouTube editing and short-form cultural content",
-      "Event storytelling and highlight videos",
+      "Fashion campaign creatives and social-media systems",
+      "Jewellery product-promotion creatives",
+      "Meta Ads campaign design",
+      "Short-form Reels and content formats",
+      "Lifestyle brand communication",
+    ],
+    capabilities: [
+      "brand-creative",
+      "social-media",
+      "performance-marketing",
+      "photography-production",
+      "video-content",
+    ],
+    clients: ["aikaa-fashion", "mark-jewells"],
+    projects: ["aikaa-fashion", "mark-jewells"],
+    services: [
+      "Fashion content",
+      "Jewellery campaigns",
+      "Product-promotion creative",
+      "Reels",
+      "Social-media design",
+      "Meta Ads creative",
+      "Lifestyle branding",
+      "Campaign design",
+    ],
+    faqs: [
+      {
+        question: "Do you shoot product photography?",
+        answer:
+          "Yes, where the engagement includes it. Otherwise we art-direct and design around supplied product photography.",
+      },
+      {
+        question: "Can one creative system cover organic and paid?",
+        answer:
+          "Yes — the organic system sets the visual language and the advertising creative adapts it for platform requirements.",
+      },
+    ],
+  },
+  {
+    slug: "culture-events-entertainment",
+    name: "Culture, Events & Entertainment",
+    metaTitle: "Cultural Event & Video Content Design Agency | Diglizer Solution",
+    metaDescription:
+      "Event creatives, cultural campaigns, YouTube editing, Reels, poster design and literary communication for cultural platforms and event organisers.",
+    headline: "Extending culture through design, motion and digital storytelling.",
+    summary:
+      "Cultural work lives twice — once in the room and once online. The design system has to serve the event and the archive of content that follows it.",
+    cardCopy:
+      "Event creatives, poster design, YouTube editing, Reels and literary communication for cultural platforms and festivals.",
+    challenges: [
+      "Programmes that change until the last moment",
+      "Multilingual typography that must stay beautiful",
+      "Long-form recordings that need to become short-form content",
+      "Community audiences who notice inauthentic design instantly",
+    ],
+    experience: [
+      "Event creatives, posters and festival communication",
+      "Senior video editing for long-form cultural sessions",
+      "YouTube content, thumbnails and Reels",
+      "Literary and cultural social communication",
+      "Event photography direction",
     ],
     capabilities: ["brand-creative", "video-content", "social-media", "photography-production"],
+    clients: ["pasbaan-e-adab"],
     projects: ["pasbaan-e-adab"],
+    services: [
+      "Event creatives",
+      "Cultural campaigns",
+      "YouTube editing",
+      "Reels",
+      "Poster design",
+      "Event videos",
+      "Literary communication",
+      "Social media",
+    ],
     faqs: [
       {
-        question: "Can you produce assets on an event timeline?",
-        answer: "Yes, with a fixed asset list and approval schedule agreed before the promotional window opens.",
+        question: "Can you handle multilingual cultural typography?",
+        answer:
+          "Yes. Script pairing, line breaks and legibility are set deliberately rather than left to default type settings.",
       },
       {
-        question: "Do you edit long-form event video?",
-        answer: "Yes — full sessions, highlight cuts and short-form derivatives from the same footage.",
+        question: "Do you edit long-form recordings?",
+        answer:
+          "Yes — full session edits for YouTube plus derived short-form cuts for Reels and stories.",
       },
     ],
   },
   {
-    slug: "startups-local-businesses",
-    name: "Startups and Local Businesses",
-    metaTitle: "Digital Marketing for Local Businesses in Thane | Diglizer Solution",
+    slug: "technology-professional-services",
+    name: "Technology & Professional Services",
+    metaTitle: "B2B Technology & Professional Services Creative | Diglizer Solution",
     metaDescription:
-      "Brand launch, website, Google Business Profile support, local SEO, social content and lead generation for startups and local businesses in Thane and Mumbai.",
-    headline: "Everything a growing business needs, in a sensible order.",
+      "Brand communication, graphic design, explainer content, video editing and B2B creative for technology companies and professional-services firms.",
+    headline: "Complex services made clearer, sharper and easier to understand.",
     summary:
-      "Smaller budgets need sequencing. We prioritise the work that produces enquiries first and build the rest as the business grows.",
+      "Technology and professional-services brands lose deals to confusion far more often than to competition. The work is about making the offer legible.",
+    cardCopy:
+      "Brand communication, B2B creative, explainer content and video for technology companies and professional-services firms.",
     challenges: [
-      "Limited budget and internal marketing time",
-      "Weak local search visibility",
-      "No consistent brand assets",
-      "Enquiries arriving with no system to manage them",
+      "Offers that are hard to describe in one sentence",
+      "Technical teams writing for technical peers, not buyers",
+      "Long buying cycles needing consistent proof",
+      "Categories with very little visual differentiation",
     ],
     experience: [
-      "Brand launch kits and website builds",
-      "Google Business Profile and local search support",
-      "Social content systems for small teams",
-      "Lead-generation campaigns with structured follow-up",
+      "Brand and graphic-design communication for service businesses",
+      "Corporate presentation, promo and explainer editing",
+      "Social-media systems for B2B audiences",
+      "Website communication and content structure",
     ],
-    capabilities: ["brand-creative", "websites-technology", "performance-marketing", "social-media"],
-    projects: [],
+    capabilities: [
+      "strategy-consulting",
+      "brand-creative",
+      "video-content",
+      "websites-technology",
+      "social-media",
+    ],
+    clients: ["siddhartha-logic", "prober"],
+    projects: ["siddhartha-logic", "prober"],
+    services: [
+      "Brand communication",
+      "Graphic design",
+      "Video editing",
+      "Social media",
+      "Explainer content",
+      "Website communication",
+      "B2B creative",
+    ],
     faqs: [
       {
-        question: "What should a local business do first?",
+        question: "Can you simplify a technical offer without losing accuracy?",
         answer:
-          "Usually a clear website with strong enquiry paths and a correctly configured Google Business Profile. Paid media works far better once those exist.",
+          "Yes. We build a message hierarchy with the subject-matter team so the simple version stays true to the detailed one.",
       },
       {
-        question: "Do you work on retainers or projects?",
-        answer: "Both. Many businesses start with a defined project and move to a monthly scope afterwards.",
+        question: "Do you produce explainer video?",
+        answer: "Yes — scripting, editing and motion for presentation, sales and social use.",
       },
     ],
   },
 ];
 
 export const getIndustry = (slug: string) => industries.find((i) => i.slug === slug);
+
+/** Obsolete industry URLs redirect to the closest current route. */
+export const legacyIndustryRedirects: Record<string, string> = {
+  "healthcare-fertility": "healthcare-fertility-hospitals",
+  healthcare: "healthcare-fertility-hospitals",
+  fertility: "healthcare-fertility-hospitals",
+  "medical-surgical": "medical-products-b2b-healthcare",
+  "travel-hospitality": "travel-hospitality-community",
+  "fashion-lifestyle": "fashion-jewellery-lifestyle",
+  "fashion-retail": "fashion-jewellery-lifestyle",
+  "culture-events": "culture-events-entertainment",
+  "professional-services": "technology-professional-services",
+  "finance-professional-services": "technology-professional-services",
+  "startups-local-businesses": "technology-professional-services",
+  education: "education-learning",
+  government: "government-public-service",
+  "real-estate": "technology-professional-services",
+};

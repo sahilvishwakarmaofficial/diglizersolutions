@@ -4,17 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import { seo, organizationSchema, websiteSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { FinalCta } from "@/components/layout/SiteLayout";
-import { MediaGallery } from "@/components/MediaGallery";
-import { VideoWork } from "@/components/VideoWork";
+import { ClientLogoCloud } from "@/components/ClientLogoCloud";
 import { PricingSection } from "@/components/PricingSection";
-import { FounderPortrait } from "@/components/FounderPortrait";
-import { ClientDirectory } from "@/components/ClientDirectory";
 
 import { capabilities } from "@/content/capabilities";
 import { industries } from "@/content/industries";
-import { industryMedia } from "@/content/industryMedia";
-import { projects, clientStrip } from "@/content/projects";
-import { videoWork } from "@/content/clients";
+import { projects } from "@/content/projects";
 import { siteConfig } from "@/config/site";
 import { pricing } from "@/content/pricing";
 
@@ -57,364 +52,236 @@ const approach = [
   },
 ];
 
+const proofPoints = [
+  { figure: "17", label: "Organisations served across nine categories" },
+  { figure: "8", label: "Industries with category-specific experience" },
+  { figure: "₹25,000", label: "Starting investment for a defined project" },
+  { figure: "1 day", label: "Typical response time to a genuine enquiry" },
+];
+
+/** Decorative Diglizer geometry — pure SVG, no photography. */
+function BrandGeometry() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 600 600"
+      className="pointer-events-none absolute -right-24 -top-24 h-[38rem] w-[38rem] opacity-70 md:opacity-90"
+    >
+      <defs>
+        <linearGradient id="dg-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--brand-purple, #694699)" />
+          <stop offset="100%" stopColor="var(--brand-pink, #FB2261)" />
+        </linearGradient>
+      </defs>
+      <circle cx="300" cy="300" r="230" fill="none" stroke="url(#dg-grad)" strokeWidth="1" />
+      <circle cx="300" cy="300" r="170" fill="none" stroke="url(#dg-grad)" strokeWidth="1" opacity="0.7" />
+      <circle cx="300" cy="300" r="110" fill="none" stroke="url(#dg-grad)" strokeWidth="1" opacity="0.5" />
+      <rect x="286" y="60" width="28" height="28" fill="url(#dg-grad)" opacity="0.9" />
+      <rect x="286" y="112" width="18" height="18" fill="url(#dg-grad)" opacity="0.6" />
+      <rect x="286" y="152" width="10" height="10" fill="url(#dg-grad)" opacity="0.35" />
+    </svg>
+  );
+}
+
 function Home() {
   const featured = projects.filter((p) => p.featured).slice(0, 4);
-  const showcase = projects.flatMap((p) => p.gallery.slice(0, 1)).slice(0, 9);
 
   return (
     <>
       <JsonLd data={[organizationSchema, websiteSchema]} />
 
-      {/* Hero */}
+      {/* Hero — typography, CSS and SVG only. No photography. */}
       <section className="relative overflow-hidden bg-ink text-ink-foreground">
-        <img
-          src="/media/hero-collage.jpg"
-          alt=""
-          aria-hidden="true"
-          width={1600}
-          height={1200}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-35"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
-        <div className="container-wide relative grid items-center gap-12 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <p className="eyebrow text-gradient">{siteConfig.tagline}</p>
-            <h1 className="display-1 mt-5 max-w-4xl">
-              An independent creative, technology and digital growth company.
-            </h1>
-            <p className="lede mt-6 max-w-2xl text-ink-muted">
-              We help ambitious brands build stronger identities, sharper digital experiences and
-              growth that can be measured — from Thane and Mumbai, for clients across India.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/start-a-project"
-                className="rounded-full bg-gradient-brand px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-              >
-                Start a Project
-              </Link>
-              <Link
-                to="/work"
-                className="rounded-full border border-ink-border px-7 py-4 text-sm font-semibold transition-colors hover:bg-ink-elevated"
-              >
-                See Our Work
-              </Link>
-            </div>
-            <p className="mt-6 text-sm text-ink-muted">
-              <span className="font-semibold text-gradient">{pricing.statement}</span> Final
-              investment depends on scope and deliverables.
-            </p>
+        <BrandGeometry />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent)]" />
+        <div className="container-wide relative py-24 md:py-32">
+          <p className="eyebrow text-gradient">{siteConfig.tagline}</p>
+          <h1 className="display-1 mt-6 max-w-5xl">
+            An independent creative, technology and{" "}
+            <span className="text-gradient">digital growth</span> company.
+          </h1>
+          <p className="lede mt-7 max-w-2xl text-ink-muted">
+            We help ambitious brands build stronger identities, sharper digital experiences and
+            growth that can be measured — from Thane and Mumbai, for clients across India.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              to="/start-a-project"
+              className="rounded-full bg-gradient-brand px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              Start a Project
+            </Link>
+            <Link
+              to="/work"
+              className="rounded-full border border-ink-border px-7 py-4 text-sm font-semibold transition-colors hover:bg-ink-elevated"
+            >
+              See Our Work
+            </Link>
           </div>
+          <p className="mt-7 text-sm text-ink-muted">
+            <span className="font-semibold text-gradient">{pricing.statement}</span> Final
+            investment depends on scope and deliverables.
+          </p>
 
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { src: "/media/clients/genetics-social-grid.jpg", alt: "Healthcare campaign creatives", cls: "aspect-[4/5]" },
-              { src: "/media/clients/grace26-website.jpg", alt: "Medical products website design", cls: "aspect-[4/5] mt-8" },
-              { src: "/media/clients/two-travel.jpg", alt: "Community travel photography", cls: "aspect-square" },
-              { src: "/media/clients/aikaa-social.jpg", alt: "Fashion campaign creatives", cls: "aspect-square mt-8" },
-            ].map((item) => (
-              <img
-                key={item.src}
-                src={item.src}
-                alt={item.alt}
-                loading="lazy"
-                decoding="async"
-                width={800}
-                height={1000}
-                className={`w-full rounded-xl border border-ink-border object-cover ${item.cls}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="container-wide relative pb-16">
-          <dl className="grid grid-cols-2 gap-6 border-t border-ink-border pt-8 md:grid-cols-4">
-            {[
-              ["9", "Client engagements"],
-              ["8", "Core capabilities"],
-              ["7", "Industries served"],
-              ["1", "Accountable partner"],
-            ].map(([value, label]) => (
-              <div key={label}>
-                <dt className="sr-only">{label}</dt>
-                <dd>
-                  <span className="block font-display text-3xl font-bold">{value}</span>
-                  <span className="mt-1 block text-xs uppercase tracking-widest text-ink-muted">
-                    {label}
-                  </span>
-                </dd>
+          <dl className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink-border bg-ink-border sm:grid-cols-2 lg:grid-cols-4">
+            {proofPoints.map((item) => (
+              <div key={item.label} className="bg-ink px-6 py-7">
+                <dt className="font-display text-3xl font-bold text-gradient">{item.figure}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{item.label}</dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
 
-      {/* Client strip */}
-      <section className="border-b border-border bg-background py-6">
-        <div className="container-wide flex flex-wrap items-center gap-x-7 gap-y-2">
-          <span className="eyebrow text-muted-foreground">Worked with</span>
-          {clientStrip.map((client) => (
-            <span key={client} className="text-sm font-medium text-muted-foreground">
-              {client}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Positioning */}
-      <section className="section-y-compact">
-        <div className="container-wide grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <p className="eyebrow text-gradient">Who we are</p>
-            <h2 className="display-2 mt-4">
-              Strategy, craft and engineering under one accountable roof.
-            </h2>
-          </div>
-          <div className="space-y-5 leading-relaxed text-muted-foreground">
-            <p>
-              Diglizer Solution works at the intersection of brand, product and growth. Instead of
-              splitting a brand across a design studio, a development vendor and a marketing
-              agency, we hold the whole picture.
-            </p>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              More about the studio <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ClientLogoCloud />
 
       {/* Capabilities */}
-      <section className="section-y bg-muted/40">
+      <section className="section-y">
         <div className="container-wide">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="eyebrow text-gradient">Capabilities</p>
-              <h2 className="display-2 mt-4 max-w-2xl">What we do, end to end.</h2>
+              <h2 className="display-2 mt-4 max-w-2xl">
+                One studio across brand, content, product and growth.
+              </h2>
             </div>
             <Link
               to="/capabilities"
-              className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
             >
-              All capabilities
+              All capabilities <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+
+          <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {capabilities.map((capability) => (
-              <Link
-                key={capability.slug}
-                to="/capabilities/$slug"
-                params={{ slug: capability.slug }}
-                className="group bg-card p-6 transition-colors hover:bg-accent"
-              >
-                <span className="eyebrow text-muted-foreground">{capability.group}</span>
-                <h3 className="mt-3 font-display text-lg font-bold leading-snug">
-                  {capability.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {capability.summary}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                  Explore
-                  <ArrowUpRight
-                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                </span>
-              </Link>
+              <li key={capability.slug} className="bg-background">
+                <Link
+                  to="/capabilities/$slug"
+                  params={{ slug: capability.slug }}
+                  className="group flex h-full flex-col p-8 transition-colors hover:bg-muted/50"
+                >
+                  <h3 className="font-display text-xl font-bold">{capability.name}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {capability.summary}
+                  </p>
+                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    Explore
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Featured work */}
+      {/* Approach */}
+      <section className="section-y bg-ink text-ink-foreground">
+        <div className="container-wide">
+          <p className="eyebrow text-gradient">How we work</p>
+          <h2 className="display-2 mt-4 max-w-3xl">
+            A five-step method that keeps creative tied to the business objective.
+          </h2>
+          <ol className="mt-14 grid gap-10 md:grid-cols-3 lg:grid-cols-5">
+            {approach.map((item) => (
+              <li key={item.step}>
+                <span className="font-display text-sm font-bold tracking-[0.2em] text-gradient">
+                  {item.step}
+                </span>
+                <div className="rule-gradient mt-4" />
+                <h3 className="mt-5 font-display text-lg font-bold">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.copy}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Featured work — text-led index, imagery lives inside case studies */}
       <section className="section-y">
         <div className="container-wide">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="eyebrow text-gradient">Selected work</p>
-              <h2 className="display-2 mt-4 max-w-2xl">Work built to do a job.</h2>
+              <h2 className="display-2 mt-4 max-w-2xl">Work that carries a business objective.</h2>
             </div>
             <Link
               to="/work"
-              className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
             >
-              View all work
+              All work <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+
+          <ul className="mt-12 divide-y divide-border border-y border-border">
             {featured.map((project) => (
-              <Link
-                key={project.slug}
-                to="/work/$slug"
-                params={{ slug: project.slug }}
-                className="group block"
-              >
-                <div className="overflow-hidden rounded-2xl border border-border bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                    width={1600}
-                    height={1000}
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <p className="eyebrow mt-5 text-muted-foreground">{project.industry}</p>
-                <h3 className="mt-2 font-display text-xl font-bold leading-snug">
-                  {project.client}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {project.summary}
-                </p>
-              </Link>
+              <li key={project.slug}>
+                <Link
+                  to="/work/$slug"
+                  params={{ slug: project.slug }}
+                  className="group grid gap-4 py-8 transition-colors hover:bg-muted/40 md:grid-cols-[1fr_1.4fr_auto] md:items-baseline md:gap-10 md:px-4"
+                >
+                  <div>
+                    <h3 className="font-display text-2xl font-bold leading-snug">
+                      {project.client}
+                    </h3>
+                    <p className="eyebrow mt-2 text-muted-foreground">
+                      {project.industry} · {project.location}
+                    </p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    View case study
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
-
-      {/* Selected experience */}
-      <ClientDirectory
-        eyebrow="Selected Experience"
-        heading="Experience across brands, institutions and public organisations."
-        intro="Our work and professional experience span healthcare, fertility, education, government, culture, fashion, travel, technology and professional services."
-      />
-
-      <section className="pb-4">
-        <div className="container-wide">
-          <Link
-            to="/clients"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-          >
-            View all clients and professional experience
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
-
-
-
-      {/* Visual showcase */}
-      <section className="section-y bg-muted/40">
-        <div className="container-wide">
-          <MediaGallery
-            items={showcase}
-            eyebrow="Studio output"
-            title="A look at the work itself."
-            intro="Campaign creatives, packaging, websites, event design and social systems from live client engagements. Visuals marked as designed stand-ins are replaced as approved client media is released."
-          />
-        </div>
-      </section>
-
-      {/* Motion */}
-      <section className="section-y bg-ink text-ink-foreground">
-        <div className="container-wide">
-          <p className="eyebrow text-gradient">Video and Reels</p>
-          <h2 className="display-2 mt-4 max-w-2xl">Motion work, cut for the platform.</h2>
-          <div className="mt-10">
-            <VideoWork items={videoWork} />
-          </div>
-        </div>
-      </section>
-
-      {/* Approach */}
-      <section className="section-y">
-        <div className="container-wide">
-          <p className="eyebrow text-gradient">How we work</p>
-          <h2 className="display-2 mt-4 max-w-2xl">A five-step path from ambition to outcome.</h2>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
-            {approach.map((item) => (
-              <div key={item.step} className="bg-card p-6">
-                <span className="font-display text-sm font-bold text-gradient">{item.step}</span>
-                <h3 className="mt-3 font-display text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Founder preview */}
-      <section className="section-y bg-muted/40">
-        <div className="container-wide grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <FounderPortrait />
-          <div>
-            <p className="eyebrow text-gradient">Founder</p>
-            <h2 className="display-2 mt-4">{siteConfig.founder.name}</h2>
-            <p className="mt-2 text-sm font-medium text-muted-foreground">
-              {siteConfig.founder.role}
-            </p>
-            <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
-              Diglizer is led hands-on. Every engagement has founder involvement in direction and
-              quality — the practical benefit of staying independent and deliberately small.
-            </p>
-            <Link
-              to="/founder"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              Read the founder&apos;s note <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <PricingSection tone="dark" />
 
       {/* Industries */}
-      <section className="section-y">
+      <section className="section-y-compact bg-muted/40">
         <div className="container-wide">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="eyebrow text-gradient">Industries</p>
-              <h2 className="display-2 mt-4 max-w-2xl">Category context matters.</h2>
+              <h2 className="display-2 mt-4 max-w-2xl">Context changes the creative.</h2>
             </div>
             <Link
               to="/industries"
-              className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
             >
-              All industries
+              All industries <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {industries.map((industry) => {
-              const media = industryMedia[industry.slug];
-              return (
+
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {industries.map((industry) => (
+              <li key={industry.slug}>
                 <Link
-                  key={industry.slug}
                   to="/industries/$slug"
                   params={{ slug: industry.slug }}
-                  className="group overflow-hidden rounded-2xl border border-border bg-card"
+                  className="inline-flex rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
                 >
-                  {media && (
-                    <img
-                      src={media.image}
-                      alt={media.imageAlt}
-                      loading="lazy"
-                      decoding="async"
-                      width={1200}
-                      height={800}
-                      className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                  )}
-                  <div className="p-5">
-                    <h3 className="font-display text-base font-bold leading-snug">
-                      {industry.name}
-                    </h3>
-                    {media && (
-                      <p className="mt-2 text-xs text-muted-foreground">
-                        {media.clients.join(" · ")}
-                      </p>
-                    )}
-                  </div>
+                  {industry.name}
                 </Link>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      <PricingSection />
 
       <FinalCta />
     </>

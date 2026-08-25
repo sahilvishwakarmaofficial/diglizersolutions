@@ -1,41 +1,62 @@
-/** Per-industry cover media and approved client names shown on industry cards. */
+/**
+ * Per-industry context media and the approved client names shown on cards.
+ *
+ * IMPORTANT: every image below is INDUSTRY CONTEXT imagery — licensed-style
+ * stock used as a temporary visual placeholder. It is never presented as
+ * completed client work. Project work is always shown inside case studies
+ * and labelled separately.
+ */
 export const industryMedia: Record<
   string,
   { image: string; imageAlt: string; clients: string[] }
 > = {
-  "healthcare-fertility": {
-    image: "/media/clients/genetics-social-grid.jpg",
-    imageAlt: "Fertility awareness campaign creatives",
-    clients: ["Genetics Cryobank", "Yashoda IVF & Fertility Centre"],
+  "healthcare-fertility-hospitals": {
+    image: "/media/industries/healthcare-fertility-hospitals.jpg",
+    imageAlt: "Bright modern hospital corridor with a naturally lit waiting area",
+    clients: [
+      "Genetics Cryobank",
+      "Yashoda IVF & Fertility Centre",
+      "Suviksha Hospital",
+      "MIMAS World Hospitals",
+      "Advaith Hospital",
+      "Xpert Super Speciality Trulife",
+      "Medibrain",
+      "Mahadevi Hospital",
+    ],
   },
-  "medical-surgical": {
-    image: "/media/clients/grace26-packaging.jpg",
-    imageAlt: "Medical and surgical product packaging",
-    clients: ["Grace26"],
+  "medical-products-b2b-healthcare": {
+    image: "/media/industries/medical-products-b2b-healthcare.jpg",
+    imageAlt: "Sterile medical and surgical consumables arranged for catalogue photography",
+    clients: ["Grace26", "Genetics Cryobank"],
   },
-  "travel-hospitality": {
-    image: "/media/clients/two-travel.jpg",
-    imageAlt: "Coastal travel and campsite photography",
+  "education-learning": {
+    image: "/media/industries/education-learning.jpg",
+    imageAlt: "Students collaborating with laptops and books in a modern college library",
+    clients: ["Prober", "Satish Pradhan Dnyanasadhana College, Thane"],
+  },
+  "government-public-service": {
+    image: "/media/industries/government-public-service.jpg",
+    imageAlt: "City road junction at dusk with signals, lane markings and a zebra crossing",
+    clients: ["Maharashtra Police"],
+  },
+  "travel-hospitality-community": {
+    image: "/media/industries/travel-hospitality-community.jpg",
+    imageAlt: "Group of friends laughing together at a coastal viewpoint during a road trip",
     clients: ["TripWithOwners"],
   },
-  "fashion-lifestyle": {
-    image: "/media/clients/aikaa-social.jpg",
-    imageAlt: "Fashion campaign creatives",
-    clients: ["Aikaa Fashion"],
+  "fashion-jewellery-lifestyle": {
+    image: "/media/industries/fashion-jewellery-lifestyle.jpg",
+    imageAlt: "Fine gold jewellery styled on contemporary printed textiles",
+    clients: ["Aikaa Fashion", "Mark Jewells"],
   },
-  "professional-services": {
-    image: "/media/clients/siddhartha-design.jpg",
-    imageAlt: "Professional services brand collateral",
-    clients: ["Siddhartha Logic", "Prober"],
-  },
-  "culture-events": {
-    image: "/media/clients/pasbaan-events.jpg",
-    imageAlt: "Literary festival event creatives",
+  "culture-events-entertainment": {
+    image: "/media/industries/culture-events-entertainment.jpg",
+    imageAlt: "Warmly lit auditorium stage with a microphone and an attentive audience",
     clients: ["Pasbaan-e-Adab"],
   },
-  "startups-local-businesses": {
-    image: "/media/clients/prober-design.jpg",
-    imageAlt: "Design and content work for growing organisations",
-    clients: ["Prober", "Mark Jewells"],
+  "technology-professional-services": {
+    image: "/media/industries/technology-professional-services.jpg",
+    imageAlt: "Minimal studio workstation showing dashboards and interface wireframes",
+    clients: ["Siddhartha Logic", "Prober"],
   },
 };

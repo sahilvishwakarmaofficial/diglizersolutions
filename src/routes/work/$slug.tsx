@@ -96,20 +96,45 @@ function CaseStudy() {
         </div>
       </section>
 
-      <figure className="container-wide -mt-8 md:-mt-12">
-        <img
-          src={project.image}
-          alt={project.imageAlt}
-          width={1600}
-          height={1000}
-          className="w-full rounded-2xl border border-border object-cover"
-        />
-        {project.provisionalMedia && (
-          <figcaption className="mt-3 text-xs text-muted-foreground">
-            Visual is a designed placeholder pending approved client media.
-          </figcaption>
-        )}
-      </figure>
+      {project.image ? (
+        <figure className="container-wide -mt-8 md:-mt-12">
+          <img
+            src={project.image}
+            alt={project.imageAlt ?? `${project.client} project visual`}
+            width={1600}
+            height={1000}
+            className="w-full rounded-2xl border border-border object-cover"
+          />
+          {project.provisionalMedia && (
+            <figcaption className="mt-3 text-xs text-muted-foreground">
+              Visual is a designed placeholder pending approved client media.
+            </figcaption>
+          )}
+        </figure>
+      ) : (
+        project.workCategories &&
+        project.workCategories.length > 0 && (
+          <section className="container-wide -mt-8 md:-mt-12">
+            <div className="rounded-2xl border border-border bg-card p-8">
+              <h2 className="eyebrow text-muted-foreground">Work delivered</h2>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {project.workCategories.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full border border-border px-4 py-2 text-sm font-medium"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-xs leading-relaxed text-muted-foreground">
+                Project visuals for this engagement are not published yet. Categories above
+                describe the work actually delivered; no sample imagery is shown in its place.
+              </p>
+            </div>
+          </section>
+        )
+      )}
 
       <section className="section-y">
         <div className="container-wide space-y-12">
@@ -209,6 +234,9 @@ function CaseStudy() {
                 </li>
               ))}
             </ul>
+            {project.outcomeNote && (
+              <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{project.outcomeNote}</p>
+            )}
             <p className="mt-6 max-w-3xl text-xs text-muted-foreground">
               Outcomes are described qualitatively. We do not publish client performance figures
               without written approval.

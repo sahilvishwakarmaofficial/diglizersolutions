@@ -19,9 +19,9 @@ export const siteConfig = {
 
   /* Contact — empty values are hidden in the interface until confirmed. */
   contact: {
-    email: "",
-    phone: "",
-    whatsapp: "",
+    email: "diglizersolution@gmail.com",
+    phone: "+91 84248 84119",
+    whatsapp: "918424884119",
     addressLocality: "Thane",
     addressRegion: "Maharashtra",
     addressCountry: "IN",
@@ -33,7 +33,7 @@ export const siteConfig = {
 
   social: {
     instagram: "",
-    linkedin: "",
+    linkedin: "https://in.linkedin.com/in/sahil-vishwakarma-designer",
     facebook: "",
     youtube: "",
     behance: "",
@@ -60,9 +60,19 @@ export const siteConfig = {
   founder: {
     name: "Sahil Vishwakarma",
     role: "Founder and Creative Director",
-    sameAs: [] as string[],
+    linkedin: "https://in.linkedin.com/in/sahil-vishwakarma-designer",
+    linkedinLabel: "Sahil Vishwakarma — Founder, Diglizer Solution",
+    sameAs: ["https://in.linkedin.com/in/sahil-vishwakarma-designer"] as string[],
   },
 };
+
+/** Ready-to-use hrefs. Empty string when the detail is not configured. */
+export const telHref = () =>
+  siteConfig.contact.phone ? `tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}` : "";
+
+export const mailtoHref = () =>
+  siteConfig.contact.email ? `mailto:${siteConfig.contact.email}` : "";
+
 
 export type SocialKey = keyof typeof siteConfig.social;
 
