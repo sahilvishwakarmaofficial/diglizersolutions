@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ClientLogoCloud } from "@/components/ClientLogoCloud";
 import { PricingSection } from "@/components/PricingSection";
 import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
+import { MarketingProblem } from "@/components/liquid/MarketingProblem";
 
 import { industries } from "@/content/industries";
 import { projects } from "@/content/projects";
@@ -495,6 +496,7 @@ function Home() {
       <JsonLd data={[organizationSchema, websiteSchema]} />
       <Hero />
       <ClientLogoCloud />
+      <MarketingProblem />
       <FeaturedWork />
       <Capabilities />
       <IndustryRows />
