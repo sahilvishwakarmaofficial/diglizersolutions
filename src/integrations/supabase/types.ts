@@ -14,7 +14,123 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      career_applications: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          portfolio_url: string | null
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          portfolio_url?: string | null
+          role: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          portfolio_url?: string | null
+          role?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          subject: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          subject?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          subject?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      project_enquiries: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          created_at: string
+          details: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          referral_source: string | null
+          services: string[]
+          timeline: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          created_at?: string
+          details: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          referral_source?: string | null
+          services?: string[]
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          created_at?: string
+          details?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          referral_source?: string | null
+          services?: string[]
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

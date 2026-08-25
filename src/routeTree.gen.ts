@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as StartAProjectRouteImport } from './routes/start-a-project'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/index'
+import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
+import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
+import { Route as IndustriesSlugRouteImport } from './routes/industries/$slug'
 import { Route as WorkIndexRouteImport } from './routes/work/index'
 import { Route as WorkSlugRouteImport } from './routes/work/$slug'
 
@@ -19,9 +25,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartAProjectRoute = StartAProjectRouteImport.update({
+  id: '/start-a-project',
+  path: '/start-a-project',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
   id: '/capabilities/',
   path: '/capabilities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
+  id: '/capabilities/$slug',
+  path: '/capabilities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/industries/',
+  path: '/industries/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/industries/$slug',
+  path: '/industries/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
@@ -37,35 +73,90 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
+  '/industries': typeof IndustriesIndexRoute
   '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/start-a-project': typeof StartAProjectRoute
+  '/thank-you': typeof ThankYouRoute
+  '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/work/$slug' | '/capabilities/' | '/work/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
+    | '/capabilities/$slug'
+    | '/industries/$slug'
+    | '/work/$slug'
+    | '/capabilities/'
+    | '/industries/'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/work/$slug' | '/capabilities' | '/work'
-  id: '__root__' | '/' | '/work/$slug' | '/capabilities/' | '/work/'
+  to:
+    | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
+    | '/capabilities/$slug'
+    | '/industries/$slug'
+    | '/work/$slug'
+    | '/capabilities'
+    | '/industries'
+    | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/start-a-project'
+    | '/thank-you'
+    | '/capabilities/$slug'
+    | '/industries/$slug'
+    | '/work/$slug'
+    | '/capabilities/'
+    | '/industries/'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  StartAProjectRoute: typeof StartAProjectRoute
+  ThankYouRoute: typeof ThankYouRoute
+  CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
 
@@ -78,11 +169,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start-a-project': {
+      id: '/start-a-project'
+      path: '/start-a-project'
+      fullPath: '/start-a-project'
+      preLoaderRoute: typeof StartAProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capabilities/': {
       id: '/capabilities/'
       path: '/capabilities'
       fullPath: '/capabilities/'
       preLoaderRoute: typeof CapabilitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capabilities/$slug': {
+      id: '/capabilities/$slug'
+      path: '/capabilities/$slug'
+      fullPath: '/capabilities/$slug'
+      preLoaderRoute: typeof CapabilitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/': {
+      id: '/industries/'
+      path: '/industries'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/industries/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/': {
@@ -104,8 +237,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  StartAProjectRoute: StartAProjectRoute,
+  ThankYouRoute: ThankYouRoute,
+  CapabilitiesSlugRoute: CapabilitiesSlugRoute,
+  IndustriesSlugRoute: IndustriesSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
