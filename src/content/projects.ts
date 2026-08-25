@@ -31,9 +31,14 @@ export interface Project {
   metaTitle: string;
   metaDescription: string;
   headline: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   provisionalMedia: boolean;
+  /** Short project pages carry confirmed copy but no published media yet. */
+  level?: "full" | "short";
+  /** Categories of work delivered, shown when no approved media exists yet. */
+  workCategories?: string[];
+  outcomeNote?: string;
   links: ClientLinks;
   /** Full-width media band inside the case study. */
   feature?: MediaAsset;
@@ -934,6 +939,579 @@ export const projects: Project[] = [
     impact: ["A consistent seasonal feed across organic and paid placements"],
     relatedCapabilities: ["social-media", "performance-marketing", "video-content"],
   },
+  {
+    slug: "dnyanasadhana-college",
+    client: "Satish Pradhan Dnyanasadhana College, Thane",
+    title: "Building consistent visual communication for a leading educational institution",
+    summary:
+      "Graphic design and institutional communication across admission campaigns, college branding, booklets, exhibitions and LED display creatives.",
+    industry: "Education & Learning",
+    industrySlug: "education-learning",
+    location: "Thane, Maharashtra",
+    tags: ["Graphic Design", "Education"],
+    filters: ["Education", "Graphic Design", "Print Design", "Booklet Design", "Exhibition Creative", "LED Panel Design", "Social Media"],
+    services: [
+      "Graphic-design services",
+      "Admission campaign posts",
+      "\u201cAdmissions Open\u201d creatives",
+      "Social-media designs",
+      "College branding materials",
+      "Institutional communication",
+      "Booklet design",
+      "Exhibition creatives",
+      "LED panel designs",
+      "Event and display communication",
+      "Print-ready artwork",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Satish Pradhan Dnyanasadhana College Graphic Design Work | Diglizer",
+    metaDescription:
+      "Graphic design and institutional communication for Satish Pradhan Dnyanasadhana College, Thane \u2014 admission campaigns, booklets, exhibition creatives and LED panel designs.",
+    headline: "Building consistent visual communication for a leading educational institution.",
+    provisionalMedia: false,
+    links: clientLinks["dnyanasadhana-college"]!,
+    gallery: [],
+    workCategories: [
+      "Admissions",
+      "Social Media",
+      "Booklets",
+      "Exhibitions",
+      "LED Panels",
+      "College Branding",
+      "Print Material",
+    ],
+    overview: [
+      "Created graphic-design and institutional branding materials for Satish Pradhan Dnyanasadhana College, Thane, covering admission communication, booklets, exhibition creatives, LED panels and other college-branding requirements.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Educational institutions communicate with students, parents, faculty and visitors across a wide range of physical and digital touchpoints. The challenge was to create clear, informative and visually consistent materials that could work across admission campaigns, printed booklets, exhibitions and large-format LED displays.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "Each piece of communication was designed around clarity, institutional credibility and practical readability. The visual approach adapted to different formats while maintaining a professional and recognisable college identity.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Admission campaign posts and \u201cAdmissions Open\u201d creatives",
+        "Social-media designs for institutional communication",
+        "Booklet design and print-ready artwork",
+        "Exhibition creatives and event display communication",
+        "LED panel designs for large-format display",
+        "College branding materials",
+      ],
+    },
+    impact: [
+      "Admission communication delivered across digital and print formats",
+      "Consistent institutional visual language applied across touchpoints",
+      "Large-format and exhibition communication completed",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "packaging-print"],
+  },
+  {
+    slug: "maharashtra-police",
+    client: "Maharashtra Police",
+    title: "Designing public-awareness communication for safer roads",
+    summary:
+      "Selected public-awareness design experience involving Navi Mumbai Police and Thane Police, including collaborative road-safety communication with Cycle Pure Agarbathi.",
+    industry: "Government & Public Service",
+    industrySlug: "government-public-service",
+    location: "Navi Mumbai and Thane, Maharashtra",
+    tags: ["Graphic Design", "Public Awareness"],
+    filters: ["Government", "Graphic Design", "Public-Awareness Campaign", "Print Design", "Social Media"],
+    services: [
+      "Graphic-design services",
+      "Print material",
+      "Social-media posts",
+      "Road-safety awareness campaigns",
+      "Public-awareness creatives",
+      "Navi Mumbai Police communication",
+      "Thane Police communication",
+      "Awareness communication in collaboration with Cycle Pure Agarbathi",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Maharashtra Police Road-Safety Awareness Design Work | Diglizer",
+    metaDescription:
+      "Graphic design, social-media and print communication for road-safety and public-awareness campaigns associated with Navi Mumbai Police and Thane Police.",
+    headline: "Designing public-awareness communication for safer roads.",
+    provisionalMedia: false,
+    links: clientLinks["maharashtra-police"]!,
+    gallery: [],
+    workCategories: [
+      "Drink and Drive Awareness",
+      "Seat-Belt Awareness",
+      "Road Safety",
+      "Social Media",
+      "Print Material",
+      "Navi Mumbai Police",
+      "Thane Police",
+      "Cycle Pure Agarbathi Collaboration",
+    ],
+    overview: [
+      "Created graphic-design, social-media and print communication for public-awareness campaigns associated with Navi Mumbai Police and Thane Police, including collaborative road-safety communication with Cycle Pure Agarbathi.",
+      "This is selected project-based design experience. No government endorsement, state-wide contract or official agency appointment is claimed or implied.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Road-safety messages must be understood immediately by a broad public audience. The communication needed to be clear, responsible and visually effective across social-media and printed formats without reducing the seriousness of the message.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "The creative direction focused on direct messaging, strong hierarchy and simple visual communication. Each design prioritised the safety instruction so the audience could understand the message within seconds.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Do-not-drink-and-drive awareness creatives",
+        "Seat-belt awareness communication",
+        "Road-safety and responsible-driving campaign design",
+        "Public-safety and community-awareness creatives",
+        "Social-media posts and print material",
+      ],
+    },
+    impact: [
+      "Public-awareness campaign assets delivered across social and print",
+      "Road-safety messaging presented with consistent hierarchy and clarity",
+      "Collaborative awareness communication completed with Cycle Pure Agarbathi",
+    ],
+    outcomeNote:
+      "Official emblems, department names and collaborator logos are preserved exactly as supplied and are never altered or used decoratively.",
+    relatedCapabilities: ["brand-creative", "social-media", "packaging-print"],
+  },
+  {
+    slug: "mimas-world-hospitals",
+    client: "MIMAS World Hospitals",
+    title: "Healthcare communication designed for digital attention and clarity",
+    summary:
+      "Graphic-design support across healthcare social-media communication and Meta advertising creatives.",
+    industry: "Healthcare & Hospitals",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Graphic Design", "Healthcare"],
+    filters: ["Healthcare", "Graphic Design", "Social Media", "Meta Ads Creative", "Healthcare Communication"],
+    services: [
+      "Social-media post design",
+      "Healthcare campaign creatives",
+      "Meta Ads campaign creatives",
+      "Digital advertising creatives",
+      "Graphic-design support",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "MIMAS World Hospitals Graphic Design Work | Diglizer",
+    metaDescription:
+      "Social-media posts, healthcare campaign designs and Meta Ads creatives designed for MIMAS World Hospitals by Diglizer Solution.",
+    headline: "Healthcare communication designed for digital attention and clarity.",
+    provisionalMedia: false,
+    links: clientLinks["mimas-world-hospitals"]!,
+    gallery: [],
+    workCategories: ["Social Media", "Healthcare Campaigns", "Meta Ads Creative"],
+    overview: [
+      "Created social-media posts, healthcare campaign designs and Meta Ads creatives for MIMAS World Hospitals.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Hospital communication competes for attention in a crowded feed while remaining accurate, respectful and easy to read at a glance.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "Each creative was built around one clear message, a consistent typographic hierarchy and restrained use of colour so the service being communicated stays legible in-feed and in advertising placements.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Social-media post design",
+        "Healthcare campaign creatives",
+        "Meta Ads campaign creatives",
+        "Digital advertising creatives",
+      ],
+    },
+    impact: [
+      "Campaign assets delivered for social and advertising placements",
+      "Healthcare communication presented with consistent visual treatment",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "performance-marketing"],
+  },
+  {
+    slug: "suviksha-hospital",
+    client: "Suviksha Hospital",
+    title: "Creating clear and professional healthcare campaign visuals",
+    summary: "Social-media and Meta advertising creatives developed for healthcare communication.",
+    industry: "Healthcare & Hospitals",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Graphic Design", "Healthcare"],
+    filters: ["Healthcare", "Graphic Design", "Social Media", "Meta Ads Creative", "Healthcare Communication"],
+    services: [
+      "Social-media post design",
+      "Meta Ads campaign creatives",
+      "Healthcare campaign design",
+      "Digital graphic-design support",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Suviksha Hospital Social Media Design | Diglizer",
+    metaDescription:
+      "Graphic-design services for Suviksha Hospital including social-media posts and Meta Ads campaign creatives.",
+    headline: "Creating clear and professional healthcare campaign visuals.",
+    provisionalMedia: false,
+    links: clientLinks["suviksha-hospital"]!,
+    gallery: [],
+    workCategories: ["Social Media", "Healthcare Campaigns", "Meta Ads Creative"],
+    overview: [
+      "Provided graphic-design services for Suviksha Hospital, including social-media posts and Meta Ads campaign creatives.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Hospital services need to be explained simply and professionally in a format people scroll past in under two seconds.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "Designs were kept deliberately uncluttered, leading with the service message and supporting it with a calm, credible healthcare visual treatment.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Social-media post design",
+        "Meta Ads campaign creatives",
+        "Healthcare campaign design",
+        "Digital graphic-design support",
+      ],
+    },
+    impact: [
+      "Campaign assets delivered for social and advertising use",
+      "Consistent visual treatment applied across healthcare communication",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "performance-marketing"],
+  },
+  {
+    slug: "advaith-hospital",
+    client: "Advaith Hospital",
+    title: "Professional campaign design for hospital communication",
+    summary:
+      "Healthcare social-media posts and Meta advertising creatives designed for clear digital communication.",
+    industry: "Healthcare & Hospitals",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Graphic Design", "Healthcare"],
+    filters: ["Healthcare", "Graphic Design", "Social Media", "Meta Ads Creative", "Healthcare Communication"],
+    services: [
+      "Social-media post design",
+      "Meta Ads campaign creatives",
+      "Hospital campaign design",
+      "Digital graphic-design support",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Advaith Hospital Graphic Design Work | Diglizer",
+    metaDescription:
+      "Graphic-design services for Advaith Hospital including social-media communication and Meta Ads campaign creatives.",
+    headline: "Professional campaign design for hospital communication.",
+    provisionalMedia: false,
+    links: clientLinks["advaith-hospital"]!,
+    gallery: [],
+    workCategories: ["Social Media", "Hospital Campaigns", "Meta Ads Creative"],
+    overview: [
+      "Provided graphic-design services for Advaith Hospital, including social-media communication and Meta Ads campaign creatives.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Hospital campaign design has to feel professional and reassuring while still working as advertising creative inside platform constraints.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "A restrained layout system was used so every creative reads clearly at small sizes, with the service message given priority over decoration.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Social-media post design",
+        "Meta Ads campaign creatives",
+        "Hospital campaign design",
+        "Digital graphic-design support",
+      ],
+    },
+    impact: [
+      "Campaign assets delivered for hospital communication",
+      "Digital creative prepared for advertising placements",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "performance-marketing"],
+  },
+  {
+    slug: "xpert-super-speciality-trulife",
+    client: "Xpert Super Speciality Trulife",
+    title: "Digital campaign design for fertility and specialist healthcare",
+    summary:
+      "Social-media and Meta advertising creatives for fertility and super-speciality healthcare communication.",
+    industry: "Healthcare & Fertility",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Graphic Design", "Fertility"],
+    filters: ["Healthcare", "Fertility", "Graphic Design", "Social Media", "Meta Ads Creative", "Healthcare Communication"],
+    services: [
+      "Social-media post design",
+      "Meta Ads campaign creatives",
+      "Healthcare campaigns",
+      "Fertility campaigns",
+      "Digital graphic-design support",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Xpert Super Speciality Trulife Campaign Design | Diglizer",
+    metaDescription:
+      "Graphic-design services for Xpert Super Speciality Trulife including social-media posts and Meta Ads campaign creatives for fertility and super-speciality healthcare.",
+    headline: "Digital campaign design for fertility and specialist healthcare.",
+    provisionalMedia: false,
+    links: clientLinks["xpert-super-speciality-trulife"]!,
+    gallery: [],
+    workCategories: ["Social Media", "Fertility Campaigns", "Meta Ads Creative"],
+    overview: [
+      "Provided graphic-design services for Xpert Super Speciality Trulife, including social-media posts and Meta Ads campaign creatives.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Fertility and super-speciality communication has to be sensitive and factual while still performing as campaign creative.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "Tone was kept warm and factual, avoiding clich\u00e9d imagery and outcome claims, with a consistent layout system across the campaign set.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Social-media post design",
+        "Meta Ads campaign creatives",
+        "Healthcare and fertility campaign design",
+        "Digital graphic-design support",
+      ],
+    },
+    impact: [
+      "Campaign assets delivered for fertility and super-speciality communication",
+      "Consistent, responsible creative treatment applied across the set",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "performance-marketing"],
+  },
+  {
+    slug: "mark-jewells",
+    client: "Mark Jewells",
+    title: "Creating digital campaign visuals for a jewellery brand",
+    summary:
+      "Social-media and Meta advertising creatives designed to showcase jewellery products with clarity and visual appeal.",
+    industry: "Fashion, Jewellery & Lifestyle",
+    industrySlug: "fashion-jewellery-lifestyle",
+    location: "India",
+    tags: ["Graphic Design", "Jewellery"],
+    filters: ["Jewellery", "Graphic Design", "Social Media", "Meta Ads Creative", "Fashion"],
+    services: [
+      "Social-media post design",
+      "Meta Ads campaign creatives",
+      "Jewellery campaign design",
+      "Product-promotion creatives",
+      "Digital graphic-design support",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Mark Jewells Social Media & Advertising Design | Diglizer",
+    metaDescription:
+      "Graphic-design services for Mark Jewells including social-media posts, product-promotion creatives and Meta Ads campaign designs.",
+    headline: "Creating digital campaign visuals for a jewellery brand.",
+    provisionalMedia: false,
+    links: clientLinks["mark-jewells"]!,
+    gallery: [],
+    workCategories: ["Social Media", "Product Promotion", "Meta Ads Creative"],
+    overview: [
+      "Provided graphic-design services for Mark Jewells, including social-media posts, product-promotion creatives and Meta Ads campaign designs.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "Jewellery detail is easily lost on a phone screen, and campaign creative has to hold product clarity and desirability at the same time.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "Layouts were built around generous product space, controlled contrast and a consistent typographic frame so each product reads clearly across the campaign.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Social-media post design",
+        "Product-promotion creatives",
+        "Jewellery campaign design",
+        "Meta Ads campaign creatives",
+      ],
+    },
+    impact: [
+      "Campaign and product-promotion assets delivered",
+      "Consistent presentation applied across the product range",
+    ],
+    relatedCapabilities: ["brand-creative", "social-media", "performance-marketing"],
+  },
+  {
+    slug: "medibrain",
+    client: "Medibrain",
+    title: "Developing a healthcare identity from logo concept to internal branding",
+    summary:
+      "Logo concept development, graphic design and internal hospital-branding communication.",
+    industry: "Healthcare & Hospitals",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Logo Design", "Internal Branding"],
+    filters: ["Healthcare", "Logo Design", "Internal Branding", "Graphic Design"],
+    services: [
+      "Logo design",
+      "Logo concept development",
+      "Brand-symbol exploration",
+      "Graphic-design services",
+      "Visual-identity development",
+      "Internal hospital branding",
+      "Environmental branding concepts",
+      "Interior branding communication",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Medibrain Logo & Hospital Branding Case Study | Diglizer",
+    metaDescription:
+      "Logo concepts and graphic-design applications for Medibrain, extending the visual identity into internal hospital-branding requirements.",
+    headline: "Developing a healthcare identity from logo concept to internal branding.",
+    provisionalMedia: false,
+    links: clientLinks["medibrain"]!,
+    gallery: [],
+    workCategories: [
+      "Logo Concepts",
+      "Final Logo",
+      "Identity Development",
+      "Internal Branding",
+      "Environmental Graphics",
+      "Brand Applications",
+    ],
+    overview: [
+      "Created logo concepts and graphic-design applications for Medibrain, extending the visual identity into internal hospital-branding requirements.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "A healthcare identity must communicate credibility, professionalism and care while remaining distinctive and practical across physical and digital applications.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "The identity was developed to work beyond the logo, providing a foundation for internal hospital branding and consistent environmental communication.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Logo design and logo concept development",
+        "Brand-symbol exploration",
+        "Visual-identity development",
+        "Internal hospital-branding communication",
+        "Environmental branding concepts",
+      ],
+    },
+    impact: [
+      "Logo concepts and final identity direction developed",
+      "Internal-branding system developed for hospital environments",
+    ],
+    outcomeNote:
+      "Complete interior execution is not claimed; installation evidence has not been supplied.",
+    relatedCapabilities: ["brand-creative", "strategy-consulting"],
+  },
+  {
+    slug: "mahadevi-hospital",
+    client: "Mahadevi Hospital",
+    title: "Creating a consistent healthcare identity across brand and space",
+    summary: "Logo design, visual identity and internal hospital-branding services.",
+    industry: "Healthcare & Hospitals",
+    industrySlug: "healthcare-fertility-hospitals",
+    location: "India",
+    tags: ["Logo Design", "Internal Branding"],
+    filters: ["Healthcare", "Logo Design", "Internal Branding", "Graphic Design"],
+    services: [
+      "Logo design",
+      "Logo concept development",
+      "Graphic-design services",
+      "Hospital visual identity",
+      "Internal hospital branding",
+      "Environmental branding concepts",
+    ],
+    featured: false,
+    level: "short",
+    metaTitle: "Mahadevi Hospital Logo & Internal Branding | Diglizer",
+    metaDescription:
+      "Logo design, graphic design and internal hospital-branding services delivered for Mahadevi Hospital by Diglizer Solution.",
+    headline: "Creating a consistent healthcare identity across brand and space.",
+    provisionalMedia: false,
+    links: clientLinks["mahadevi-hospital"]!,
+    gallery: [],
+    workCategories: [
+      "Logo Concept",
+      "Logo Development",
+      "Final Identity",
+      "Internal Branding",
+      "Environmental Graphics",
+      "Brand Applications",
+    ],
+    overview: [
+      "Provided logo design, graphic-design and internal hospital-branding services for Mahadevi Hospital.",
+    ],
+    challenge: {
+      heading: "Challenge",
+      paragraphs: [
+        "A hospital identity has to hold together across signage, print and digital while feeling calm, professional and easy to recognise.",
+      ],
+    },
+    strategy: {
+      heading: "Strategic response",
+      paragraphs: [
+        "The identity was designed for practical application first, so the same visual language works on a document, a wall and a screen without redrawing it each time.",
+      ],
+    },
+    solution: {
+      heading: "Services delivered",
+      bullets: [
+        "Logo design and concept development",
+        "Hospital visual identity",
+        "Graphic-design services",
+        "Internal hospital branding and environmental branding concepts",
+      ],
+    },
+    impact: [
+      "Hospital visual identity developed",
+      "Internal-branding system prepared for environmental application",
+    ],
+    relatedCapabilities: ["brand-creative", "strategy-consulting"],
+  },
 ];
 
 export const clientStrip = [
@@ -958,19 +1536,25 @@ export const clientStrip = [
 
 export const workFilters = [
   "All",
+  "Graphic Design",
+  "Social Media",
+  "Meta Ads Creative",
+  "Logo Design",
+  "Internal Branding",
+  "Print Design",
+  "Booklet Design",
+  "Exhibition Creative",
+  "LED Panel Design",
+  "Public-Awareness Campaign",
+  "Healthcare Communication",
   "Healthcare",
   "Fertility",
-  "Websites",
-  "Branding",
-  "Social Media",
-  "Video",
-  "Campaigns",
-  "Packaging",
   "Education",
   "Government",
-  "Fashion",
-  "Travel",
-  "Technology",
+  "Jewellery",
+  "Websites",
+  "Video",
+  "Packaging",
 ];
 
 
