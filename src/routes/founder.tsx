@@ -35,7 +35,15 @@ const experience = [
   { client: "Siddhartha Logic", role: "Senior graphic design and video editing" },
   { client: "Prober", role: "Freelance design and video editing" },
   { client: "Aikaa Fashion", role: "Social media, Reels and Meta advertising" },
-  { client: "Trek Power Adventures", role: "Brochure and video creative" },
+  { client: "Satish Pradhan Dnyanasadhana College, Thane", role: "Institutional and event creative" },
+  { client: "Maharashtra Police", role: "Project-based design and communication" },
+  { client: "Suviksha Hospital", role: "Healthcare design and communication" },
+  { client: "MIMAS World Hospitals", role: "Healthcare design and communication" },
+  { client: "Advaith Hospital", role: "Healthcare design and communication" },
+  { client: "Xpert Super Speciality Trulife", role: "Fertility and healthcare creative" },
+  { client: "Mark Jewells", role: "Jewellery brand and campaign design" },
+  { client: "Medibrain", role: "Healthcare design and communication" },
+  { client: "Mahadevi Hospital", role: "Healthcare design and communication" },
 ];
 
 export const Route = createFileRoute("/founder")({

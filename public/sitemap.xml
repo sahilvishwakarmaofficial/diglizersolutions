@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BASE_URL is empty until a project domain is set; paths are site-relative. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc></url>
+  <url><loc>/work</loc></url>
+  <url><loc>/clients</loc></url>
+  <url><loc>/capabilities</loc></url>
+  <url><loc>/industries</loc></url>
+  <url><loc>/about</loc></url>
+  <url><loc>/founder</loc></url>
+  <url><loc>/insights</loc></url>
+  <url><loc>/careers</loc></url>
+  <url><loc>/contact</loc></url>
+  <url><loc>/start-a-project</loc></url>
+  <url><loc>/work/genetics-cryobank</loc></url>
+  <url><loc>/work/yashoda-ivf</loc></url>
+  <url><loc>/work/grace26</loc></url>
+  <url><loc>/work/tripwithowners</loc></url>
+  <url><loc>/work/pasbaan-e-adab</loc></url>
+  <url><loc>/work/siddhartha-logic</loc></url>
+  <url><loc>/work/prober</loc></url>
+  <url><loc>/work/aikaa-fashion</loc></url>
+  <url><loc>/privacy-policy</loc></url>
+  <url><loc>/terms</loc></url>
+  <url><loc>/cookie-policy</loc></url>
+  <url><loc>/accessibility</loc></url>
+</urlset>

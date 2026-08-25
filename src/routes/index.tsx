@@ -8,6 +8,8 @@ import { MediaGallery } from "@/components/MediaGallery";
 import { VideoWork } from "@/components/VideoWork";
 import { PricingSection } from "@/components/PricingSection";
 import { FounderPortrait } from "@/components/FounderPortrait";
+import { ClientDirectory } from "@/components/ClientDirectory";
+
 import { capabilities } from "@/content/capabilities";
 import { industries } from "@/content/industries";
 import { industryMedia } from "@/content/industryMedia";
@@ -273,6 +275,27 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Selected experience */}
+      <ClientDirectory
+        eyebrow="Selected Experience"
+        heading="Experience across brands, institutions and public organisations."
+        intro="Our work and professional experience span healthcare, fertility, education, government, culture, fashion, travel, technology and professional services."
+      />
+
+      <section className="pb-4">
+        <div className="container-wide">
+          <Link
+            to="/clients"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            View all clients and professional experience
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+
 
       {/* Visual showcase */}
       <section className="section-y bg-muted/40">

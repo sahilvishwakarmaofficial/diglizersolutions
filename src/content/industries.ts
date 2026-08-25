@@ -107,7 +107,7 @@ export const industries: Industry[] = [
       "Community trip campaign and social communication",
     ],
     capabilities: ["brand-creative", "websites-technology", "social-media", "video-content"],
-    projects: ["tripwithowners", "trek-power-adventures"],
+    projects: ["tripwithowners"],
     faqs: [
       {
         question: "Can you build a booking or enquiry flow?",
@@ -243,7 +243,7 @@ export const industries: Industry[] = [
       "Lead-generation campaigns with structured follow-up",
     ],
     capabilities: ["brand-creative", "websites-technology", "performance-marketing", "social-media"],
-    projects: ["trek-power-adventures"],
+    projects: [],
     faqs: [
       {
         question: "What should a local business do first?",
