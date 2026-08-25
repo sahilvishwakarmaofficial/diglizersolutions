@@ -1,10 +1,42 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
 
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
-import { whatsappHref } from "@/config/site";
+import { whatsappHref, telHref, mailtoHref } from "@/config/site";
+
+function MobileContactBar() {
+  const tel = telHref();
+  const mail = mailtoHref();
+  if (!tel && !mail) return null;
+
+  const itemClass =
+    "flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-[0.7rem] font-semibold";
+
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur md:hidden">
+      <nav aria-label="Quick contact" className="container-wide flex items-stretch">
+        {tel && (
+          <a href={tel} className={itemClass} aria-label="Call Diglizer Solution">
+            <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
+            Call
+          </a>
+        )}
+        {mail && (
+          <a href={mail} className={itemClass} aria-label="Email Diglizer Solution">
+            <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
+            Email
+          </a>
+        )}
+        <Link to="/start-a-project" className={itemClass} aria-label="Start a project enquiry">
+          <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
+          Enquire
+        </Link>
+      </nav>
+    </div>
+  );
+}
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const wa = whatsappHref();
