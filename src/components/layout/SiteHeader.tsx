@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 import { siteConfig, telHref, mailtoHref, whatsappHref } from "@/config/site";
-import { mainNav, capabilityNav, industryNav } from "@/content/navigation";
+import {
+  mainNav,
+  capabilityNav,
+  industryNav,
+  insightsNav,
+  insightsFeatured,
+} from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
 function LogoLink({ onClick }: { onClick?: () => void }) {
