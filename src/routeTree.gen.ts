@@ -30,6 +30,7 @@ import { Route as InsightsIndexRouteImport } from './routes/insights/index'
 import { Route as InsightsCategoryRouteImport } from './routes/insights/$category'
 import { Route as WorkIndexRouteImport } from './routes/work/index'
 import { Route as WorkSlugRouteImport } from './routes/work/$slug'
+import { Route as InsightsCategorySlugRouteImport } from './routes/insights/$category.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -136,6 +137,11 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsCategorySlugRoute = InsightsCategorySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsCategoryRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -153,12 +159,13 @@ export interface FileRoutesByFullPath {
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/insights/$category': typeof InsightsCategoryRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -175,12 +182,13 @@ export interface FileRoutesByTo {
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/insights/$category': typeof InsightsCategoryRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/work': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -199,12 +207,13 @@ export interface FileRoutesById {
   '/thank-you': typeof ThankYouRoute
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/insights/$category': typeof InsightsCategoryRoute
+  '/insights/$category': typeof InsightsCategoryRouteWithChildren
   '/work/$slug': typeof WorkSlugRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/insights/$category/$slug': typeof InsightsCategorySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -230,6 +239,7 @@ export interface FileRouteTypes {
     | '/industries/'
     | '/insights/'
     | '/work/'
+    | '/insights/$category/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/work'
+    | '/insights/$category/$slug'
   id:
     | '__root__'
     | '/'
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/industries/'
     | '/insights/'
     | '/work/'
+    | '/insights/$category/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -448,16 +460,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/$category/$slug': {
+      id: '/insights/$category/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$category/$slug'
+      preLoaderRoute: typeof InsightsCategorySlugRouteImport
+      parentRoute: typeof InsightsCategoryRoute
+    }
   }
 }
 
+interface InsightsCategoryRouteChildren {
+  InsightsCategorySlugRoute: typeof InsightsCategorySlugRoute
+}
+
+const InsightsCategoryRouteChildren: InsightsCategoryRouteChildren = {
+  InsightsCategorySlugRoute: InsightsCategorySlugRoute,
+}
+
+const InsightsCategoryRouteWithChildren =
+  InsightsCategoryRoute._addFileChildren(InsightsCategoryRouteChildren)
+
 interface InsightsRouteChildren {
-  InsightsCategoryRoute: typeof InsightsCategoryRoute
+  InsightsCategoryRoute: typeof InsightsCategoryRouteWithChildren
   InsightsIndexRoute: typeof InsightsIndexRoute
 }
 
 const InsightsRouteChildren: InsightsRouteChildren = {
-  InsightsCategoryRoute: InsightsCategoryRoute,
+  InsightsCategoryRoute: InsightsCategoryRouteWithChildren,
   InsightsIndexRoute: InsightsIndexRoute,
 }
 
