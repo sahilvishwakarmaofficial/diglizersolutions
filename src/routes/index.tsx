@@ -276,7 +276,7 @@ function Capabilities() {
           {capabilityStates.map((state) => (
             <article
               key={state.slug}
-              className="relative grid gap-6 overflow-hidden rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10"
+              className="relative grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10"
             >
               <LiquidBrandObject
                 state="capability"
