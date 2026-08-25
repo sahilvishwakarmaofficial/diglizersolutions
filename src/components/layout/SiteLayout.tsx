@@ -50,17 +50,18 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main" className="flex-1 pt-16 md:pt-20">
+      <main id="main" className="flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
         {children}
       </main>
       <SiteFooter />
+      <MobileContactBar />
       {wa && (
         <a
           href={wa}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
-          className="fixed bottom-5 right-5 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-transform hover:-translate-y-0.5"
+          className="fixed bottom-20 right-5 z-40 md:bottom-5 inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-transform hover:-translate-y-0.5"
         >
           <MessageCircle className="h-5 w-5 text-primary" aria-hidden="true" />
         </a>
