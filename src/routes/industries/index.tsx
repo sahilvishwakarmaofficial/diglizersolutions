@@ -5,6 +5,7 @@ import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
 import { industries } from "@/content/industries";
+import { industryMedia } from "@/content/industryMedia";
 
 const crumbs = [
   { name: "Home", path: "/" },
