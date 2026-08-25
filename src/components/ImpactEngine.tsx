@@ -129,7 +129,7 @@ export function ImpactEngine() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const current = stages[active] ?? stages[0];
+  const current = (stages[active] ?? stages[0]) as Stage;
 
   const select = (index: number) => {
     locked.current = true;
