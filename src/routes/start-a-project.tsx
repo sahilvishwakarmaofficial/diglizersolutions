@@ -86,7 +86,7 @@ function StartAProject() {
       <PageHero
         eyebrow="Start a project"
         title="Tell us what you are trying to build."
-        lede="Three short steps. The more context you give, the more useful our first reply will be."
+        lede={`Three short steps. The more context you give, the more useful our first reply will be. ${pricing.statement}`}
         breadcrumbs={crumbs}
       />
 
