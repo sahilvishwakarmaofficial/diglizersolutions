@@ -234,6 +234,9 @@ function CaseStudy() {
                 </li>
               ))}
             </ul>
+            {project.outcomeNote && (
+              <p className="mt-4 max-w-3xl text-sm text-muted-foreground">{project.outcomeNote}</p>
+            )}
             <p className="mt-6 max-w-3xl text-xs text-muted-foreground">
               Outcomes are described qualitatively. We do not publish client performance figures
               without written approval.
