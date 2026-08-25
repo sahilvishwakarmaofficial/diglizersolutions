@@ -24,13 +24,7 @@ export const Route = createFileRoute("/start-a-project")({
   component: StartAProject,
 });
 
-const budgets = [
-  "Under ₹50,000",
-  "₹50,000 – ₹1,50,000",
-  "₹1,50,000 – ₹5,00,000",
-  "Above ₹5,00,000",
-  "Not sure yet",
-];
+const budgets = budgetOptions;
 
 const timelines = ["As soon as possible", "1–2 months", "3–6 months", "Exploring options"];
 
