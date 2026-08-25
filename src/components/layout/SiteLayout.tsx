@@ -52,6 +52,7 @@ function MobileContactBar() {
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const wa = whatsappHref();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -62,9 +63,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main" className="flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
+      {/* key forces the short liquid re-form on route change; content stays interactive. */}
+      <main key={pathname} id="main" className="route-liquid-enter flex-1 pb-16 pt-16 md:pb-0 md:pt-20">
         {children}
       </main>
+
       <SiteFooter />
       <MobileContactBar />
       {wa && (
