@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 
+import { budgetOptions, pricing } from "@/content/pricing";
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/SiteLayout";
