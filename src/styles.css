@@ -168,21 +168,35 @@
 
 @utility container-wide {
   width: 100%;
-  max-width: 90rem; /* 1440px */
+  max-width: 96rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 
   @media (min-width: 768px) {
-    padding-inline: 2.5rem;
+    padding-inline: 6vw;
   }
 
   @media (min-width: 1280px) {
-    padding-inline: 4rem;
+    padding-inline: 6.5vw;
   }
 }
 
+/* Standard section rhythm: 56px mobile, 88-112px desktop. */
 @utility section-y {
-  padding-block: clamp(4rem, 9vw, 8.5rem);
+  padding-block: 3.5rem;
+
+  @media (min-width: 768px) {
+    padding-block: clamp(5.5rem, 7.5vw, 7rem);
+  }
+}
+
+/* Compact rhythm: 40px mobile, 56-72px desktop. */
+@utility section-y-compact {
+  padding-block: 2.5rem;
+
+  @media (min-width: 768px) {
+    padding-block: clamp(3.5rem, 5vw, 4.5rem);
+  }
 }
 
 @utility text-gradient {
