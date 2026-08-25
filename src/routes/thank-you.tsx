@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/thank-you")({
@@ -15,8 +16,12 @@ export const Route = createFileRoute("/thank-you")({
 
 function ThankYou() {
   return (
-    <section className="section-y bg-ink text-ink-foreground">
-      <div className="container-wide max-w-3xl">
+    <section className="relative isolate section-y overflow-hidden bg-ink text-ink-foreground">
+      <LiquidBrandObject
+        state="contact"
+        className="absolute -right-[18%] top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 opacity-60 md:block"
+      />
+      <div className="container-wide relative max-w-3xl">
         <p className="eyebrow text-gradient">Received</p>
         <h1 className="display-1 mt-5">Thank you — your message is with us.</h1>
         <p className="lede mt-6 text-ink-muted">

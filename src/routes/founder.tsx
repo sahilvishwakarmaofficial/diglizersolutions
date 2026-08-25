@@ -3,6 +3,7 @@ import { Linkedin, ArrowUpRight } from "lucide-react";
 
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
+import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
 import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { FounderPortrait } from "@/components/FounderPortrait";
 import { siteConfig, absoluteUrl } from "@/config/site";
@@ -72,7 +73,11 @@ function Founder() {
     <>
       <JsonLd data={[breadcrumbSchema(crumbs), personSchema]} />
 
-      <section className="bg-ink text-ink-foreground">
+      <section className="relative isolate overflow-hidden bg-ink text-ink-foreground">
+        <LiquidBrandObject
+          state="monogram"
+          className="absolute -right-[20%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-60 md:block"
+        />
         <div className="container-wide grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           <FounderPortrait className="max-w-sm" />
           <div>
