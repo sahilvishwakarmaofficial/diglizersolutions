@@ -62,7 +62,7 @@ export const siteConfig = {
     role: "Founder and Creative Director",
     sameAs: [] as string[],
   },
-} as const;
+};
 
 export type SocialKey = keyof typeof siteConfig.social;
 
