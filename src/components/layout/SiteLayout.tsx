@@ -140,9 +140,20 @@ export function PageHero({
             <Breadcrumbs items={breadcrumbs} />
           </div>
         )}
-        {eyebrow && <p className="eyebrow text-gradient">{eyebrow}</p>}
-        <h1 className="display-2 mt-4 max-w-4xl">{title}</h1>
-        {lede && <p className="lede mt-6 max-w-3xl text-ink-muted">{lede}</p>}
+        {eyebrow && (
+          <Reveal as="p" className="eyebrow text-gradient">
+            {eyebrow}
+          </Reveal>
+        )}
+        <Reveal as="h1" delay={60} className="display-2 mt-4 max-w-4xl">
+          {title}
+        </Reveal>
+        {lede && (
+          <Reveal as="p" delay={120} className="lede mt-6 max-w-3xl text-ink-muted">
+            {lede}
+          </Reveal>
+        )}
+
         {children}
       </div>
     </section>
