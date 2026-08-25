@@ -61,7 +61,7 @@ const FAQS: Record<InsightCategorySlug, { q: string; a: string }[]> = {
   ],
 };
 
-export const Route = createFileRoute("/insights/$category")({
+export const Route = createFileRoute("/insights/$category/")({
   loader: async ({ params }) => {
     const category = getCategory(params.category);
     if (!category) throw notFound();

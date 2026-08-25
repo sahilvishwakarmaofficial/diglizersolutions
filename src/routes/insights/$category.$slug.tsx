@@ -4,6 +4,8 @@ import { seo } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { InsightArticleLayout } from "@/components/insights/InsightArticleLayout";
 import { getArticle, getCategory } from "@/content/insights";
+import { getInsightImage } from "@/content/insights/media";
+
 import { siteConfig, absoluteUrl } from "@/config/site";
 
 export const Route = createFileRoute("/insights/$category/$slug")({
@@ -17,15 +19,18 @@ export const Route = createFileRoute("/insights/$category/$slug")({
     if (!article) {
       return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
     }
+    const image = getInsightImage(article.slug);
     return seo({
       title: article.metaTitle,
       description: article.metaDescription,
       path: `/insights/${article.category}/${article.slug}`,
       type: "article",
+      ...(image ? { image: absoluteUrl(image.src) } : {}),
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
     });
   },
+
   component: ArticlePage,
 });
 
@@ -43,7 +48,11 @@ function ArticlePage() {
       description: article.metaDescription,
       datePublished: article.publishedAt,
       dateModified: article.updatedAt,
+      ...(getInsightImage(article.slug)
+        ? { image: [absoluteUrl(getInsightImage(article.slug)!.src)] }
+        : {}),
       mainEntityOfPage: url,
+
       author: {
         "@type": "Person",
         name: article.author.name,

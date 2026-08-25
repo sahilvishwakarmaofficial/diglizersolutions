@@ -3,6 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 
 import type { InsightArticle } from "@/content/insights";
 import { getArticleBySlug, getCategory } from "@/content/insights";
+import { getInsightImage } from "@/content/insights/media";
+
 import { Breadcrumbs } from "@/components/layout/SiteLayout";
 import { LiquidKnowledgeSphere } from "./LiquidKnowledgeSphere";
 import { getCapability } from "@/content/capabilities";
@@ -24,6 +26,8 @@ const sectionId = (heading: string) =>
 
 export function InsightArticleLayout({ article }: { article: InsightArticle }) {
   const category = getCategory(article.category);
+  const heroImage = getInsightImage(article.slug);
+
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "Insights", path: "/insights" },
@@ -85,7 +89,21 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
         </div>
       </header>
 
+      {heroImage && (
+        <figure className="container-wide -mt-6 md:-mt-10">
+          <img
+            src={heroImage.src}
+            alt={heroImage.alt}
+            width={heroImage.width}
+            height={heroImage.height}
+            className="aspect-[16/9] w-full rounded-3xl border border-border object-cover"
+          />
+          <figcaption className="mt-3 text-sm text-muted-foreground">{heroImage.caption}</figcaption>
+        </figure>
+      )}
+
       <div className="container-wide grid gap-12 py-14 lg:grid-cols-[16rem_minmax(0,1fr)] lg:py-20">
+
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <details open className="rounded-2xl border border-border p-5 lg:open:block">
             <summary className="cursor-pointer text-sm font-semibold lg:cursor-default">
