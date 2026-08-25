@@ -13,12 +13,12 @@ import { useEffect, useId, useRef, useState } from "react";
 type Figure = { x: number; scale: number; opacity: number };
 
 const CROWD: Figure[] = [
-  { x: 96, scale: 0.68, opacity: 0.28 },
-  { x: 168, scale: 0.82, opacity: 0.38 },
-  { x: 248, scale: 0.95, opacity: 0.5 },
-  { x: 552, scale: 0.95, opacity: 0.5 },
-  { x: 632, scale: 0.82, opacity: 0.38 },
-  { x: 704, scale: 0.68, opacity: 0.28 },
+  { x: 96, scale: 0.68, opacity: 0.45 },
+  { x: 168, scale: 0.82, opacity: 0.6 },
+  { x: 248, scale: 0.95, opacity: 0.75 },
+  { x: 552, scale: 0.95, opacity: 0.75 },
+  { x: 632, scale: 0.82, opacity: 0.6 },
+  { x: 704, scale: 0.68, opacity: 0.45 },
 ];
 
 /** Reduced crowd for small screens — keeps the hero cheap on mobile. */
@@ -110,14 +110,14 @@ export function LuminousCrowd({ className = "" }: { className?: string }) {
             <FigurePath
               key={figure.x}
               {...figure}
-              fill="#2b123b"
+              fill="#4a2568"
               filter={`url(#${uid}-soft)`}
             />
           ))}
         </g>
         <g className="sm:hidden">
           {CROWD_LIGHT.map((figure) => (
-            <FigurePath key={figure.x} {...figure} fill="#2b123b" filter={`url(#${uid}-soft)`} />
+            <FigurePath key={figure.x} {...figure} fill="#4a2568" filter={`url(#${uid}-soft)`} />
           ))}
         </g>
 

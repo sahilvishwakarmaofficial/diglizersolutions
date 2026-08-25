@@ -9,20 +9,21 @@ import { cn } from "@/lib/utils";
 function LogoLink({ onClick }: { onClick?: () => void }) {
   return (
     <Link to="/" aria-label={`${siteConfig.name} home`} onClick={onClick} className="shrink-0">
-      <img
-        src={siteConfig.logos.full}
-        alt={`${siteConfig.name} logo`}
-        width={1920}
-        height={410}
-        className="hidden h-7 w-auto sm:block md:h-8"
-      />
-      <img
-        src={siteConfig.logos.icon}
-        alt={`${siteConfig.shortName} symbol`}
-        width={512}
-        height={480}
-        className="h-8 w-auto sm:hidden"
-      />
+      <span className="flex items-center gap-2.5">
+        <img
+          src={siteConfig.logos.icon}
+          alt={`${siteConfig.name} logo`}
+          width={512}
+          height={480}
+          className="h-8 w-auto md:h-9"
+        />
+        <span className="hidden font-display text-[1.05rem] font-extrabold uppercase leading-none tracking-[0.14em] text-foreground sm:block">
+          Diglizer
+          <span className="mt-0.5 block text-[0.52rem] font-bold tracking-[0.42em] text-muted-foreground">
+            Solutions
+          </span>
+        </span>
+      </span>
     </Link>
   );
 }

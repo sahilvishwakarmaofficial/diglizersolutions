@@ -105,7 +105,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_18%_0%,rgba(105,70,153,0.35),transparent)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_78%_45%,rgba(118,81,255,0.28),transparent)]" />
 
-      <div className="container-wide relative grid items-center gap-10 py-14 md:py-20 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+      <div className="container-wide relative grid items-center gap-10 py-14 md:py-20 lg:min-h-[560px] lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
         <div className="relative z-10">
           <p className="eyebrow text-gradient">
             Independent creative, technology and growth company
