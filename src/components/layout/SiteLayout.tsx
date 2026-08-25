@@ -5,6 +5,7 @@ import { MessageCircle, Phone, Mail, Sparkles } from "lucide-react";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { LiquidBrandObject, type LiquidState } from "@/components/liquid/LiquidBrandObject";
+import { Reveal } from "@/components/liquid/Reveal";
 import { whatsappHref, telHref, mailtoHref } from "@/config/site";
 
 
