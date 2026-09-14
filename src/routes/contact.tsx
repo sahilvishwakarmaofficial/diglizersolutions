@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+
 
 import { seo, breadcrumbSchema, organizationSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/SiteLayout";
 import { ProjectEnquiryWizard } from "@/components/enquiry/ProjectEnquiryWizard";
 import { InlineWhatsAppButton } from "@/components/WhatsAppButton";
-import { siteConfig } from "@/config/site";
+import { siteConfig, activeSocialLinks } from "@/config/site";
 import { track } from "@/lib/analytics";
 
 const crumbs = [
@@ -43,6 +45,7 @@ const faqs = [
 
 function Contact() {
   const tel = siteConfig.contact.phone ? `tel:${siteConfig.contact.phone.replace(/\s/g, "")}` : "";
+  const socials = activeSocialLinks();
 
   return (
     <>
@@ -85,16 +88,26 @@ function Contact() {
               </p>
             </a>
           )}
-          {siteConfig.founder.linkedin && (
-            <a
-              href={siteConfig.founder.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
-            >
-              <p className="eyebrow text-muted-foreground">LinkedIn</p>
-              <p className="mt-2 font-display text-lg font-semibold">{siteConfig.founder.linkedinLabel}</p>
-            </a>
+          {socials.length > 0 && (
+            <div className="rounded-2xl border border-border bg-card p-6">
+              <p className="eyebrow text-muted-foreground">Follow Diglizer</p>
+              <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                {socials.map((social) => (
+                  <li key={social.key}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Diglizer Solution on ${social.label} (opens in a new tab)`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                    >
+                      {social.label}
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </section>

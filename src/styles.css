@@ -542,3 +542,30 @@
 @media (prefers-reduced-motion: reduce) {
   .liquid-node { animation: none; opacity: 0.8; }
 }
+
+/* Client logo marquee — transform-only, paused on hover/focus. */
+@keyframes marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left var(--marquee-duration, 36s) linear infinite;
+}
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@media (max-width: 767px) {
+  .marquee-track { animation-duration: var(--marquee-duration-mobile, 44s); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

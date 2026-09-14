@@ -17,6 +17,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as FounderRouteImport } from './routes/founder'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as StartAProjectRouteImport } from './routes/start-a-project'
@@ -70,6 +71,11 @@ const CookiePolicyRoute = CookiePolicyRouteImport.update({
 const FounderRoute = FounderRouteImport.update({
   id: '/founder',
   path: '/founder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
+  '/gallery': typeof GalleryRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
+  '/gallery': typeof GalleryRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
+  '/gallery': typeof GalleryRoute
   '/insights': typeof InsightsRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/start-a-project': typeof StartAProjectRoute
@@ -226,6 +235,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/founder'
+    | '/gallery'
     | '/insights'
     | '/privacy-policy'
     | '/start-a-project'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/founder'
+    | '/gallery'
     | '/privacy-policy'
     | '/start-a-project'
     | '/terms'
@@ -273,6 +284,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/founder'
+    | '/gallery'
     | '/insights'
     | '/privacy-policy'
     | '/start-a-project'
@@ -298,6 +310,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   FounderRoute: typeof FounderRoute
+  GalleryRoute: typeof GalleryRoute
   InsightsRoute: typeof InsightsRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   StartAProjectRoute: typeof StartAProjectRoute
@@ -367,6 +380,13 @@ declare module '@tanstack/react-router' {
       path: '/founder'
       fullPath: '/founder'
       preLoaderRoute: typeof FounderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -495,6 +515,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   FounderRoute: FounderRoute,
+  GalleryRoute: GalleryRoute,
   InsightsRoute: InsightsRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   StartAProjectRoute: StartAProjectRoute,

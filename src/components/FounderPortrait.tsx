@@ -1,39 +1,31 @@
 /**
- * Founder portrait frame.
- * Replace `/media/founder-portrait.jpg` with Sahil's approved portrait and the
- * layout stays identical — the placeholder below is a branded panel, never a
- * stock person.
+ * Founder portrait frame — the approved photograph of Sahil Vishwakarma.
+ * The image is never distorted, aggressively cropped or colour-treated.
  */
-export const FOUNDER_PORTRAIT = "/media/founder-portrait-placeholder.jpg";
-export const FOUNDER_PORTRAIT_IS_PLACEHOLDER = true;
+export const FOUNDER_PORTRAIT = "/media/founder/sahil-vishwakarma-profile.webp";
+export const FOUNDER_PORTRAIT_WIDTH = 1080;
+export const FOUNDER_PORTRAIT_HEIGHT = 1350;
 
-export function FounderPortrait({ className = "" }: { className?: string }) {
+export function FounderPortrait({
+  className = "",
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <figure
-      className={`relative overflow-hidden rounded-2xl border border-border bg-ink ${className}`}
-    >
+    <figure className={`relative overflow-hidden rounded-2xl border border-border bg-ink ${className}`}>
       <img
         src={FOUNDER_PORTRAIT}
-        alt={
-          FOUNDER_PORTRAIT_IS_PLACEHOLDER
-            ? "Reserved portrait space for Sahil Vishwakarma, Founder and Creative Director"
-            : "Sahil Vishwakarma, Founder and Creative Director of Diglizer Solution"
-        }
-        loading="lazy"
+        alt="Sahil Vishwakarma, Founder and Creative Director of Diglizer Solution"
+        loading={priority ? "eager" : "lazy"}
+        {...(priority ? { fetchPriority: "high" as const } : {})}
         decoding="async"
-        width={1024}
-        height={1280}
+        width={FOUNDER_PORTRAIT_WIDTH}
+        height={FOUNDER_PORTRAIT_HEIGHT}
         className="aspect-[4/5] w-full object-cover"
-        style={{ objectPosition: "center 30%" }}
+        style={{ objectPosition: "center 22%" }}
       />
-      {FOUNDER_PORTRAIT_IS_PLACEHOLDER && (
-        <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-ink/70 px-5 py-3 text-xs text-ink-muted backdrop-blur-sm">
-          <span>Founder portrait</span>
-          <span aria-hidden="true" className="font-display text-base font-bold text-gradient">
-            D
-          </span>
-        </figcaption>
-      )}
     </figure>
   );
 }
