@@ -154,14 +154,21 @@ function fileExtension(name: string): string {
   return dot >= 0 ? name.slice(dot).toLowerCase() : "";
 }
 
-/** Small stable string hash — good enough for a client-side dedupe key. */
+/**
+ * Small stable string hash — good enough for a client-side dedupe key.
+ * Two independent 32-bit passes are combined and zero-padded so the result is
+ * always comfortably longer than the 8-character minimum the server enforces.
+ */
 function hashString(input: string): string {
-  let hash = 0;
+  let h1 = 0x811c9dc5;
+  let h2 = 0x1000193;
   for (let i = 0; i < input.length; i += 1) {
-    hash = (hash << 5) - hash + input.charCodeAt(i);
-    hash |= 0;
+    const code = input.charCodeAt(i);
+    h1 = ((h1 << 5) - h1 + code) | 0;
+    h2 = ((h2 << 7) - h2 + code * (i + 1)) | 0;
   }
-  return Math.abs(hash).toString(36);
+  const part = (n: number) => Math.abs(n).toString(36).padStart(7, "0");
+  return `${part(h1)}${part(h2)}`;
 }
 
 const inputClass =
