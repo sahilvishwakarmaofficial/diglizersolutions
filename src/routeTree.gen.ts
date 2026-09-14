@@ -32,6 +32,7 @@ import { Route as InsightsIndexRouteImport } from './routes/insights/index'
 import { Route as WorkSplatRouteImport } from './routes/work.$'
 import { Route as InsightsCategoryIndexRouteImport } from './routes/insights/$category.index'
 import { Route as InsightsCategorySlugRouteImport } from './routes/insights/$category.$slug'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -148,6 +149,12 @@ const InsightsCategorySlugRoute = InsightsCategorySlugRouteImport.update({
   path: '/$category/$slug',
   getParentRoute: () => InsightsRoute,
 } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -173,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/insights/': typeof InsightsIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -197,6 +205,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category': typeof InsightsCategoryIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -223,6 +232,7 @@ export interface FileRoutesById {
   '/insights/': typeof InsightsIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/insights/$category/$slug'
     | '/insights/$category'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -299,6 +311,7 @@ export interface FileRouteTypes {
     | '/insights/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -321,6 +334,7 @@ export interface RootRouteChildren {
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -486,6 +500,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsCategorySlugRouteImport
       parentRoute: typeof InsightsRoute
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -535,6 +556,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesSlugRoute: IndustriesSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
   IndustriesIndexRoute: IndustriesIndexRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
