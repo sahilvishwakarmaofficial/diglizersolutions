@@ -1,19 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Linkedin, ArrowUpRight } from "lucide-react";
+import { Linkedin, Instagram, Facebook, ArrowUpRight } from "lucide-react";
 
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
 import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { FounderPortrait } from "@/components/FounderPortrait";
-import { siteConfig, absoluteUrl } from "@/config/site";
+import { siteConfig, absoluteUrl, founderSocialLinks } from "@/config/site";
 
 const crumbs = [
   { name: "Home", path: "/" },
   { name: "Founder", path: "/founder" },
 ];
 
-const FOUNDER_LINKEDIN = "https://in.linkedin.com/in/sahil-vishwakarma-designer";
+const socialIcons = { linkedin: Linkedin, instagram: Instagram, facebook: Facebook } as const;
 
 const expertise = [
   "Brand and visual identity direction",
@@ -65,7 +65,7 @@ function Founder() {
     name: siteConfig.founder.name,
     jobTitle: siteConfig.founder.role,
     url: absoluteUrl("/founder"),
-    sameAs: [FOUNDER_LINKEDIN],
+    sameAs: siteConfig.founder.sameAs,
     worksFor: { "@type": "Organization", name: siteConfig.name },
   };
 
@@ -79,7 +79,7 @@ function Founder() {
           className="absolute -right-[20%] top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 opacity-60 md:block"
         />
         <div className="container-wide relative grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-          <FounderPortrait className="max-w-sm" />
+          <FounderPortrait className="max-w-sm" priority />
           <div>
             <div className="mb-6 text-ink-muted">
               <Breadcrumbs items={crumbs} />
@@ -92,17 +92,23 @@ function Founder() {
               websites, packaging and video — with hands-on experience in healthcare, medical
               products, travel, culture, fashion and professional services.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={FOUNDER_LINKEDIN}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sahil Vishwakarma on LinkedIn (opens in a new tab)"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-border px-6 py-3 text-sm font-semibold transition-colors hover:bg-ink-elevated"
-              >
-                <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {founderSocialLinks().map((social) => {
+                const Icon = socialIcons[social.key];
+                return (
+                  <a
+                    key={social.key}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${siteConfig.founder.name} on ${social.label} (opens in a new tab)`}
+                    className="inline-flex items-center gap-2 rounded-full border border-ink-border px-6 py-3 text-sm font-semibold transition-colors hover:bg-ink-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" /> {social.label}
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                );
+              })}
               <Link
                 to="/start-a-project"
                 className="rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-white"
