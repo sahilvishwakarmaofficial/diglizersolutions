@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+
 
 import { seo, breadcrumbSchema, organizationSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/SiteLayout";
 import { ProjectEnquiryWizard } from "@/components/enquiry/ProjectEnquiryWizard";
 import { InlineWhatsAppButton } from "@/components/WhatsAppButton";
-import { siteConfig } from "@/config/site";
+import { siteConfig, activeSocialLinks } from "@/config/site";
 import { track } from "@/lib/analytics";
 
 const crumbs = [
@@ -43,6 +45,7 @@ const faqs = [
 
 function Contact() {
   const tel = siteConfig.contact.phone ? `tel:${siteConfig.contact.phone.replace(/\s/g, "")}` : "";
+  const socials = activeSocialLinks();
 
   return (
     <>
