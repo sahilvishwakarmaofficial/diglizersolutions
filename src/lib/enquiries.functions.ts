@@ -107,8 +107,26 @@ async function notify(record: Record<string, unknown>): Promise<void> {
 }
 
 export const submitProjectEnquiry = createServerFn({ method: "POST" })
-  .validator((data: unknown) => enquirySchema.parse(data))
-  .handler(async ({ data }): Promise<EnquiryResult> => {
+  .validator((input: unknown) => input)
+  .handler(async ({ data: rawInput }): Promise<EnquiryResult> => {
+    // Validate here rather than in .validator() so a schema failure becomes a
+    // structured, field-level response instead of an opaque thrown error.
+    const parsed = enquirySchema.safeParse(rawInput);
+    if (!parsed.success) {
+      const fieldErrors: Record<string, string> = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path.join(".");
+        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      console.error("[enquiries] validation failed", fieldErrors);
+      return {
+        ok: false,
+        message: "Some details need attention before we can send this.",
+        fieldErrors,
+      };
+    }
+    const data = parsed.data;
+
     // Honeypot check.
     if (data.website_url) {
       return { ok: true };
