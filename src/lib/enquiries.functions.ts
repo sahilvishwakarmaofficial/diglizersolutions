@@ -60,7 +60,7 @@ export const enquirySchema = z.object({
   utm_campaign: trimmedOptional,
   utm_term: trimmedOptional,
   utm_content: trimmedOptional,
-  dedupe_key: z.string().trim().min(8).max(128),
+  dedupe_key: z.string().trim().min(4).max(128),
   form_started_at: z.number(),
   // Honeypot — must stay empty. Named to look attractive to bots.
   website_url: z.string().max(0).optional().or(z.literal("")),
@@ -89,26 +89,27 @@ function isRateLimited(ip: string): boolean {
   return existing.length > RATE_LIMIT_MAX;
 }
 
-/**
- * No-op notification hook. Wire up a real provider (e.g. Resend) once a key
- * is configured — this intentionally does nothing but log until then.
- */
-async function notify(record: Record<string, unknown>): Promise<void> {
-  const apiKey = process.env["RESEND_API_KEY"];
-  if (!apiKey) {
-    console.log("[enquiries] notify() no-op — no email provider configured", {
-      email: record["email"],
-      name: record["name"],
-    });
-    return;
-  }
-  // Intentionally left unimplemented: no credentials were provided.
-  console.log("[enquiries] email provider configured but notify() is not implemented yet");
-}
-
 export const submitProjectEnquiry = createServerFn({ method: "POST" })
-  .validator((data: unknown) => enquirySchema.parse(data))
-  .handler(async ({ data }): Promise<EnquiryResult> => {
+  .validator((input: unknown) => input)
+  .handler(async ({ data: rawInput }): Promise<EnquiryResult> => {
+    // Validate here rather than in .validator() so a schema failure becomes a
+    // structured, field-level response instead of an opaque thrown error.
+    const parsed = enquirySchema.safeParse(rawInput);
+    if (!parsed.success) {
+      const fieldErrors: Record<string, string> = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path.join(".");
+        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      console.error("[enquiries] validation failed", fieldErrors);
+      return {
+        ok: false,
+        message: "Some details need attention before we can send this.",
+        fieldErrors,
+      };
+    }
+    const data = parsed.data;
+
     // Honeypot check.
     if (data.website_url) {
       return { ok: true };
@@ -138,12 +139,16 @@ export const submitProjectEnquiry = createServerFn({ method: "POST" })
       Object.entries(record).filter(([, value]) => value !== undefined),
     ) as Record<string, unknown>;
 
-    const { error } = await supabaseAdmin.from("project_enquiries").insert({
-      ...(cleaned as { name: string; email: string; details: string }),
-      consent: true,
-      consent_at: new Date().toISOString(),
-      submission_status: "received",
-    });
+    const { data: inserted, error } = await supabaseAdmin
+      .from("project_enquiries")
+      .insert({
+        ...(cleaned as { name: string; email: string; details: string }),
+        consent: true,
+        consent_at: new Date().toISOString(),
+        submission_status: "received",
+      })
+      .select("id")
+      .single();
 
     if (error) {
       // Duplicate submission (same dedupe_key) — treat as a soft success.
@@ -157,7 +162,18 @@ export const submitProjectEnquiry = createServerFn({ method: "POST" })
       };
     }
 
-    await notify(record);
+    // The enquiry is safely stored; email delivery is recorded against it but
+    // never rolls the record back.
+    const { notify } = await import("./enquiry-notify.server");
+    const delivery = await notify(record, inserted.id);
+    await supabaseAdmin
+      .from("project_enquiries")
+      .update({
+        email_delivery_status: delivery.status,
+        email_provider_id: delivery.providerId ?? null,
+        email_error: delivery.error ?? null,
+      })
+      .eq("id", inserted.id);
 
     return { ok: true };
   });

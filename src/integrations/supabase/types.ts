@@ -66,6 +66,9 @@ export type Database = {
         Row: {
           created_at: string
           email: string
+          email_delivery_status: string
+          email_error: string | null
+          email_provider_id: string | null
           id: string
           message: string
           name: string
@@ -76,6 +79,9 @@ export type Database = {
         Insert: {
           created_at?: string
           email: string
+          email_delivery_status?: string
+          email_error?: string | null
+          email_provider_id?: string | null
           id?: string
           message: string
           name: string
@@ -86,6 +92,9 @@ export type Database = {
         Update: {
           created_at?: string
           email?: string
+          email_delivery_status?: string
+          email_error?: string | null
+          email_provider_id?: string | null
           id?: string
           message?: string
           name?: string
@@ -268,6 +277,9 @@ export type Database = {
           deliverables: string | null
           details: string
           email: string
+          email_delivery_status: string
+          email_error: string | null
+          email_provider_id: string | null
           engagement_type: string | null
           existing_assets: string | null
           id: string
@@ -311,6 +323,9 @@ export type Database = {
           deliverables?: string | null
           details: string
           email: string
+          email_delivery_status?: string
+          email_error?: string | null
+          email_provider_id?: string | null
           engagement_type?: string | null
           existing_assets?: string | null
           id?: string
@@ -354,6 +369,9 @@ export type Database = {
           deliverables?: string | null
           details?: string
           email?: string
+          email_delivery_status?: string
+          email_error?: string | null
+          email_provider_id?: string | null
           engagement_type?: string | null
           existing_assets?: string | null
           id?: string
