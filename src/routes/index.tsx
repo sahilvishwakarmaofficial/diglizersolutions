@@ -486,9 +486,10 @@ function Home() {
       <JsonLd data={[organizationSchema, websiteSchema]} />
       <Hero />
       <ImpactEngine />
-      <ClientLogoCloud />
+      <ClientLogoMarquee />
       <MarketingProblem />
       <FeaturedWork />
+      <GalleryPreview />
       <Capabilities />
       <IndustryRows />
       <Process />

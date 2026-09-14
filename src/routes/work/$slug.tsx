@@ -110,11 +110,6 @@ function CaseStudy() {
             height={1000}
             className="w-full rounded-2xl border border-border object-cover"
           />
-          {project.provisionalMedia && (
-            <figcaption className="mt-3 text-xs text-muted-foreground">
-              Visual is a designed placeholder pending approved client media.
-            </figcaption>
-          )}
         </figure>
       ) : (
         project.workCategories &&
