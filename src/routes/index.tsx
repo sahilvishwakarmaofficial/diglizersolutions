@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Phone, Mail, Linkedin } from "lucide-react";
 
@@ -287,18 +288,35 @@ function Process() {
   );
 }
 
+const FOUNDER_PHOTO = "/media/founder/sahil-vishwakarma-profile.webp";
+const FALLBACK_AVATAR =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' role='img' aria-label='Photo placeholder'%3E%3Crect width='200' height='240' fill='%23E4E0EA'/%3E%3Ccircle cx='100' cy='92' r='38' fill='%23A89BB8'/%3E%3Cpath d='M44 210c0-34 25-62 56-62s56 28 56 62' fill='%23A89BB8'/%3E%3C/svg%3E";
+
 function FounderPreview() {
+  const [src, setSrc] = useState(FOUNDER_PHOTO);
+  const [errored, setErrored] = useState(false);
+
   return (
     <section className="section-y">
       <div className="container-wide grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-        <div className="relative mx-auto flex h-64 w-64 items-center justify-center rounded-[2.5rem] border border-border">
-          <LiquidBrandObject
-            state="monogram"
-            className="absolute inset-0 h-full w-full opacity-30"
+        <div className="relative mx-auto aspect-[3/4] w-full max-w-[18rem] overflow-hidden rounded-[2.5rem] border border-border bg-muted shadow-lg">
+          <img
+            src={src}
+            alt="Sahil Vishwakarma, Founder and Creative Director of Diglizer Solution"
+            width={1080}
+            height={1350}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-[center_22%]"
+            onError={(e) => {
+              if (!errored) {
+                // eslint-disable-next-line no-console
+                console.error("Founder photo failed to load on homepage:", FOUNDER_PHOTO);
+                setSrc(FALLBACK_AVATAR);
+                setErrored(true);
+              }
+            }}
           />
-          <span className="relative font-display text-7xl font-bold tracking-tight text-gradient">
-            SV
-          </span>
         </div>
         <div>
           <p className="eyebrow text-gradient">Founder &amp; Creative Director</p>
