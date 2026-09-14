@@ -84,6 +84,11 @@ export const organizationSchema = {
     addressCountry: siteConfig.contact.addressCountry,
   },
   areaServed: siteConfig.contact.serviceAreas.map((area) => ({ "@type": "Place", name: area })),
+  sameAs: [
+    siteConfig.social.instagram,
+    siteConfig.social.facebook,
+    siteConfig.social.linkedin,
+  ].filter(Boolean),
   ...(siteConfig.contact.email ? { email: siteConfig.contact.email } : {}),
   ...(siteConfig.contact.phone ? { telephone: siteConfig.contact.phone } : {}),
 };

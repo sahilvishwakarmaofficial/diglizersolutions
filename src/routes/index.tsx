@@ -3,7 +3,8 @@ import { ArrowUpRight, Phone, Mail, Linkedin } from "lucide-react";
 
 import { seo, organizationSchema, websiteSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
-import { ClientLogoCloud } from "@/components/ClientLogoCloud";
+import { ClientLogoMarquee } from "@/components/ClientLogoMarquee";
+import { GalleryPreview } from "@/components/GalleryPreview";
 import { PricingSection } from "@/components/PricingSection";
 import { LiquidBrandObject } from "@/components/liquid/LiquidBrandObject";
 import { MarketingProblem } from "@/components/liquid/MarketingProblem";

@@ -2,6 +2,10 @@
  * Central editable configuration for Diglizer Solution.
  * Every contact detail, social link, analytics ID and verification token lives
  * here. Leave a value as an empty string to hide that item gracefully in the UI.
+ *
+ * `domain` is the single source of truth for canonical URLs, Open Graph URLs,
+ * the sitemap and structured data. Change it here when the production custom
+ * domain goes live and every generated URL follows.
  */
 
 import fullLogo from "@/assets/diglizer-logo-full.webp.asset.json";
@@ -10,7 +14,7 @@ import iconLogo from "@/assets/diglizer-logo-icon.webp.asset.json";
 export const siteConfig = {
   name: "Diglizer Solution",
   shortName: "Diglizer",
-  domain: "https://diglizer.com",
+  domain: "https://diglizersolutions.lovable.app",
   tagline: "Creativity. Technology. Growth.",
   description:
     "Diglizer Solution is an independent creative, technology and digital growth company helping ambitious brands build stronger identities, digital experiences and measurable growth.",
@@ -31,10 +35,11 @@ export const siteConfig = {
     googleReviewLink: "",
   },
 
+  /* Official Diglizer Solution company profiles. */
   social: {
-    instagram: "",
-    linkedin: "https://in.linkedin.com/in/sahil-vishwakarma-designer",
-    facebook: "",
+    instagram: "https://www.instagram.com/diglizersolution/",
+    linkedin: "https://in.linkedin.com/company/diglizer-solution",
+    facebook: "https://www.facebook.com/diglizersolutions",
     youtube: "",
     behance: "",
   },
@@ -57,12 +62,19 @@ export const siteConfig = {
     appIcon512: "/app-icon-512.png",
   },
 
+  /* Personal profiles of the founder — kept separate from company profiles. */
   founder: {
     name: "Sahil Vishwakarma",
     role: "Founder and Creative Director",
-    linkedin: "https://in.linkedin.com/in/sahil-vishwakarma-designer",
+    linkedin: "https://www.linkedin.com/in/iamsahilvishwakarma/",
+    instagram: "https://www.instagram.com/iamsahilvishwakarma/",
+    facebook: "https://www.facebook.com/iamsahilvishwakarma",
     linkedinLabel: "Sahil Vishwakarma — Founder, Diglizer Solution",
-    sameAs: ["https://in.linkedin.com/in/sahil-vishwakarma-designer"] as string[],
+    sameAs: [
+      "https://www.linkedin.com/in/iamsahilvishwakarma/",
+      "https://www.instagram.com/iamsahilvishwakarma/",
+      "https://www.facebook.com/iamsahilvishwakarma",
+    ] as string[],
   },
 };
 
@@ -88,6 +100,16 @@ export const activeSocialLinks = () =>
   (Object.keys(siteConfig.social) as SocialKey[])
     .filter((key) => siteConfig.social[key])
     .map((key) => ({ key, label: socialLabels[key], href: siteConfig.social[key] }));
+
+/** Personal profiles of the founder, for the Founder page only. */
+export const founderSocialLinks = () =>
+  (
+    [
+      { key: "linkedin", label: "LinkedIn", href: siteConfig.founder.linkedin },
+      { key: "instagram", label: "Instagram", href: siteConfig.founder.instagram },
+      { key: "facebook", label: "Facebook", href: siteConfig.founder.facebook },
+    ] as const
+  ).filter((item) => item.href);
 
 export const whatsappHref = () =>
   siteConfig.contact.whatsapp
