@@ -164,6 +164,7 @@ export const submitProjectEnquiry = createServerFn({ method: "POST" })
 
     // The enquiry is safely stored; email delivery is recorded against it but
     // never rolls the record back.
+    const { notify } = await import("./enquiry-notify.server");
     const delivery = await notify(record, inserted.id);
     await supabaseAdmin
       .from("project_enquiries")
