@@ -73,14 +73,16 @@ function GalleryPage() {
                 </Link>
                 , or see how this work is produced under{" "}
                 <Link
-                  to="/capabilities/brand-creative"
+                  to="/capabilities/$slug"
+                  params={{ slug: "brand-creative" }}
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   brand and creative
                 </Link>{" "}
                 and{" "}
                 <Link
-                  to="/capabilities/social-media"
+                  to="/capabilities/$slug"
+                  params={{ slug: "social-media" }}
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   social media
@@ -107,19 +109,22 @@ function GalleryPage() {
               </ul>
               <div className="mt-6 grid gap-2 text-sm">
                 <Link
-                  to="/industries/healthcare-fertility-hospitals"
+                  to="/industries/$slug"
+                  params={{ slug: "healthcare-fertility-hospitals" }}
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Healthcare, fertility and hospital communication
                 </Link>
                 <Link
-                  to="/industries/government-public-service"
+                  to="/industries/$slug"
+                  params={{ slug: "government-public-service" }}
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Government and public-service campaigns
                 </Link>
                 <Link
-                  to="/industries/culture-events-entertainment"
+                  to="/industries/$slug"
+                  params={{ slug: "culture-events-entertainment" }}
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Culture, events and entertainment design
