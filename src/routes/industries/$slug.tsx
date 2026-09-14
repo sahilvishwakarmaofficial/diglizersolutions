@@ -8,7 +8,6 @@ import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { getIndustry, legacyIndustryRedirects } from "@/content/industries";
 import { getClient } from "@/content/clients";
 import { getCapability } from "@/content/capabilities";
-import { getProject } from "@/content/projects";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }) => {
@@ -144,7 +143,8 @@ function IndustryPage() {
                 return (
                   <Link
                     key={slug}
-                    to="/capabilities/$slug" params={{ slug: slug }}
+                    to="/capabilities/$slug"
+                    params={{ slug: slug }}
                     className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
                   >
                     {capability.name}
@@ -155,23 +155,16 @@ function IndustryPage() {
           </div>
           <div>
             <h2 className="font-display text-2xl font-bold">Related work</h2>
-            <ul className="mt-6 space-y-3">
-              {industry.projects.map((slug) => {
-                const project = getProject(slug);
-                if (!project) return null;
-                return (
-                  <li key={slug}>
-                    <Link
-                      to="/work/$slug" params={{ slug: slug }}
-                      className="font-display text-lg font-bold hover:text-primary"
-                    >
-                      {project.client}
-                    </Link>
-                    <p className="text-sm text-muted-foreground">{project.summary}</p>
-                  </li>
-                );
-              })}
-            </ul>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Selected design, campaign and content work for this kind of engagement sits in the
+              gallery.
+            </p>
+            <Link
+              to="/gallery"
+              className="mt-5 inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              Explore the Gallery →
+            </Link>
           </div>
         </div>
       </section>

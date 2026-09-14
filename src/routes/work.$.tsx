@@ -1,7 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-/** The portfolio now lives entirely in the Gallery. */
-export const Route = createFileRoute("/clients")({
+/** Every retired case-study URL permanently redirects to the Gallery. */
+export const Route = createFileRoute("/work/$")({
   beforeLoad: () => {
     throw redirect({ to: "/gallery", statusCode: 301 });
   },

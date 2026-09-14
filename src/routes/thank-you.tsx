@@ -31,10 +31,10 @@ function ThankYou() {
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <Link
-            to="/work"
+            to="/gallery"
             className="rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-semibold text-white"
           >
-            Explore our work
+            Explore the gallery
           </Link>
           <Link
             to="/"

@@ -110,9 +110,18 @@ export const capabilities: Capability[] = [
       "Growth consultation",
     ],
     process: [
-      { step: "Business review", detail: "Objectives, offers, margins, sales process and current results." },
-      { step: "Market and audience", detail: "Who is being spoken to, and what they need to believe before enquiring." },
-      { step: "Positioning", detail: "A clear statement of what the brand stands for and how it differs." },
+      {
+        step: "Business review",
+        detail: "Objectives, offers, margins, sales process and current results.",
+      },
+      {
+        step: "Market and audience",
+        detail: "Who is being spoken to, and what they need to believe before enquiring.",
+      },
+      {
+        step: "Positioning",
+        detail: "A clear statement of what the brand stands for and how it differs.",
+      },
       { step: "Plan", detail: "Channel priorities, creative direction and a sequence of work." },
     ],
     industries: ["healthcare-fertility", "medical-surgical", "startups-local-businesses"],
@@ -217,7 +226,7 @@ export const capabilities: Capability[] = [
       { step: "Review", detail: "What performed, what to adjust next cycle." },
     ],
     industries: ["healthcare-fertility", "fashion-lifestyle", "culture-events"],
-    relatedProjects: ["yashoda-ivf", "pasbaan-e-adab"],
+    relatedProjects: ["yashoda-ivf"],
     faqs: [
       {
         question: "Do you handle publishing or only design?",
@@ -267,7 +276,7 @@ export const capabilities: Capability[] = [
       { step: "Versions", detail: "Platform-specific aspect ratios and lengths." },
     ],
     industries: ["culture-events", "healthcare-fertility", "travel-hospitality"],
-    relatedProjects: ["pasbaan-e-adab", "tripwithowners"],
+    relatedProjects: ["tripwithowners"],
     faqs: [
       {
         question: "Can you edit footage we already have?",
@@ -276,7 +285,8 @@ export const capabilities: Capability[] = [
       },
       {
         question: "Do you provide captions and subtitles?",
-        answer: "Yes, including burned-in captions for social and SRT files where the platform supports them.",
+        answer:
+          "Yes, including burned-in captions for social and SRT files where the platform supports them.",
       },
     ],
   },
@@ -421,11 +431,12 @@ export const capabilities: Capability[] = [
       { step: "Post", detail: "Retouching, formats and delivery." },
     ],
     industries: ["fashion-lifestyle", "medical-surgical", "culture-events"],
-    relatedProjects: ["grace26", "pasbaan-e-adab"],
+    relatedProjects: ["grace26"],
     faqs: [
       {
         question: "Do you shoot on location?",
-        answer: "Yes — offices, clinics, events and retail spaces across Thane and Mumbai, alongside studio product work.",
+        answer:
+          "Yes — offices, clinics, events and retail spaces across Thane and Mumbai, alongside studio product work.",
       },
       {
         question: "How are images delivered?",
@@ -473,7 +484,8 @@ export const capabilities: Capability[] = [
     faqs: [
       {
         question: "Can you coordinate with our printer?",
-        answer: "Yes. We supply files in the printer's required specification and review proofs before the run.",
+        answer:
+          "Yes. We supply files in the printer's required specification and review proofs before the run.",
       },
       {
         question: "Do you handle medical product packaging?",
