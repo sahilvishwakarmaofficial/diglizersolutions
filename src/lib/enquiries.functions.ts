@@ -254,12 +254,16 @@ export const submitProjectEnquiry = createServerFn({ method: "POST" })
       Object.entries(record).filter(([, value]) => value !== undefined),
     ) as Record<string, unknown>;
 
-    const { error } = await supabaseAdmin.from("project_enquiries").insert({
-      ...(cleaned as { name: string; email: string; details: string }),
-      consent: true,
-      consent_at: new Date().toISOString(),
-      submission_status: "received",
-    });
+    const { data: inserted, error } = await supabaseAdmin
+      .from("project_enquiries")
+      .insert({
+        ...(cleaned as { name: string; email: string; details: string }),
+        consent: true,
+        consent_at: new Date().toISOString(),
+        submission_status: "received",
+      })
+      .select("id")
+      .single();
 
     if (error) {
       // Duplicate submission (same dedupe_key) — treat as a soft success.
@@ -273,7 +277,17 @@ export const submitProjectEnquiry = createServerFn({ method: "POST" })
       };
     }
 
-    await notify(record);
+    // The enquiry is safely stored; email delivery is recorded against it but
+    // never rolls the record back.
+    const delivery = await notify(record, inserted.id);
+    await supabaseAdmin
+      .from("project_enquiries")
+      .update({
+        email_delivery_status: delivery.status,
+        email_provider_id: delivery.providerId ?? null,
+        email_error: delivery.error ?? null,
+      })
+      .eq("id", inserted.id);
 
     return { ok: true };
   });
