@@ -60,7 +60,7 @@ export const enquirySchema = z.object({
   utm_campaign: trimmedOptional,
   utm_term: trimmedOptional,
   utm_content: trimmedOptional,
-  dedupe_key: z.string().trim().min(8).max(128),
+  dedupe_key: z.string().trim().min(4).max(128),
   form_started_at: z.number(),
   // Honeypot — must stay empty. Named to look attractive to bots.
   website_url: z.string().max(0).optional().or(z.literal("")),
