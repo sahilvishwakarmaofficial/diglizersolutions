@@ -32,19 +32,16 @@ const experience = [
   { client: "Yashoda IVF & Fertility Centre", role: "Graphic design management, 2024–2025" },
   { client: "Grace26", role: "Website, packaging and product communication" },
   { client: "TripWithOwners", role: "Brand direction and digital experience" },
-  { client: "Pasbaan-e-Adab", role: "Video editing, Reels and event design" },
-  { client: "Siddhartha Logic", role: "Senior graphic design and video editing" },
   { client: "Prober", role: "Freelance design and video editing" },
   { client: "Aikaa Fashion", role: "Social media, Reels and Meta advertising" },
-  { client: "Satish Pradhan Dnyanasadhana College, Thane", role: "Institutional and event creative" },
+  {
+    client: "Satish Pradhan Dnyanasadhana College, Thane",
+    role: "Institutional and event creative",
+  },
   { client: "Maharashtra Police", role: "Project-based design and communication" },
   { client: "Suviksha Hospital", role: "Healthcare design and communication" },
   { client: "MIMAS World Hospitals", role: "Healthcare design and communication" },
-  { client: "Advaith Hospital", role: "Healthcare design and communication" },
-  { client: "Xpert Super Speciality Trulife", role: "Fertility and healthcare creative" },
   { client: "Mark Jewells", role: "Jewellery brand and campaign design" },
-  { client: "Medibrain", role: "Healthcare design and communication" },
-  { client: "Mahadevi Hospital", role: "Healthcare design and communication" },
 ];
 
 export const Route = createFileRoute("/founder")({
@@ -125,14 +122,14 @@ function Founder() {
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
               I started Diglizer because I kept meeting good businesses with fragmented
-              communication. A logo made in one place, a website in another, and advertising
-              running against a message none of them had agreed on. The work was busy, but it was
-              not building anything.
+              communication. A logo made in one place, a website in another, and advertising running
+              against a message none of them had agreed on. The work was busy, but it was not
+              building anything.
             </p>
             <p>
               My interest is in the join: how a positioning statement becomes a visual system, how
-              that system becomes a website that loads fast and reads clearly, and how the same
-              idea survives being compressed into a nine-second video.
+              that system becomes a website that loads fast and reads clearly, and how the same idea
+              survives being compressed into a nine-second video.
             </p>
             <p>
               We keep the studio small on purpose. Small means senior people on the work, short

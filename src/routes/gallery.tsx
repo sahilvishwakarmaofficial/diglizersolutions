@@ -67,11 +67,7 @@ function GalleryPage() {
                 {activeGalleryCategories
                   .map((category) => galleryCategoryLabels[category].toLowerCase())
                   .join(", ")}
-                . For the story behind individual engagements, read the{" "}
-                <Link to="/work" className="font-semibold text-primary underline-offset-4 hover:underline">
-                  full case studies and client experience
-                </Link>
-                , or see how this work is produced under{" "}
+                . See how this work is produced under{" "}
                 <Link
                   to="/capabilities/$slug"
                   params={{ slug: "brand-creative" }}

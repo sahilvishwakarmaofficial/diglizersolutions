@@ -12,7 +12,6 @@ import { LuminousCrowd } from "@/components/liquid/LuminousCrowd";
 import { ImpactEngine } from "@/components/ImpactEngine";
 
 import { industries } from "@/content/industries";
-import { projects } from "@/content/projects";
 import { getClient } from "@/content/clients";
 import { siteConfig, telHref, mailtoHref } from "@/config/site";
 
@@ -91,14 +90,6 @@ const processStages = [
   { step: "05", title: "Grow", copy: "Performance, optimisation and compounding visibility." },
 ];
 
-const featuredSlugs = [
-  "genetics-cryobank",
-  "yashoda-ivf",
-  "grace26",
-  "tripwithowners",
-  "pasbaan-e-adab",
-];
-
 function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-background text-foreground">
@@ -135,13 +126,10 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/work" className="capsule-primary px-7 py-4 uppercase tracking-[0.08em]">
-              Explore Our Work
+            <Link to="/gallery" className="capsule-primary px-7 py-4 uppercase tracking-[0.08em]">
+              Explore the Gallery
             </Link>
-            <Link
-              to="/start-a-project"
-              className="capsule px-7 py-4 uppercase tracking-[0.08em]"
-            >
+            <Link to="/start-a-project" className="capsule px-7 py-4 uppercase tracking-[0.08em]">
               Start a Project
             </Link>
           </div>
@@ -172,96 +160,12 @@ function Hero() {
   );
 }
 
-
-function FeaturedWork() {
-  const panels = featuredSlugs
-    .map((slug) => projects.find((p) => p.slug === slug))
-    .filter((p): p is (typeof projects)[number] => Boolean(p));
-
-  return (
-    <section className="relative section-y overflow-hidden bg-ink text-ink-foreground">
-      <LiquidBrandObject
-        state="portal"
-        className="absolute -left-40 top-10 h-[34rem] w-[34rem] opacity-40"
-      />
-      <div className="container-wide relative">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="eyebrow text-gradient">Selected work</p>
-            <h2 className="display-2 mt-4 max-w-2xl">Work designed to be noticed—and remembered.</h2>
-          </div>
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline"
-          >
-            All work <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
-
-        <ul className="mt-12 grid gap-5 lg:grid-cols-2">
-          {panels.map((project, index) => {
-            const client = getClient(project.slug);
-            return (
-              <li
-                key={project.slug}
-                className={
-                  index === 0
-                    ? "glass-panel rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-1 lg:col-span-2"
-                    : "glass-panel rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-1"
-                }
-              >
-                <p className="eyebrow text-ink-muted">{project.industry}</p>
-                <h3 className="display-3 mt-3">{project.client}</h3>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
-                  {project.summary}
-                </p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {project.services.slice(0, 5).map((service) => (
-                    <li
-                      key={service}
-                      className="rounded-full border border-ink-border px-3 py-1 text-xs font-medium text-ink-muted"
-                    >
-                      {service}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 flex flex-wrap items-center gap-4">
-                  <Link
-                    to="/work/$slug"
-                    params={{ slug: project.slug }}
-                    className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline"
-                  >
-                    View Case Study <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                  {client?.website && client.websiteVerified && (
-                    <a
-                      href={client.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-medium text-ink-muted underline-offset-4 hover:underline"
-                    >
-                      Visit Official Website
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 function Capabilities() {
   return (
     <section className="section-y">
       <div className="container-wide">
         <p className="eyebrow text-gradient">Capabilities</p>
-        <h2 className="display-2 mt-4 max-w-3xl">
-          Four disciplines. One connected system.
-        </h2>
+        <h2 className="display-2 mt-4 max-w-3xl">Four disciplines. One connected system.</h2>
 
         <div className="mt-14 space-y-4">
           {capabilityStates.map((state) => (
@@ -306,7 +210,9 @@ function IndustryRows() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow text-gradient">Industries</p>
-            <h2 className="display-2 mt-4 max-w-2xl">Different industries need different forms of intelligence.</h2>
+            <h2 className="display-2 mt-4 max-w-2xl">
+              Different industries need different forms of intelligence.
+            </h2>
           </div>
           <Link
             to="/industries"
@@ -363,9 +269,7 @@ function Process() {
       />
       <div className="container-wide relative">
         <p className="eyebrow text-gradient">How we work</p>
-        <h2 className="display-2 mt-4 max-w-3xl">
-          From ambition to market impact.
-        </h2>
+        <h2 className="display-2 mt-4 max-w-3xl">From ambition to market impact.</h2>
         <ol className="mt-14 grid gap-10 md:grid-cols-3 lg:grid-cols-5">
           {processStages.map((stage) => (
             <li key={stage.step}>
@@ -488,7 +392,6 @@ function Home() {
       <ImpactEngine />
       <ClientLogoMarquee />
       <MarketingProblem />
-      <FeaturedWork />
       <GalleryPreview />
       <Capabilities />
       <IndustryRows />

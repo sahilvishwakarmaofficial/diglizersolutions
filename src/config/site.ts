@@ -14,7 +14,7 @@ import iconLogo from "@/assets/diglizer-logo-icon.webp.asset.json";
 export const siteConfig = {
   name: "Diglizer Solution",
   shortName: "Diglizer",
-  domain: "https://diglizersolutions.lovable.app",
+  domain: "https://diglizersolution.com",
   tagline: "Creativity. Technology. Growth.",
   description:
     "Diglizer Solution is an independent creative, technology and digital growth company helping ambitious brands build stronger identities, digital experiences and measurable growth.",

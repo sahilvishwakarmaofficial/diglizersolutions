@@ -18,7 +18,6 @@ import { Toaster } from "@/components/ui/sonner";
 function NotFoundComponent() {
   return (
     <>
-
       <section className="section-y bg-ink text-ink-foreground">
         <div className="container-wide">
           <img
@@ -41,10 +40,10 @@ function NotFoundComponent() {
               Return Home
             </Link>
             <Link
-              to="/work"
+              to="/gallery"
               className="rounded-full border border-ink-border px-6 py-3.5 text-sm font-semibold hover:bg-ink-elevated"
             >
-              Explore Our Work
+              Explore the Gallery
             </Link>
             <Link
               to="/contact"
@@ -56,7 +55,6 @@ function NotFoundComponent() {
         </div>
       </section>
     </>
-
   );
 }
 

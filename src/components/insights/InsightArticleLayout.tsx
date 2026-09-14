@@ -9,7 +9,6 @@ import { Breadcrumbs } from "@/components/layout/SiteLayout";
 import { LiquidKnowledgeSphere } from "./LiquidKnowledgeSphere";
 import { getCapability } from "@/content/capabilities";
 import { getIndustry } from "@/content/industries";
-import { getProject } from "@/content/projects";
 
 const CTA_COPY: Record<InsightArticle["category"], string> = {
   "digital-marketing": "Need a clearer digital strategy?",
@@ -98,12 +97,13 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
             height={heroImage.height}
             className="aspect-[16/9] w-full rounded-3xl border border-border object-cover"
           />
-          <figcaption className="mt-3 text-sm text-muted-foreground">{heroImage.caption}</figcaption>
+          <figcaption className="mt-3 text-sm text-muted-foreground">
+            {heroImage.caption}
+          </figcaption>
         </figure>
       )}
 
       <div className="container-wide grid gap-12 py-14 lg:grid-cols-[16rem_minmax(0,1fr)] lg:py-20">
-
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <details open className="rounded-2xl border border-border p-5 lg:open:block">
             <summary className="cursor-pointer text-sm font-semibold lg:cursor-default">
@@ -113,10 +113,7 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
               <ol className="space-y-2 text-sm text-muted-foreground">
                 {article.sections.map((section) => (
                   <li key={section.heading}>
-                    <a
-                      href={`#${sectionId(section.heading)}`}
-                      className="hover:text-primary"
-                    >
+                    <a href={`#${sectionId(section.heading)}`} className="hover:text-primary">
                       {section.heading}
                     </a>
                   </li>
@@ -146,10 +143,17 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
           ))}
 
           {article.sections.map((section) => (
-            <section key={section.heading} className="mt-12 scroll-mt-28" id={sectionId(section.heading)}>
+            <section
+              key={section.heading}
+              className="mt-12 scroll-mt-28"
+              id={sectionId(section.heading)}
+            >
               <h2 className="font-display text-2xl font-bold leading-snug">{section.heading}</h2>
               {section.paragraphs?.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="mt-4 leading-relaxed text-muted-foreground">
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="mt-4 leading-relaxed text-muted-foreground"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -217,7 +221,10 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
             </section>
           )}
 
-          <section id="key-takeaways" className="mt-12 scroll-mt-28 rounded-2xl border border-border p-6">
+          <section
+            id="key-takeaways"
+            className="mt-12 scroll-mt-28 rounded-2xl border border-border p-6"
+          >
             <h2 className="font-display text-xl font-bold">Key takeaways</h2>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
               {article.keyTakeaways.map((item) => (
@@ -275,10 +282,10 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
                 Start a Project
               </Link>
               <Link
-                to="/work"
+                to="/gallery"
                 className="rounded-full border border-ink-border px-6 py-3 text-sm font-semibold"
               >
-                Explore Relevant Work
+                Explore the Gallery
               </Link>
               <Link
                 to="/contact"
@@ -297,7 +304,6 @@ export function InsightArticleLayout({ article }: { article: InsightArticle }) {
 function RelatedLinks({ article }: { article: InsightArticle }) {
   const services = article.relatedServices.map(getCapability).filter(Boolean);
   const industries = article.relatedIndustries.map(getIndustry).filter(Boolean);
-  const cases = article.relatedCaseStudies.map(getProject).filter(Boolean);
   const related = article.relatedArticles.map(getArticleBySlug).filter(Boolean);
 
   return (
@@ -332,24 +338,6 @@ function RelatedLinks({ article }: { article: InsightArticle }) {
                   className="text-primary underline-offset-4 hover:underline"
                 >
                   {industry!.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {cases.length > 0 && (
-        <div>
-          <p className="eyebrow text-muted-foreground">Related case studies</p>
-          <ul className="mt-3 space-y-2 text-sm">
-            {cases.map((project) => (
-              <li key={project!.slug}>
-                <Link
-                  to="/work/$slug"
-                  params={{ slug: project!.slug }}
-                  className="text-primary underline-offset-4 hover:underline"
-                >
-                  {project!.client}
                 </Link>
               </li>
             ))}

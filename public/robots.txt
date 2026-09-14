@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://diglizersolutions.lovable.app/sitemap.xml
+Sitemap: https://diglizersolution.com/sitemap.xml

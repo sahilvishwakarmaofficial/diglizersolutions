@@ -176,7 +176,7 @@ export const healthcareDigitalMarketingStrategyCompliance: InsightArticle = {
   ],
   relatedServices: ["strategy-consulting", "brand-creative", "performance-marketing"],
   relatedIndustries: ["healthcare-fertility-hospitals", "medical-products-b2b-healthcare"],
-  relatedCaseStudies: ["yashoda-ivf", "mimas-world-hospitals", "advaith-hospital"],
+  relatedCaseStudies: ["yashoda-ivf", "mimas-world-hospitals"],
   relatedArticles: ["digital-marketing-for-educational-institutions", "digital-marketing-strategy-for-small-businesses"],
   ctaType: "industry",
   sources: [

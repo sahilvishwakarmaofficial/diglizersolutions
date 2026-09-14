@@ -6,19 +6,25 @@ export function PricingSection({ tone = "light" }: { tone?: "light" | "dark" }) 
   const dark = tone === "dark";
   return (
     <section className={`section-y ${dark ? "bg-ink text-ink-foreground" : "bg-muted/40"}`}>
-      <div className="container-wide grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div>
+      <div className="container-wide">
+        <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-border/60 px-7 py-12 text-center md:px-12 md:py-16">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#694699,#FB2261,transparent)]"
+          />
           <p className="eyebrow text-gradient">Pricing</p>
           <h2 className="display-2 mt-4">{pricing.headline}</h2>
-          <p className="mt-6 font-display text-3xl font-bold md:text-4xl">
+          <p className="mt-6 font-display text-4xl font-bold md:text-5xl">
             <span className="text-gradient">{pricing.statement}</span>
           </p>
           <p
-            className={`mt-5 max-w-xl leading-relaxed ${dark ? "text-ink-muted" : "text-muted-foreground"}`}
+            className={`mt-6 mx-auto max-w-2xl leading-relaxed ${dark ? "text-ink-muted" : "text-muted-foreground"}`}
           >
             {pricing.description}
           </p>
-          <p className={`mt-3 max-w-xl text-sm ${dark ? "text-ink-muted" : "text-muted-foreground"}`}>
+          <p
+            className={`mt-3 mx-auto max-w-2xl text-sm ${dark ? "text-ink-muted" : "text-muted-foreground"}`}
+          >
             {pricing.supporting}
           </p>
           <Link
@@ -28,17 +34,6 @@ export function PricingSection({ tone = "light" }: { tone?: "light" | "dark" }) 
             {pricing.cta}
           </Link>
         </div>
-        <figure className="overflow-hidden rounded-2xl border border-border">
-          <img
-            src="/media/digital/design-system.jpg"
-            alt="Project planning board with type scale, colour tokens and component cards"
-            loading="lazy"
-            decoding="async"
-            width={1600}
-            height={1000}
-            className="aspect-[16/10] w-full object-cover"
-          />
-        </figure>
       </div>
     </section>
   );
@@ -47,8 +42,7 @@ export function PricingSection({ tone = "light" }: { tone?: "light" | "dark" }) 
 export function PricingLine({ tone = "light" }: { tone?: "light" | "dark" }) {
   return (
     <p className={`text-sm ${tone === "dark" ? "text-ink-muted" : "text-muted-foreground"}`}>
-      <span className="font-semibold text-gradient">{pricing.statement}</span>{" "}
-      {pricing.supporting}
+      <span className="font-semibold text-gradient">{pricing.statement}</span> {pricing.supporting}
     </p>
   );
 }

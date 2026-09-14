@@ -195,8 +195,8 @@ function CategoryHub() {
                   </li>
                 ))}
               <li>
-                <Link to="/work" className="text-primary underline-offset-4 hover:underline">
-                  Related case studies in Work
+                <Link to="/gallery" className="text-primary underline-offset-4 hover:underline">
+                  Related creative work in the Gallery
                 </Link>
               </li>
             </ul>

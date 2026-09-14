@@ -23,13 +23,13 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as StartAProjectRouteImport } from './routes/start-a-project'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as WorkRouteImport } from './routes/work'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
 import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries/$slug'
 import { Route as InsightsIndexRouteImport } from './routes/insights/index'
-import { Route as WorkIndexRouteImport } from './routes/work/index'
-import { Route as WorkSlugRouteImport } from './routes/work/$slug'
+import { Route as WorkSplatRouteImport } from './routes/work.$'
 import { Route as InsightsCategoryIndexRouteImport } from './routes/insights/$category.index'
 import { Route as InsightsCategorySlugRouteImport } from './routes/insights/$category.$slug'
 
@@ -103,6 +103,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
   path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
   id: '/capabilities/',
   path: '/capabilities/',
@@ -128,15 +133,10 @@ const InsightsIndexRoute = InsightsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => InsightsRoute,
 } as any)
-const WorkIndexRoute = WorkIndexRouteImport.update({
-  id: '/work/',
-  path: '/work/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkSlugRoute = WorkSlugRouteImport.update({
-  id: '/work/$slug',
-  path: '/work/$slug',
-  getParentRoute: () => rootRouteImport,
+const WorkSplatRoute = WorkSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => WorkRoute,
 } as any)
 const InsightsCategoryIndexRoute = InsightsCategoryIndexRouteImport.update({
   id: '/$category/',
@@ -164,13 +164,13 @@ export interface FileRoutesByFullPath {
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/work/$slug': typeof WorkSlugRoute
+  '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
-  '/work/': typeof WorkIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
 }
@@ -188,13 +188,13 @@ export interface FileRoutesByTo {
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/work/$slug': typeof WorkSlugRoute
+  '/work/$': typeof WorkSplatRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/insights': typeof InsightsIndexRoute
-  '/work': typeof WorkIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category': typeof InsightsCategoryIndexRoute
 }
@@ -214,13 +214,13 @@ export interface FileRoutesById {
   '/start-a-project': typeof StartAProjectRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
-  '/work/$slug': typeof WorkSlugRoute
+  '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
-  '/work/': typeof WorkIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
 }
@@ -241,13 +241,13 @@ export interface FileRouteTypes {
     | '/start-a-project'
     | '/terms'
     | '/thank-you'
+    | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
-    | '/work/$slug'
+    | '/work/$'
     | '/capabilities/'
     | '/industries/'
     | '/insights/'
-    | '/work/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
   fileRoutesByTo: FileRoutesByTo
@@ -265,13 +265,13 @@ export interface FileRouteTypes {
     | '/start-a-project'
     | '/terms'
     | '/thank-you'
+    | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
-    | '/work/$slug'
+    | '/work/$'
     | '/capabilities'
     | '/industries'
     | '/insights'
-    | '/work'
     | '/insights/$category/$slug'
     | '/insights/$category'
   id:
@@ -290,13 +290,13 @@ export interface FileRouteTypes {
     | '/start-a-project'
     | '/terms'
     | '/thank-you'
+    | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
-    | '/work/$slug'
+    | '/work/$'
     | '/capabilities/'
     | '/industries/'
     | '/insights/'
-    | '/work/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
   fileRoutesById: FileRoutesById
@@ -316,12 +316,11 @@ export interface RootRouteChildren {
   StartAProjectRoute: typeof StartAProjectRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
+  WorkRoute: typeof WorkRouteWithChildren
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
-  WorkSlugRoute: typeof WorkSlugRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
-  WorkIndexRoute: typeof WorkIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -424,6 +423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capabilities/': {
       id: '/capabilities/'
       path: '/capabilities'
@@ -459,19 +465,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsIndexRouteImport
       parentRoute: typeof InsightsRoute
     }
-    '/work/': {
-      id: '/work/'
-      path: '/work'
-      fullPath: '/work/'
-      preLoaderRoute: typeof WorkIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/work/$slug': {
-      id: '/work/$slug'
-      path: '/work/$slug'
-      fullPath: '/work/$slug'
-      preLoaderRoute: typeof WorkSlugRouteImport
-      parentRoute: typeof rootRouteImport
+    '/work/$': {
+      id: '/work/$'
+      path: '/$'
+      fullPath: '/work/$'
+      preLoaderRoute: typeof WorkSplatRouteImport
+      parentRoute: typeof WorkRoute
     }
     '/insights/$category/': {
       id: '/insights/$category/'
@@ -506,6 +505,16 @@ const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
   InsightsRouteChildren,
 )
 
+interface WorkRouteChildren {
+  WorkSplatRoute: typeof WorkSplatRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkSplatRoute: WorkSplatRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -521,12 +530,11 @@ const rootRouteChildren: RootRouteChildren = {
   StartAProjectRoute: StartAProjectRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
+  WorkRoute: WorkRouteWithChildren,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
-  WorkSlugRoute: WorkSlugRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
   IndustriesIndexRoute: IndustriesIndexRoute,
-  WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
