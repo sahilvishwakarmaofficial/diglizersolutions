@@ -8,6 +8,7 @@ import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { getIndustry, legacyIndustryRedirects } from "@/content/industries";
 import { getClient } from "@/content/clients";
 import { getCapability } from "@/content/capabilities";
+import { insightsForIndustry } from "@/content/relatedInsights";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }) => {
@@ -183,7 +184,44 @@ function IndustryPage() {
         </div>
       </section>
 
+      <RelatedInsights slug={industry.slug} />
+
       <FinalCta />
     </>
   );
 }
+
+function RelatedInsights({ slug }: { slug: string }) {
+  const articles = insightsForIndustry(slug);
+  if (articles.length === 0) return null;
+
+  return (
+    <section className="section-y-compact">
+      <div className="container-wide">
+        <h2 className="font-display text-2xl font-bold">Related insights</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Practical guidance written for organisations working in this category.
+        </p>
+        <ul className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {articles.map((article) => (
+            <li key={article.slug} className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="font-display text-lg font-bold leading-snug">
+                <Link
+                  to="/insights/$category/$slug"
+                  params={{ category: article.category, slug: article.slug }}
+                  className="underline-offset-4 hover:text-primary hover:underline"
+                >
+                  {article.title}
+                </Link>
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {article.excerpt}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
