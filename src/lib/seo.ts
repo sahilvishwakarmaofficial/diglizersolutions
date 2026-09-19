@@ -42,7 +42,7 @@ export function seo({
     meta.push({ property: "og:image", content: image });
     meta.push({ name: "twitter:image", content: image });
   }
-  if (noindex) meta.push({ name: "robots", content: "noindex, nofollow" });
+  if (noindex) meta.push({ name: "robots", content: "noindex, follow" });
   if (publishedTime) meta.push({ property: "article:published_time", content: publishedTime });
   if (modifiedTime) meta.push({ property: "article:modified_time", content: modifiedTime });
 
