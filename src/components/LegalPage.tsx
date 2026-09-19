@@ -6,7 +6,9 @@ import { siteConfig } from "@/config/site";
 export type LegalSection = { heading: string; paragraphs: string[]; bullets?: string[] };
 
 export function legalHead(title: string, description: string, path: string) {
-  return seo({ title, description, path });
+  // Legal and policy pages are useful to visitors but are not organic landing
+  // pages: keep them crawlable for link discovery, out of the index.
+  return seo({ title, description, path, noindex: true });
 }
 
 export function LegalPage({
