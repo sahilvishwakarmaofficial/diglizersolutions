@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs, FinalCta } from "@/components/layout/SiteLayout";
 import { getCapability } from "@/content/capabilities";
 import { getIndustry } from "@/content/industries";
+import { insightsForCapability } from "@/content/relatedInsights";
 import { absoluteUrl } from "@/config/site";
 
 export const Route = createFileRoute("/capabilities/$slug")({
@@ -175,7 +176,10 @@ function CapabilityPage() {
         </div>
       </section>
 
+      <RelatedInsights slug={capability.slug} />
+
       <FinalCta />
+
     </>
   );
 }
