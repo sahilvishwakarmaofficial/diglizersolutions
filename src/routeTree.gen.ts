@@ -29,6 +29,8 @@ import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slu
 import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries/$slug'
 import { Route as InsightsIndexRouteImport } from './routes/insights/index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources/index'
+import { Route as ResourcesAiAnimationStylesRouteImport } from './routes/resources/ai-animation-styles'
 import { Route as WorkSplatRouteImport } from './routes/work.$'
 import { Route as InsightsCategoryIndexRouteImport } from './routes/insights/$category.index'
 import { Route as InsightsCategorySlugRouteImport } from './routes/insights/$category.$slug'
@@ -134,6 +136,17 @@ const InsightsIndexRoute = InsightsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => InsightsRoute,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesAiAnimationStylesRoute =
+  ResourcesAiAnimationStylesRouteImport.update({
+    id: '/resources/ai-animation-styles',
+    path: '/resources/ai-animation-styles',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WorkSplatRoute = WorkSplatRouteImport.update({
   id: '/$',
   path: '/$',
@@ -174,10 +187,12 @@ export interface FileRoutesByFullPath {
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -199,10 +214,12 @@ export interface FileRoutesByTo {
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities': typeof CapabilitiesIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/insights': typeof InsightsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category': typeof InsightsCategoryIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -226,10 +243,12 @@ export interface FileRoutesById {
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/insights/$category/$slug': typeof InsightsCategorySlugRoute
   '/insights/$category/': typeof InsightsCategoryIndexRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -254,10 +273,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities/'
     | '/industries/'
     | '/insights/'
+    | '/resources/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
     | '/lovable/email/transactional/preview'
@@ -279,10 +300,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities'
     | '/industries'
     | '/insights'
+    | '/resources'
     | '/insights/$category/$slug'
     | '/insights/$category'
     | '/lovable/email/transactional/preview'
@@ -305,10 +328,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/capabilities/$slug'
     | '/industries/$slug'
+    | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities/'
     | '/industries/'
     | '/insights/'
+    | '/resources/'
     | '/insights/$category/$slug'
     | '/insights/$category/'
     | '/lovable/email/transactional/preview'
@@ -332,8 +357,10 @@ export interface RootRouteChildren {
   WorkRoute: typeof WorkRouteWithChildren
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
+  ResourcesAiAnimationStylesRoute: typeof ResourcesAiAnimationStylesRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -479,6 +506,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InsightsIndexRouteImport
       parentRoute: typeof InsightsRoute
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/ai-animation-styles': {
+      id: '/resources/ai-animation-styles'
+      path: '/resources/ai-animation-styles'
+      fullPath: '/resources/ai-animation-styles'
+      preLoaderRoute: typeof ResourcesAiAnimationStylesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/$': {
       id: '/work/$'
       path: '/$'
@@ -554,8 +595,10 @@ const rootRouteChildren: RootRouteChildren = {
   WorkRoute: WorkRouteWithChildren,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
+  ResourcesAiAnimationStylesRoute: ResourcesAiAnimationStylesRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
   IndustriesIndexRoute: IndustriesIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
