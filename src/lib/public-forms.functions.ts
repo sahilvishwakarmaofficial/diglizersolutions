@@ -7,7 +7,7 @@ import { z } from "zod";
  */
 
 const opt = (max: number) =>
-  z.string().trim().max(max).optional().or(z.literal("").transform(() => undefined));
+  z.string().trim().max(max).nullish().transform((v) => (v ? v : null));
 
 const careerSchema = z.object({
   name: z.string().trim().min(1).max(200),
@@ -54,7 +54,7 @@ export const uploadEnquiryAttachment = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.storage
       .from("enquiry-uploads")
-      .upload(path, file, { upsert: false, contentType: file.type || undefined });
+      .upload(path, file, file.type ? { upsert: false, contentType: file.type } : { upsert: false });
     if (error) {
       console.error("[uploads] failed", error.message);
       return { ok: false as const };
