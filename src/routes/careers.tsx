@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { seo, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero, FinalCta } from "@/components/layout/SiteLayout";
-import { supabase } from "@/integrations/supabase/client";
+import { submitCareerApplication } from "@/lib/public-forms.functions";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -69,9 +69,14 @@ function Careers() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("career_applications").insert(form);
+    let ok = false;
+    try {
+      ok = (await submitCareerApplication({ data: form })).ok;
+    } catch {
+      ok = false;
+    }
     setSubmitting(false);
-    if (error) {
+    if (!ok) {
       toast.error("Application not sent. Please try again in a moment.");
       return;
     }

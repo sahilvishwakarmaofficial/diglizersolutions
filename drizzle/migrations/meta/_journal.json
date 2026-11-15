@@ -8,6 +8,13 @@
       "when": 1789421731888,
       "tag": "0000_add_enquiry_email_delivery_columns",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794772911875,
+      "tag": "0001_lock_public_form_writes",
+      "breakpoints": true
     }
   ]
 }

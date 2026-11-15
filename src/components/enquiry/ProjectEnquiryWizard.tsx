@@ -5,7 +5,7 @@ import { Check, Loader2, Paperclip, X } from "lucide-react";
 
 import { industries } from "@/content/industries";
 import { budgetOptions, pricing } from "@/content/pricing";
-import { supabase } from "@/integrations/supabase/client";
+import { uploadEnquiryAttachment } from "@/lib/public-forms.functions";
 import { submitProjectEnquiry, type EnquiryInput } from "@/lib/enquiries.functions";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
@@ -336,12 +336,11 @@ export function ProjectEnquiryWizard({ showPricingNote, className }: ProjectEnqu
 
     setUploading(true);
     try {
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`;
-      const { error } = await supabase.storage.from("enquiry-uploads").upload(path, file, {
-        cacheControl: "3600",
-        upsert: false,
-      });
-      if (error) throw error;
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await uploadEnquiryAttachment({ data: fd });
+      if (!res.ok) throw new Error("upload failed");
+      const path = res.path;
       set("attachment_path", path);
       set("attachment_name", file.name);
       toast.success("File attached.");
