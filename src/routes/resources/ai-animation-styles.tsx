@@ -45,7 +45,7 @@ const relatedArticles = [
   },
   {
     category: "ai-seo-geo",
-    slug: "improve-brand-visibility-in-chatgpt-and-gemini",
+    slug: "how-to-improve-brand-visibility-in-chatgpt-and-gemini",
     title: "Improving brand visibility in ChatGPT and Gemini",
   },
 ];
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/resources/ai-animation-styles")({
     return {
       ...base,
       meta: [
-        ...base.meta.filter((m) => m.name !== "author"),
+        ...base.meta.filter((m) => m["name"] !== "author"),
         { name: "author", content: siteConfig.founder.name },
       ],
     };

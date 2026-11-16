@@ -247,6 +247,19 @@ function InsightsHub() {
         </div>
       </section>
 
+      <section className="section-y-compact">
+        <div className="container-wide">
+          <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
+            <p className="eyebrow text-primary">Free creative playbook</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Looking for something hands-on? Try the copy-ready prompt playbook{" "}
+              <Link to="/resources/ai-animation-styles" className="font-semibold text-foreground underline underline-offset-4 hover:text-primary">
+                10 AI Animation Styles for Scroll-Stopping Videos
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
       <FinalCta
         title="Want guidance applied to your business, not just read about?"
         copy="Tell us what you are building, changing or trying to grow."
