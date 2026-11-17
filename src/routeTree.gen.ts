@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -24,8 +25,11 @@ import { Route as StartAProjectRouteImport } from './routes/start-a-project'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as IndexIndexRouteImport } from './routes/index/index'
 import { Route as CapabilitiesIndexRouteImport } from './routes/capabilities/index'
 import { Route as CapabilitiesSlugRouteImport } from './routes/capabilities/$slug'
+import { Route as ContactSplatRouteImport } from './routes/contact.$'
+import { Route as IndexSplatRouteImport } from './routes/index.$'
 import { Route as IndustriesIndexRouteImport } from './routes/industries/index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries/$slug'
 import { Route as InsightsIndexRouteImport } from './routes/insights/index'
@@ -49,6 +53,11 @@ const AboutRoute = AboutRouteImport.update({
 const AccessibilityRoute = AccessibilityRouteImport.update({
   id: '/accessibility',
   path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -111,6 +120,11 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndexIndexRoute = IndexIndexRouteImport.update({
+  id: '/index/',
+  path: '/index/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
   id: '/capabilities/',
   path: '/capabilities/',
@@ -119,6 +133,16 @@ const CapabilitiesIndexRoute = CapabilitiesIndexRouteImport.update({
 const CapabilitiesSlugRoute = CapabilitiesSlugRouteImport.update({
   id: '/capabilities/$slug',
   path: '/capabilities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactSplatRoute = ContactSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => ContactRoute,
+} as any)
+const IndexSplatRoute = IndexSplatRouteImport.update({
+  id: '/index/$',
+  path: '/index/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
@@ -173,9 +197,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/clients': typeof ClientsRoute
-  '/contact': typeof ContactRoute
+  '/contact': typeof ContactRouteWithChildren
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/gallery': typeof GalleryRoute
@@ -186,10 +211,13 @@ export interface FileRoutesByFullPath {
   '/thank-you': typeof ThankYouRoute
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/contact/$': typeof ContactSplatRoute
+  '/index/$': typeof IndexSplatRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/index/': typeof IndexIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -201,9 +229,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/clients': typeof ClientsRoute
-  '/contact': typeof ContactRoute
+  '/contact': typeof ContactRouteWithChildren
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/gallery': typeof GalleryRoute
@@ -213,10 +242,13 @@ export interface FileRoutesByTo {
   '/thank-you': typeof ThankYouRoute
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/contact/$': typeof ContactSplatRoute
+  '/index/$': typeof IndexSplatRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities': typeof CapabilitiesIndexRoute
+  '/index': typeof IndexIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/resources': typeof ResourcesIndexRoute
@@ -229,9 +261,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/clients': typeof ClientsRoute
-  '/contact': typeof ContactRoute
+  '/contact': typeof ContactRouteWithChildren
   '/cookie-policy': typeof CookiePolicyRoute
   '/founder': typeof FounderRoute
   '/gallery': typeof GalleryRoute
@@ -242,10 +275,13 @@ export interface FileRoutesById {
   '/thank-you': typeof ThankYouRoute
   '/work': typeof WorkRouteWithChildren
   '/capabilities/$slug': typeof CapabilitiesSlugRoute
+  '/contact/$': typeof ContactSplatRoute
+  '/index/$': typeof IndexSplatRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/resources/ai-animation-styles': typeof ResourcesAiAnimationStylesRoute
   '/work/$': typeof WorkSplatRoute
   '/capabilities/': typeof CapabilitiesIndexRoute
+  '/index/': typeof IndexIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -259,6 +295,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/accessibility'
+    | '/blog'
     | '/careers'
     | '/clients'
     | '/contact'
@@ -272,10 +309,13 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/work'
     | '/capabilities/$slug'
+    | '/contact/$'
+    | '/index/$'
     | '/industries/$slug'
     | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities/'
+    | '/index/'
     | '/industries/'
     | '/insights/'
     | '/resources/'
@@ -287,6 +327,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/accessibility'
+    | '/blog'
     | '/careers'
     | '/clients'
     | '/contact'
@@ -299,10 +340,13 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/work'
     | '/capabilities/$slug'
+    | '/contact/$'
+    | '/index/$'
     | '/industries/$slug'
     | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities'
+    | '/index'
     | '/industries'
     | '/insights'
     | '/resources'
@@ -314,6 +358,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/accessibility'
+    | '/blog'
     | '/careers'
     | '/clients'
     | '/contact'
@@ -327,10 +372,13 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/work'
     | '/capabilities/$slug'
+    | '/contact/$'
+    | '/index/$'
     | '/industries/$slug'
     | '/resources/ai-animation-styles'
     | '/work/$'
     | '/capabilities/'
+    | '/index/'
     | '/industries/'
     | '/insights/'
     | '/resources/'
@@ -343,9 +391,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ClientsRoute: typeof ClientsRoute
-  ContactRoute: typeof ContactRoute
+  ContactRoute: typeof ContactRouteWithChildren
   CookiePolicyRoute: typeof CookiePolicyRoute
   FounderRoute: typeof FounderRoute
   GalleryRoute: typeof GalleryRoute
@@ -356,9 +405,11 @@ export interface RootRouteChildren {
   ThankYouRoute: typeof ThankYouRoute
   WorkRoute: typeof WorkRouteWithChildren
   CapabilitiesSlugRoute: typeof CapabilitiesSlugRoute
+  IndexSplatRoute: typeof IndexSplatRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   ResourcesAiAnimationStylesRoute: typeof ResourcesAiAnimationStylesRoute
   CapabilitiesIndexRoute: typeof CapabilitiesIndexRoute
+  IndexIndexRoute: typeof IndexIndexRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -385,6 +436,13 @@ declare module '@tanstack/react-router' {
       path: '/accessibility'
       fullPath: '/accessibility'
       preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -471,6 +529,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/index/': {
+      id: '/index/'
+      path: '/index'
+      fullPath: '/index/'
+      preLoaderRoute: typeof IndexIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capabilities/': {
       id: '/capabilities/'
       path: '/capabilities'
@@ -483,6 +548,20 @@ declare module '@tanstack/react-router' {
       path: '/capabilities/$slug'
       fullPath: '/capabilities/$slug'
       preLoaderRoute: typeof CapabilitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/$': {
+      id: '/contact/$'
+      path: '/$'
+      fullPath: '/contact/$'
+      preLoaderRoute: typeof ContactSplatRouteImport
+      parentRoute: typeof ContactRoute
+    }
+    '/index/$': {
+      id: '/index/$'
+      path: '/index/$'
+      fullPath: '/index/$'
+      preLoaderRoute: typeof IndexSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries/': {
@@ -551,6 +630,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ContactRouteChildren {
+  ContactSplatRoute: typeof ContactSplatRoute
+}
+
+const ContactRouteChildren: ContactRouteChildren = {
+  ContactSplatRoute: ContactSplatRoute,
+}
+
+const ContactRouteWithChildren =
+  ContactRoute._addFileChildren(ContactRouteChildren)
+
 interface InsightsRouteChildren {
   InsightsIndexRoute: typeof InsightsIndexRoute
   InsightsCategorySlugRoute: typeof InsightsCategorySlugRoute
@@ -581,9 +671,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccessibilityRoute: AccessibilityRoute,
+  BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ClientsRoute: ClientsRoute,
-  ContactRoute: ContactRoute,
+  ContactRoute: ContactRouteWithChildren,
   CookiePolicyRoute: CookiePolicyRoute,
   FounderRoute: FounderRoute,
   GalleryRoute: GalleryRoute,
@@ -594,9 +685,11 @@ const rootRouteChildren: RootRouteChildren = {
   ThankYouRoute: ThankYouRoute,
   WorkRoute: WorkRouteWithChildren,
   CapabilitiesSlugRoute: CapabilitiesSlugRoute,
+  IndexSplatRoute: IndexSplatRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,
   ResourcesAiAnimationStylesRoute: ResourcesAiAnimationStylesRoute,
   CapabilitiesIndexRoute: CapabilitiesIndexRoute,
+  IndexIndexRoute: IndexIndexRoute,
   IndustriesIndexRoute: IndustriesIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
